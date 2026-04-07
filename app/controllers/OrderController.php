@@ -46,13 +46,13 @@ class OrderController
 
         $account_id = $_SESSION['account_id'] ?? null;
         if (!$account_id) {
-            include 'app/views/account/login.php';
+            include 'app/views/Account/login.php';
             return;
         }
 
         $orders = $this->orderModel->getOrdersByAccountId($account_id);
 
-        include 'app/views/order/orders.php';
+        include 'app/views/Order/orders.php';
     }
 
     public function cancelOrder($orderId)
@@ -204,7 +204,7 @@ class OrderController
         $_SESSION['applied_promotion_id'] = $selected_promo_id;
         $_SESSION['discount_amount'] = $discount_amount;
 
-        include 'app/views/order/detailsPreview.php';
+        include 'app/views/Order/detailsPreview.php';
     }
 
     function execPostRequest($url, $data)
@@ -395,7 +395,7 @@ class OrderController
         var_dump($account);
         exit;
 
-        include 'app/views/order/thankYou.php';
+        include 'app/views/Order/thankYou.php';
     }
 
 
@@ -415,7 +415,7 @@ class OrderController
         }
 
         if ($resultCode != 0) {
-            include 'app/views/order/sorry.php';
+            include 'app/views/Order/sorry.php';
             return;
         }
 
@@ -511,7 +511,7 @@ class OrderController
 
             // Hiển thị trang cảm ơn
             $order = $this->orderModel->getOrderById($orderId);
-            include 'app/views/order/thankYou.php';
+            include 'app/views/Order/thankYou.php';
         } else {
             echo "Lỗi khi lưu đơn hàng vào hệ thống.";
         }
@@ -535,7 +535,7 @@ class OrderController
 
         // VNPAY trả về '00' là thành công
         if ($vnp_ResponseCode != '00' || $vnp_TransactionStatus != '00') {
-            include 'app/views/order/sorry.php';
+            include 'app/views/Order/sorry.php';
             return;
         }
 
@@ -629,7 +629,7 @@ class OrderController
             $order = $this->orderModel->getOrderById($orderId);
             $account = $this->accountModel->getAccountById($account_id);
 
-            include 'app/views/order/thankYou.php';
+            include 'app/views/Order/thankYou.php';
         } else {
             error_log("Lỗi tạo đơn hàng VNPAY cho Account ID: " . $account_id);
             echo "Có lỗi xảy ra trong quá trình tạo đơn hàng.";
@@ -667,7 +667,7 @@ class OrderController
         $orderDetails = $this->orderDetailsModel->getOrderDetailsByOrderId($orderId);
 
         // Kiểm tra và truyền dữ liệu tới view
-        include 'app/views/order/details.php';
+        include 'app/views/Order/details.php';
     }
 
 
@@ -697,7 +697,7 @@ class OrderController
         $customerInfo = $this->accountModel->getProfileByEmail($_SESSION['email']);
 
         // Hiển thị trang chi tiết đơn hàng
-        include 'app/views/order/details.php';
+        include 'app/views/Order/details.php';
     }
 
     public function filterForUser()
@@ -813,6 +813,6 @@ class OrderController
         $orders = $this->orderModel->filterOrdersByUser($account_id, $filters);
 
         // Trả về partial html hoặc json tuỳ bạn muốn
-        include 'app/views/order/listorder2.php';
+        include 'app/views/Order/listorder2.php';
     }
 }

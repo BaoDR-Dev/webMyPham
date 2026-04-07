@@ -20,12 +20,12 @@ class AccountController
     }
     public function register()
     {
-        include_once 'app/views/account/register.php';
+        include_once 'app/views/Account/register.php';
     }
 
     public function login()
     {
-        include_once 'app/views/account/login.php';
+        include_once 'app/views/Account/login.php';
     }
 
     // AccountController.php (Thay thế hàm save() cũ)
@@ -48,14 +48,14 @@ class AccountController
             // Validate cơ bản
             if (empty($email) || empty($password) || empty($fullName)) {
                 $_SESSION['error'] = "Vui lòng nhập đủ thông tin.";
-                include_once 'app/views/account/register.php';
+                include_once 'app/views/Account/register.php';
                 return;
             }
 
             // Check trùng email
             if ($this->accountModel->getAccountByEmail($email)) {
                 $_SESSION['error'] = "Email này đã tồn tại.";
-                include_once 'app/views/account/register.php';
+                include_once 'app/views/Account/register.php';
                 return;
             }
 
@@ -92,7 +92,7 @@ class AccountController
                 exit;
             } else {
                 $_SESSION['error'] = "Lỗi hệ thống, không thể tạo tài khoản.";
-                include_once 'app/views/account/register.php';
+                include_once 'app/views/Account/register.php';
             }
         }
     }
@@ -140,7 +140,7 @@ class AccountController
             }
         }
 
-        include_once 'app/views/account/verify_otp.php';
+        include_once 'app/views/Account/verify_otp.php';
     }
 
     public function verify()
@@ -282,7 +282,7 @@ class AccountController
             exit;
         }
         // Load view form quên mật khẩu
-        include_once 'app/views/account/forgotPassword.php';
+        include_once 'app/views/Account/forgotPassword.php';
     }
 
     public function resetPassword()
@@ -310,7 +310,7 @@ class AccountController
             if (empty($newPassword) || $newPassword !== $confirmPassword || strlen($newPassword) < 6) {
                 $_SESSION['error'] = 'Mật khẩu không hợp lệ hoặc không khớp.';
                 // Tải lại view resetPassword với token
-                include_once 'app/views/account/resetPassword.php';
+                include_once 'app/views/Account/resetPassword.php';
                 return;
             }
 
@@ -323,7 +323,7 @@ class AccountController
                 exit;
             } else {
                 $_SESSION['error'] = 'Có lỗi xảy ra khi cập nhật mật khẩu.';
-                include_once 'app/views/account/resetPassword.php';
+                include_once 'app/views/Account/resetPassword.php';
             }
             if (!$user) {
                 // Tạm thời comment dòng chuyển hướng lại
@@ -338,7 +338,7 @@ class AccountController
             }
         } else {
             // Load view form đặt lại mật khẩu
-            include_once 'app/views/account/resetPassword.php';
+            include_once 'app/views/Account/resetPassword.php';
         }
     }
 

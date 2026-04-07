@@ -40,7 +40,7 @@ class AdminController
         // 👉 DANH SÁCH KHUYẾN MÃI
         $promotions = $this->promotionModel->getAll();
 
-        require_once 'app/views/admin/promotion/index.php';
+        require_once 'app/views/Admin/promotion/index.php';
     }
 
 
@@ -54,7 +54,7 @@ class AdminController
         $types = $this->promotionTypeModel->getAll();
         $categories = $this->categoryModel->getAll(); // 🔥 THÊM DÒNG NÀY
 
-        require_once('app/views/admin/promotion/create.php');
+        require_once('app/views/Admin/promotion/create.php');
     }
 
     public function storePromotion()
@@ -143,7 +143,7 @@ class AdminController
         $promotion = $this->promotionModel->getById($id);
         $types = $this->promotionTypeModel->getAll();
 
-        require_once('app/views/admin/promotion/edit.php');
+        require_once('app/views/Admin/promotion/edit.php');
     }
     public function updatePromotion()
     {
@@ -319,7 +319,7 @@ class AdminController
 
         $orders = $this->orderModel->getOrdersByAccountId($user_id);
 
-        include 'app/views/admin/customer_details.php';
+        include 'app/views/Admin/customer_details.php';
     }
 
 
@@ -532,7 +532,7 @@ class AdminController
             }
         }
 
-        include 'app/views/admin/dashboard.php';
+        include 'app/views/Admin/dashboard.php';
     }
 
     public function adminCategoryList($category_id = null)
@@ -574,9 +574,9 @@ class AdminController
             $categoryName = htmlspecialchars($category->name, ENT_QUOTES, 'UTF-8');
 
             // Truyền dữ liệu qua view
-            include 'app/views/admin/products_list.php';
+            include 'app/views/Admin/products_list.php';
         } else {
-            include 'app/views/admin/product/emptycategory.php';
+            include 'app/views/Product/emptycategory.php';
         }
     }
 
@@ -598,7 +598,7 @@ class AdminController
         $totalProducts = $this->productModel->countAllProducts($search, $minPrice, $maxPrice);
 
 
-        include 'app/views/admin/products_list.php';
+        include 'app/views/Admin/products_list.php';
     }
     public function searchSuggestions()
     {
@@ -761,7 +761,7 @@ class AdminController
         }
 
         $orders = $this->orderModel->getAllOrdersWithUser();
-        include 'app/views/admin/order_list.php';
+        include 'app/views/Admin/order_list.php';
     }
 
     public function filter()
@@ -828,7 +828,7 @@ class AdminController
         $orders = $this->orderModel->filterOrdersByUser3($filters);
 
         // ⚠️ CHỈ RETURN TABLE
-        include 'app/views/admin/components/user_table_order.php';
+        include 'app/views/Admin/components/user_table_order.php';
     }
 
 
@@ -866,7 +866,7 @@ class AdminController
         $orderDetails = $this->orderModel->getOrderDetails($orderId);
         $customerInfo = $this->orderModel->getCustomerByOrderId($orderId);
 
-        require_once 'app/views/admin/orderdetail.php';
+        require_once 'app/views/Admin/orderdetail.php';
     }
     public function orderDetail2($orderId)
     {
@@ -879,7 +879,7 @@ class AdminController
         $orderDetails = $this->orderModel->getOrderDetails($orderId);
         $customerInfo = $this->orderModel->getCustomerByOrderId($orderId);
 
-        require_once 'app/views/admin/orderdetail2.php';
+        require_once 'app/views/Admin/orderdetail2.php';
     }
     public function filterAccount()
     {

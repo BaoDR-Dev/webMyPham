@@ -80,7 +80,7 @@ class ProductController
         }
 
         // Hiển thị giao diện chi tiết
-        include 'app/views/product/show.php';
+        include 'app/views/Product/show.php';
     }
 
     public function reviewFilter()
@@ -97,7 +97,7 @@ class ProductController
         $ratingModel = new RatingModel();
         $reviews = $ratingModel->getReviewsByProductId($productId, $rating);
 
-        include 'app/views/product/reviews.php';
+        include 'app/views/Product/reviews.php';
     }
 
 
@@ -111,7 +111,7 @@ class ProductController
             exit;
         }
         $categories = (new CategoryModel($this->db))->getCategories();
-        include_once 'app/views/product/add.php';
+        include_once 'app/views/Product/add.php';
     }
 
     // Lưu sản phẩm mới
@@ -151,7 +151,7 @@ class ProductController
             if (is_array($result)) {
                 $errors = $result;
                 $categories = (new CategoryModel($this->db))->getCategories();
-                include 'app/views/product/add.php';
+                include 'app/views/Product/add.php';
             } else {
                 header('Location: ' . BASE_URL . '/Admin/adminCategoryList/' . urlencode($category_id));
                 exit;
@@ -174,7 +174,7 @@ class ProductController
             exit();
         }
 
-        include 'app/views/product/edit.php';
+        include 'app/views/Product/edit.php';
     }
 
     // Lưu sản phẩm sau khi chỉnh sửa
@@ -313,9 +313,9 @@ class ProductController
             $categoryName = htmlspecialchars($category->name, ENT_QUOTES, 'UTF-8');
 
             // Truyền thêm biến phân trang qua view
-            include 'app/views/product/categorylist.php';
+            include 'app/views/Product/categorylist.php';
         } else {
-            include 'app/views/product/emptycategory.php';
+            include 'app/views/Product/emptycategory.php';
         }
     }
 
@@ -365,7 +365,7 @@ class ProductController
 
         $queryParams = $_GET;
 
-        include 'app/views/product/search_results.php';
+        include 'app/views/Product/search_results.php';
     }
 
     public function autocomplete()
@@ -413,6 +413,6 @@ class ProductController
         $category_id = null;
         $categoryName = 'Tất cả sản phẩm';
 
-        include 'app/views/product/categorylist.php';
+        include 'app/views/Product/categorylist.php';
     }
 }

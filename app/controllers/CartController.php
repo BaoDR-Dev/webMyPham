@@ -48,11 +48,11 @@ class CartController
         $this->ensureSessionStarted();
         $account_id = $_SESSION['account_id'] ?? null;
         if (!$account_id) {
-            include_once 'app/views/account/login.php';
+            include_once 'app/views/Account/login.php';
             exit;
         }
         $this->updateCartSession($account_id);
-        include 'app/views/product/cart.php';
+        include 'app/views/Product/cart.php';
     }
 
     public function add($product_id, $quantity = 1)
@@ -308,6 +308,6 @@ class CartController
     public function error()
     {
         $errorMessage = "Đã xảy ra lỗi khi tạo đơn hàng. Vui lòng thử lại.";
-        include 'app/views/product/error.php';
+        include 'app/views/Product/error.php';
     }
 }

@@ -14,7 +14,7 @@ class CategoryController
     public function list()
     {
         $categories = $this->categoryModel->getCategories();
-        include 'app/views/category/list.php';
+        include 'app/views/Product/categorylist.php';
     }
 
     public function getAllCategories()

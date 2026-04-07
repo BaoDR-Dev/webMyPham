@@ -96,5 +96,5 @@ unset(
 
 // 7. Hiển thị trang cảm ơn
 $order = $this->orderModel->getOrderById($orderId);
-include 'app/views/order/thankYou.php';
+include 'app/views/Order/thankYou.php';
 return;
