@@ -21,7 +21,7 @@
                 <ul class="footer-contact">
                     <li><i class="bi bi-geo-alt-fill"></i>123 Đường ABC, Quận 1, TP.HCM</li>
                     <li><i class="bi bi-telephone-fill"></i>0123 456 789</li>
-                    <li><i class="bi bi-envelope-fill"></i>cuahangthietbiyte247@gmail.com</li>
+                    <li><i class="bi bi-envelope-fill"></i>theboys.cosmetics@gmail.com</li>
                     <li><i class="bi bi-clock-fill"></i>Thứ 2 - CN: 8:00 - 21:00</li>
                 </ul>
             </div>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="footer-bottom">
-            <p>© 2025 <strong>Thiết Bị Y Tế 24/7</strong> — All rights reserved.</p>
+            <p>© 2025 <strong>Mỹ Phẩm The Boys</strong> — All rights reserved.</p>
         </div>
     </div>
 </footer>

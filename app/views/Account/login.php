@@ -198,8 +198,8 @@
                         <div class="col-md-6 d-none d-md-block">
                             <div class="banner-login-new">
                                 <img src="/webbanhang/public/images/Logo.png" alt="Logo" style="width: 80px; margin-bottom: 20px; z-index: 1;">
-                                <h3>Y Tế 24/7</h3>
-                                <p>Chăm sóc sức khỏe toàn diện<br>cho gia đình bạn.</p>
+                                <h3>The Boys</h3>
+                                <p>Mỹ phẩm chính hãng<br>cho vẻ đẹp của bạn.</p>
                             </div>
                         </div>
 

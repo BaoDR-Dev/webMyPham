@@ -187,7 +187,7 @@
                         <div class="col-lg-5 d-none d-lg-block">
                             <div class="banner-register-new">
                                 <img src="/webbanhang/public/images/Logo.png" alt="Logo" style="width: 80px; margin-bottom: 20px; z-index: 1;">
-                                <h3>Tham gia cùng<br>Y Tế 24/7</h3>
+                                <h3>Tham gia cùng<br>The Boys</h3>
                                 <p>Tạo tài khoản để nhận ưu đãi hấp dẫn và theo dõi đơn hàng dễ dàng.</p>
                                 <a href="/webbanhang/account/login" class="btn-outline-light-custom">Đã có tài khoản?</a>
                             </div>

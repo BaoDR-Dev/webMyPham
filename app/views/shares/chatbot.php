@@ -17,7 +17,7 @@
          <div class="message bot-message">
              <img class="bot-avatar" src="/webbanhang/public/images/CSKH.png" />
              <!-- prettier-ignore -->
-             <div class="message-text"> Hello 👋<br />Tôi là nhân viên chăm sóc khách hàng của của hàng The Boys.<br />Tôi có thể giúp gì cho bạn hôm nay? </div>
+             <div class="message-text"> Hello 👋<br />Tôi là nhân viên chăm sóc khách hàng của The Boys Cosmetics.<br />Tôi có thể giúp gì cho bạn hôm nay? </div>
          </div>
      </div>
      <!-- Chatbot Footer -->
