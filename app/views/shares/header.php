@@ -171,13 +171,9 @@ function isActive0($path)
 
 <body>
     <?php
-    $avatarPath = '<?= BASE_URL ?>/public/uploads/avatar/default.png';
+    $avatarPath = BASE_URL . '/public/uploads/avatar/default.png';
     if (isset($_SESSION['image']) && !empty($_SESSION['image'])) {
-        $userImagePath_relative = $_SESSION['image'];
-        $userImagePath_absolute = $_SERVER['DOCUMENT_ROOT'] . '<?= BASE_URL ?>/' . $userImagePath_relative;
-        if (file_exists($userImagePath_absolute)) {
-            $avatarPath = '<?= BASE_URL ?>/' . htmlspecialchars($userImagePath_relative);
-        }
+        $avatarPath = BASE_URL . '/' . htmlspecialchars($_SESSION['image']);
     }
     ?>
 
@@ -203,7 +199,7 @@ function isActive0($path)
                 <!-- User Dropdown (Góc phải) -->
                 <div class="ms-auto dropdown">
                     <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-dark" id="admDrp" data-bs-toggle="dropdown">
-                        <img src="<?= $avatarPath ?>" width="32" height="32" class="rounded-circle me-2 border object-fit-cover">
+                        <img src="<?= $avatarPath ?>" width="32" height="32" class="rounded-circle me-2 border object-fit-cover" onerror="this.src='<?= BASE_URL ?>/public/uploads/avatar/default.png'">
                         <span class="d-none d-sm-inline fw-bold small"><?= htmlspecialchars($_SESSION['full_name']) ?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow border-0">
@@ -320,7 +316,7 @@ function isActive0($path)
                             <div class="dropdown d-flex align-items-center gap-2">
                                 <span class="welcome-text d-none d-lg-block text-white">Chào, <?= htmlspecialchars($_SESSION['full_name']) ?></span>
                                 <a href="#" class="p-0" data-bs-toggle="dropdown">
-                                    <img src="<?= $avatarPath ?>" class="user-avatar border" alt="User Avatar">
+                                    <img src="<?= $avatarPath ?>" class="user-avatar border" alt="User Avatar" onerror="this.src='<?= BASE_URL ?>/public/uploads/avatar/default.png'">
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 mt-2">
                                     <li>

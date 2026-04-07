@@ -63,7 +63,7 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
                         <?php if (!empty($category) && $category['id'] == 0) continue; ?>
                         <a href="<?= BASE_URL ?>/Product/CategoryList/<?= $category['id'] ?>" class="category-card">
                             <img
-                                src="<?= !empty($category['image']) ? '<?= BASE_URL ?>/' . htmlspecialchars($category['image']) : '<?= BASE_URL ?>/public/images/A1.png' ?>"
+                                src="<?= !empty($category['image']) ? BASE_URL . '/' . htmlspecialchars($category['image']) : BASE_URL . '/public/images/A1.png' ?>"
                                 class="category-image"
                                 alt="<?= htmlspecialchars($category['name']) ?>"
                                 onerror="this.src='<?= BASE_URL ?>/public/images/A1.png'">

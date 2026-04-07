@@ -2,15 +2,20 @@
 
 $this->ensureSessionStarted();
 $totalAmount = $_SESSION['final_total'] ?? 0;
-// $totalAmount = (int)$totalAmount;
 $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 $partnerCode = 'MOMOBKUN20180529';
 $accessKey = 'klm05TvNBzhg7h7j';
 $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 $orderInfo = "Thanh toán qua MoMo";
 $orderId = time() . "";
-$redirectUrl = "http://localhost:889<?= BASE_URL ?>/Order/thankYouMoMo";  // Chuyển về Controller xử lý thankyou
-$ipnUrl = "http://localhost:889<?= BASE_URL ?>/Order/thankYouMoMo";
+
+// Lấy domain thực tế của server
+$scheme = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'];
+$baseUrl = $scheme . '://' . $host . BASE_URL;
+
+$redirectUrl = $baseUrl . "/Order/thankYouMoMo";
+$ipnUrl      = $baseUrl . "/Order/thankYouMoMo";
 $extraData = "";
 
 $requestId = time() . "";

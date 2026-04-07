@@ -62,19 +62,24 @@ $account = $this->accountModel->getAccountById($account_id);
 if ($account && !empty($account->email)) {
     $helperPath = __DIR__ . '/../helpers/EmailHelper.php';
     if (file_exists($helperPath)) {
-        require_once $helperPath;
-        EmailHelper::sendOrderConfirmationEmail(
-            $account->email,
-            $orderId,
-            $totalAmount,    // Số tiền cuối khách đã trả
-            $cartItems,
-            $address,
-            $phone_number,
-            $account->full_name,
-            $shippingFee,
-            $discount_amount, // Tham số mới 1
-            $promoName        // Tham số mới 2
-        );
+        try {
+            require_once $helperPath;
+            EmailHelper::sendOrderConfirmationEmail(
+                $account->email,
+                $orderId,
+                $totalAmount,
+                $cartItems,
+                $address,
+                $phone_number,
+                $account->full_name,
+                $shippingFee,
+                $discount_amount,
+                $promoName
+            );
+        } catch (Exception $e) {
+            error_log("Gửi email thất bại: " . $e->getMessage());
+            // Không dừng flow, tiếp tục xử lý đơn hàng
+        }
     }
 }
 
