@@ -92,6 +92,8 @@ function isActive0($path)
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>window.BASE_URL = '<?= BASE_URL ?>';</script>
+    <script src="<?= BASE_URL ?>/public/js/modal.js"></script>
     <style>
         /* LOGIC CSS RIÊNG BIỆT CHO 2 GIAO DIỆN */
         <?php if ($isAdmin): ?>

@@ -665,7 +665,7 @@ class AdminController
 
         $categories = $this->categoryModel->getAll(); // để hiển thị danh mục bên trái
 
-        require_once __DIR__ . '/../views/admin/products_list.php';
+        require_once __DIR__ . '/../views/Admin/products_list.php';
     }
     public function adminCategoryTable2($category_id)
     {
@@ -706,7 +706,7 @@ class AdminController
         $categories = $this->categoryModel->getAll();
         $categoryName = $this->categoryModel->getNameById($category_id);
 
-        require_once __DIR__ . '/../views/admin/products_list.php';
+        require_once __DIR__ . '/../views/Admin/products_list.php';
     }
 
     public function ajaxFilterProducts()
@@ -741,7 +741,7 @@ class AdminController
             $products = $this->productModel->filterProductsByCategory($category_id, $filters);
         }
 
-        require_once __DIR__ . '/../views/admin/components/products_table_partial.php';
+        require_once __DIR__ . '/../views/Admin/components/products_table_partial.php';
     }
 
 
@@ -796,7 +796,7 @@ class AdminController
 
         // Truyền dữ liệu và include view
         $filters = $_GET; // để dễ hiển thị lại trong form nếu cần
-        require_once __DIR__ . '/../views/admin/components/order_table.php';
+        require_once __DIR__ . '/../views/Admin/components/order_table.php';
     }
 
     public function userDetails2()
@@ -901,7 +901,7 @@ class AdminController
         ];
 
         $users = $this->accountModel->filterUsers($filters);
-        require_once __DIR__ . '/../views/admin/components/users_table.php';
+        require_once __DIR__ . '/../views/Admin/components/users_table.php';
     }
 
     public function ajaxFilterUsers()
@@ -926,7 +926,7 @@ class AdminController
         ];
 
         $users = $this->accountModel->filterUsers($filters);
-        require_once __DIR__ . '/../views/admin/components/users_table.php';
+        require_once __DIR__ . '/../views/Admin/components/users_table.php';
     }
 
 
@@ -993,7 +993,7 @@ class AdminController
         $orders = $this->orderModel->filterOrders($filters);
 
         // Render bảng (AJAX)
-        require_once __DIR__ . '/../views/admin/components/order_table.php';
+        require_once __DIR__ . '/../views/Admin/components/order_table.php';
     }
 
 

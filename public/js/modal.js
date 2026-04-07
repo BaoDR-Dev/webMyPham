@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+    // BASE_URL được inject từ PHP qua thẻ <script> trong header
+    const BASE_URL = window.BASE_URL || '';
+
     // ================================
     // 1. BIẾN LƯU ẢNH GỐC
     // ================================
@@ -10,7 +13,7 @@ $(document).ready(function () {
     // ================================
     $("#profileModal").on("show.bs.modal", function () {
         $.ajax({
-            url: "/webbanhang/account/profile",
+            url: BASE_URL + "/account/profile",
             method: "GET",
             dataType: "json",
             success: function (data) {
@@ -32,7 +35,7 @@ $(document).ready(function () {
                 $("#profileEmailDisplay").text(data.email);
 
                 // Avatar
-                let avatar = data.image ? "/webbanhang/" + data.image : "/webbanhang/public/uploads/avatar/default.png";
+                let avatar = data.image ? BASE_URL + "/" + data.image : BASE_URL + "/public/uploads/avatar/default.png";
                 $("#profileImagePreview").attr("src", avatar);
                 originalAvatarSrc = avatar;
 
@@ -72,7 +75,7 @@ $(document).ready(function () {
         let formData = new FormData(this);
 
         $.ajax({
-            url: "/webbanhang/account/updateProfile",
+            url: BASE_URL + "/account/updateProfile",
             method: "POST",
             data: formData,
             contentType: false,
@@ -88,7 +91,7 @@ $(document).ready(function () {
 
                     // Cập nhật avatar navbar
                     if (response.new_image) {
-                        $(".user-avatar").attr("src", "/webbanhang/" + response.new_image);
+                        $(".user-avatar").attr("src", BASE_URL + "/" + response.new_image);
                     }
 
                 } else {
@@ -116,7 +119,7 @@ $(document).ready(function () {
         messageBox.text("").removeClass("text-success text-danger").hide();
 
         $.ajax({
-            url: "/webbanhang/account/changePassword",
+            url: BASE_URL + "/account/changePassword",
             type: "POST",
             data: {
                 currentPassword: currentPassword,
@@ -131,10 +134,9 @@ $(document).ready(function () {
                     .addClass(response.status === "success" ? "text-success" : "text-danger")
                     .show();
 
-                // Nếu đổi mật khẩu thành công → tự động logout
                 if (response.status === "success") {
                     setTimeout(function () {
-                        window.location.href = "/webbanhang/account/logout";
+                        window.location.href = BASE_URL + "/account/logout";
                     }, 2000);
                 }
             },
