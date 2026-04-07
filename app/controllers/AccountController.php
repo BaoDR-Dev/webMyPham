@@ -80,9 +80,9 @@ class AccountController
             );
 
             if ($result) {
-                // Gửi mail
-                require_once(__DIR__ . '/../helpers/EmailHelper.php');
-                EmailHelper::sendVerificationEmail($email, $otp);
+                // Gửi mail - tắt để tránh timeout trên cloud
+                // require_once(__DIR__ . '/../helpers/EmailHelper.php');
+                // EmailHelper::sendVerificationEmail($email, $otp);
 
                 if (session_status() === PHP_SESSION_NONE) session_start();
                 $_SESSION['temp_email'] = $email;
@@ -270,9 +270,9 @@ class AccountController
                 // Lưu token vào DB
                 $this->accountModel->setPasswordResetToken($email, $resetToken, $expiryTime);
 
-                // Gửi Email
-                require_once(__DIR__ . '/../helpers/EmailHelper.php');
-                EmailHelper::sendPasswordResetEmail($email, $resetToken);
+                // Gửi Email - tắt để tránh timeout trên cloud
+                // require_once(__DIR__ . '/../helpers/EmailHelper.php');
+                // EmailHelper::sendPasswordResetEmail($email, $resetToken);
 
                 $_SESSION['info'] = 'Link đặt lại mật khẩu đã được gửi đến email của bạn.';
             } else {

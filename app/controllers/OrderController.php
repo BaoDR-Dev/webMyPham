@@ -415,7 +415,7 @@ class OrderController
         }
 
         if ($resultCode != 0) {
-            include 'app/views/Order/sorry.php';
+            include 'app/views/Order/Sorry.php';
             return;
         }
 
@@ -475,26 +475,19 @@ class OrderController
             $this->cartModel->clearSelectedCartItems($account_id);
             $this->updateCartSession($account_id);
 
-            // Gửi email xác nhận
-            $account = $this->accountModel->getAccountById($account_id);
-            if ($account && !empty($account->email)) {
-                $helperPath = __DIR__ . '/../helpers/EmailHelper.php';
-                if (file_exists($helperPath)) {
-                    require_once $helperPath;
-                    EmailHelper::sendOrderConfirmationEmail(
-                        $account->email,
-                        $orderId,
-                        $totalAmount,    // Số tiền cuối khách đã trả
-                        $cartItems,
-                        $address,
-                        $phone_number,
-                        $account->full_name,
-                        $shippingFee,
-                        $discount_amount, // Tham số mới 1
-                        $promoName        // Tham số mới 2
-                    );
-                }
-            }
+            // Gửi email xác nhận - tắt để tránh timeout trên cloud
+            // $account = $this->accountModel->getAccountById($account_id);
+            // if ($account && !empty($account->email)) {
+            //     $helperPath = __DIR__ . '/../helpers/EmailHelper.php';
+            //     if (file_exists($helperPath)) {
+            //         require_once $helperPath;
+            //         EmailHelper::sendOrderConfirmationEmail(
+            //             $account->email, $orderId, $totalAmount, $cartItems,
+            //             $address, $phone_number, $account->full_name,
+            //             $shippingFee, $discount_amount, $promoName
+            //         );
+            //     }
+            // }
 
             // --- CẬP NHẬT: Xóa các session liên quan khuyến mãi và thanh toán ---
             unset(
@@ -535,7 +528,7 @@ class OrderController
 
         // VNPAY trả về '00' là thành công
         if ($vnp_ResponseCode != '00' || $vnp_TransactionStatus != '00') {
-            include 'app/views/Order/sorry.php';
+            include 'app/views/Order/Sorry.php';
             return;
         }
 
@@ -593,24 +586,18 @@ class OrderController
             $this->cartModel->clearSelectedCartItems($account_id);
             $this->updateCartSession($account_id);
 
-            // Lấy thông tin tài khoản để gửi mail xác nhận
-            $account = $this->accountModel->getAccountById($account_id);
-            if ($account && !empty($account->email)) {
-                $helperPath = __DIR__ . '/../helpers/EmailHelper.php';
-                if (file_exists($helperPath)) {
-                    require_once $helperPath;
-                    EmailHelper::sendOrderConfirmationEmail(
-                        $account->email,
-                        $orderId,
-                        $totalAmount,
-                        $cartItems,
-                        $address,
-                        $phone_number,
-                        $account->full_name,
-                        $shippingFee
-                    );
-                }
-            }
+            // Lấy thông tin tài khoản để gửi mail xác nhận - tắt để tránh timeout trên cloud
+            // $account = $this->accountModel->getAccountById($account_id);
+            // if ($account && !empty($account->email)) {
+            //     $helperPath = __DIR__ . '/../helpers/EmailHelper.php';
+            //     if (file_exists($helperPath)) {
+            //         require_once $helperPath;
+            //         EmailHelper::sendOrderConfirmationEmail(
+            //             $account->email, $orderId, $totalAmount, $cartItems,
+            //             $address, $phone_number, $account->full_name, $shippingFee
+            //         );
+            //     }
+            // }
 
             // --- CẬP NHẬT: Dọn dẹp sạch sẽ Session sau khi hoàn tất ---
             unset(

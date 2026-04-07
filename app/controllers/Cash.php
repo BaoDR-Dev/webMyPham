@@ -56,32 +56,9 @@ if ($promotion_id) {
     $this->accountPromotionModel->usePromotion($account_id, $promotion_id);
 }
 
-// 5. Lấy thông tin tài khoản để gửi mail
-$account = $this->accountModel->getAccountById($account_id);
-
-if ($account && !empty($account->email)) {
-    $helperPath = __DIR__ . '/../helpers/EmailHelper.php';
-    if (file_exists($helperPath)) {
-        try {
-            require_once $helperPath;
-            EmailHelper::sendOrderConfirmationEmail(
-                $account->email,
-                $orderId,
-                $totalAmount,
-                $cartItems,
-                $address,
-                $phone_number,
-                $account->full_name,
-                $shippingFee,
-                $discount_amount,
-                $promoName
-            );
-        } catch (Exception $e) {
-            error_log("Gửi email thất bại: " . $e->getMessage());
-            // Không dừng flow, tiếp tục xử lý đơn hàng
-        }
-    }
-}
+// 5. Lấy thông tin tài khoản để gửi mail - tắt để tránh timeout trên cloud
+// $account = $this->accountModel->getAccountById($account_id);
+// if ($account && !empty($account->email)) { ... }
 
 // 6. Dọn dẹp giỏ hàng & Session
 $this->cartModel->clearSelectedCartItems($account_id);
