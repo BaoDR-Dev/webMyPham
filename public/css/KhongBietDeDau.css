@@ -1,0 +1,109 @@
+
+/* ============================= */
+/*  ĐỊNH DẠNG KHUNG SẢN PHẨM     */
+/* ============================= */
+
+/* Card tổng thể */
+.card {
+    height: 150px; /* Chiều cao của card */
+    width: 280px; /* Chiều rộng của card */
+    margin-top: 20px; /* Khoảng cách trên giữa các card */
+    margin-left: 30px; /* Khoảng cách trái giữa các card */
+    border: none !important; /* Loại bỏ viền hoàn toàn */
+    box-shadow: none !important; /* Loại bỏ bóng mờ */
+    background-color: transparent; /* Không nền */
+    overflow: visible; /* Hiển thị đầy đủ nội dung */
+    transition: transform 0.3s ease; /* Hiệu ứng phóng to khi hover */
+}
+
+/* Hiệu ứng khi hover vào card */
+.card:hover {
+    filter: brightness(70%); /* Làm mờ sáng khuôn */
+    transform: scale(1.05); /* Phóng to nhẹ khi hover */
+}
+
+/* ============================= */
+/*   ĐỊNH DẠNG HÌNH SẢN PHẨM     */
+/* ============================= */
+
+/* Hình ảnh sản phẩm */
+.card-img-top {
+    width: 280px; /* Đảm bảo hình ảnh vừa khung card */
+    height: 150px; /* Chiều cao cố định */
+    object-fit: contain; /* Hiển thị đầy đủ hình ảnh */
+    margin: 0 auto; /* Căn giữa hình ảnh */
+    background-color: transparent; /* Không có màu nền */
+    border: none; /* Loại bỏ viền hình ảnh */
+}
+
+/* ============================= */
+/*   ĐỊNH DẠNG NỘI DUNG CARD     */
+/* ============================= */
+
+.card-body {
+    text-align: center; /* Căn giữa nội dung */
+    padding: 5px 0; /* Khoảng cách nhỏ trên dưới */
+}
+
+/* Tiêu đề sản phẩm */
+.card-title {
+    font-size: 18px; /* Kích thước nhỏ gọn */
+    color: #333; /* Màu chữ tối */
+    margin: 0; /* Bỏ khoảng cách thừa */
+}
+
+/* Giá sản phẩm */
+.product-price {
+    font-size: 15px; /* Kích thước nhỏ hơn cho giá */
+    color: #1b1010; /* Màu tối cho giá */
+    margin: 5px 0 0 0; /* Khoảng cách trên nhỏ */
+}
+
+/* ============================= */
+/*   ĐỊNH DẠNG NÚT BUTTON        */
+/* ============================= */
+
+/* Vùng nút bấm (ẩn mặc định) */
+.product-actions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0; /* Ẩn ban đầu */
+    visibility: hidden; /* Không hiển thị */
+    z-index: 10; /* Đảm bảo nút hiển thị trên mọi thứ */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+/* Hiển thị nút khi hover vào card */
+.card:hover .product-actions {
+    opacity: 1;
+    visibility: visible; /* Hiển thị vùng nút */
+    filter: brightness(120%); /* Làm nút sáng rõ hơn */
+}
+
+/* Style nút */
+.product-actions .btn {
+    padding: 10px;
+    width: 180px; /* Kích thước gọn */
+    height: 40px;
+    font-size: 15px; /* Cỡ chữ nhỏ */
+    text-align: center !important;
+    color: #3c3232; /* Màu chữ */
+    background-color: #007bff; /* Màu nền xanh */
+    border: none !important; /* Loại bỏ viền */
+    border-radius: 5px; /* Bo góc nhẹ */
+    font-weight: bold; /* Chữ đậm */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    filter: brightness(120%) drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3)); /* Làm sáng và tạo bóng */
+}
+
+/* Hiệu ứng nút khi hover vào nút */
+.product-actions .btn:hover {
+    background-color: #0056b3; /* Đổi màu xanh đậm khi hover */
+    transform: scale(1.1); /* Phóng to nhẹ */
+    filter: brightness(150%) drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.4)); /* Tăng độ sáng và bóng rõ hơn */
+}
