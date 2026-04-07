@@ -1,6 +1,6 @@
 <?php
-// BASE_URL: trên Render đặt env var BASE_URL="" (rỗng), local giữ "/webbanhang"
-define('BASE_URL', getenv('BASE_URL') !== false ? getenv('BASE_URL') : '/webbanhang');
+// BASE_URL: rỗng cho Render/production, đổi thành '/webbanhang' nếu chạy local Laragon
+define('BASE_URL', getenv('BASE_URL') ?: '');
 
 class Database
 {
