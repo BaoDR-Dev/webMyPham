@@ -22,7 +22,7 @@ if ($promotion_id) {
 // Kiểm tra lại lần cuối trước khi ghi DB để tránh lỗi Column cannot be null
 if ($totalAmount <= 0) {
     error_log("Lỗi: Tổng tiền thanh toán bằng 0.");
-    header("Location: /webbanhang/cart/error");
+    header("Location: " . BASE_URL . "/cart/error");
     exit;
 }
 
@@ -41,7 +41,7 @@ $orderId = $this->orderModel->createOrder(
 
 if (!$orderId) {
     error_log("Tạo đơn hàng thất bại cho tài khoản ID: " . $account_id);
-    header("Location: /webbanhang/cart/error");
+    header("Location: " . BASE_URL . "/cart/error");
     exit;
 }
 

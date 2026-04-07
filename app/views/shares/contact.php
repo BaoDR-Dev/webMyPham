@@ -73,10 +73,10 @@
                     <div class="social-links">
                         <h3>Ket noi voi chung toi</h3>
                         <div class="social-icons">
-                            <a><img src="/webbanhang/public/images/fb.jpg"></a>
-                            <a><img src="/webbanhang/public/images/twitter.webp"></a>
-                            <a><img src="/webbanhang/public/images/instagram.webp"></a>
-                            <a><img src="/webbanhang/public/images/zalo.png"></a>
+                            <a><img src="<?= BASE_URL ?>/public/images/fb.jpg"></a>
+                            <a><img src="<?= BASE_URL ?>/public/images/twitter.webp"></a>
+                            <a><img src="<?= BASE_URL ?>/public/images/instagram.webp"></a>
+                            <a><img src="<?= BASE_URL ?>/public/images/zalo.png"></a>
                         </div>
                     </div>
 

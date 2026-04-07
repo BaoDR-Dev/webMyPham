@@ -151,7 +151,7 @@
     <?php if (empty($orders)): ?>
         <div class="alert alert-warning text-center">Bạn chưa có đơn hàng nào!</div>
         <div class="text-center">
-            <a href="/webbanhang/Product/index" class="btn btn-primary">Mua sắm ngay</a>
+            <a href="<?= BASE_URL ?>/Product/index" class="btn btn-primary">Mua sắm ngay</a>
         </div>
     <?php else: ?>
         <div class="order-table-wrapper">
@@ -199,7 +199,7 @@
             const formData = new FormData(this);
 
             // Gọi AJAX
-            fetch('/webbanhang/Order/ajaxFilterForUser', {
+            fetch('<?= BASE_URL ?>/Order/ajaxFilterForUser', {
                     method: 'POST',
                     body: formData
                 })
@@ -225,7 +225,7 @@
             );
 
             // Gọi AJAX lấy lại tất cả đơn hàng
-            fetch('/webbanhang/Order/ajaxFilterForUser')
+            fetch('<?= BASE_URL ?>/Order/ajaxFilterForUser')
                 .then(res => res.text())
                 .then(html => {
                     document.querySelector('.order-table-wrapper').innerHTML = html;

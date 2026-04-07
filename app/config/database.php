@@ -1,4 +1,7 @@
 <?php
+// BASE_URL: trên Render đặt env var BASE_URL="" (rỗng), local giữ "/webbanhang"
+define('BASE_URL', getenv('BASE_URL') !== false ? getenv('BASE_URL') : '/webbanhang');
+
 class Database
 {
     // Sử dụng getenv() để lấy giá trị từ cấu hình của Render

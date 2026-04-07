@@ -4,7 +4,7 @@ $payment_method = 'vnpay';
 $totalAmount = $_SESSION['final_total'] ?? 0;
 // Thông tin VNPAY
 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-$vnp_Returnurl = "http://localhost:889/webbanhang/Order/thankYouVnpay";
+$vnp_Returnurl = "http://localhost:889<?= BASE_URL ?>/Order/thankYouVnpay";
 $vnp_TmnCode = "NDEOIIOV"; // Mã website tại VNPAY
 $vnp_HashSecret = "JTBFR24RYOZRUMWD14KR3SZ4E53SC5T1"; // Chuỗi bí mật
 

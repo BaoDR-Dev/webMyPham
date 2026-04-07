@@ -261,7 +261,7 @@ foreach ($categories as $cat) {
                     <i class="bi bi-funnel"></i> Bộ Lọc
                 </div>
 
-                <form id="filterForm" action="/webbanhang/product/search" method="GET">
+                <form id="filterForm" action="<?= BASE_URL ?>/product/search" method="GET">
                     <input type="hidden" name="keyword" value="<?= htmlspecialchars($keyword) ?>">
 
                     <!-- INPUT ẨN ĐỂ LƯU GIÁ TRỊ CATEGORY KHI CHỌN TỪ DROPDOWN -->
@@ -315,7 +315,7 @@ foreach ($categories as $cat) {
 
                     <?php if (!empty($filter_category_id) || !empty($filter_min_price) || !empty($filter_max_price)): ?>
                         <div class="text-center mt-3">
-                            <a href="/webbanhang/product/search?keyword=<?= htmlspecialchars($keyword) ?>" class="text-danger small text-decoration-none">
+                            <a href="<?= BASE_URL ?>/product/search?keyword=<?= htmlspecialchars($keyword) ?>" class="text-danger small text-decoration-none">
                                 <i class="bi bi-x-circle"></i> Xóa bộ lọc
                             </a>
                         </div>
@@ -338,16 +338,16 @@ foreach ($categories as $cat) {
                         <div class="col">
                             <div class="product-card-clean">
                                 <div class="card-img-wrapper">
-                                    <a href="/webbanhang/Product/view/<?= $product->id ?>">
-                                        <img src="/webbanhang/<?= htmlspecialchars($product->image) ?>" alt="<?= htmlspecialchars($product->name) ?>" onerror="this.src='/webbanhang/public/images/no-image.png';this.onerror=null;">
+                                    <a href="<?= BASE_URL ?>/Product/view/<?= $product->id ?>">
+                                        <img src="<?= BASE_URL ?>/<?= htmlspecialchars($product->image) ?>" alt="<?= htmlspecialchars($product->name) ?>" onerror="this.src='<?= BASE_URL ?>/public/images/no-image.png';this.onerror=null;">
                                     </a>
                                 </div>
                                 <div class="card-info">
-                                    <a href="/webbanhang/Product/view/<?= $product->id ?>" class="product-title text-truncate-2">
+                                    <a href="<?= BASE_URL ?>/Product/view/<?= $product->id ?>" class="product-title text-truncate-2">
                                         <?= htmlspecialchars($product->name) ?>
                                     </a>
                                     <div class="product-price"><?= number_format($product->price, 0, ',', '.') ?>đ</div>
-                                    <a href="/webbanhang/cart/add/<?= $product->id ?>" class="btn-add-cart">Thêm vào giỏ</a>
+                                    <a href="<?= BASE_URL ?>/cart/add/<?= $product->id ?>" class="btn-add-cart">Thêm vào giỏ</a>
                                 </div>
                             </div>
                         </div>

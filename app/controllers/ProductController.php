@@ -58,7 +58,7 @@ class ProductController
         $categoryId = $_GET['category_id'] ?? null;
 
         if (!$product) {
-            header("Location: /webbanhang/error");
+            header("Location: " . BASE_URL . "/error");
             exit;
         }
 
@@ -107,7 +107,7 @@ class ProductController
     public function add()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         $categories = (new CategoryModel($this->db))->getCategories();
@@ -119,7 +119,7 @@ class ProductController
     public function save()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -153,7 +153,7 @@ class ProductController
                 $categories = (new CategoryModel($this->db))->getCategories();
                 include 'app/views/product/add.php';
             } else {
-                header('Location: /webbanhang/Admin/adminCategoryList/' . urlencode($category_id));
+                header('Location: ' . BASE_URL . '/Admin/adminCategoryList/' . urlencode($category_id));
                 exit;
             }
         }
@@ -163,14 +163,14 @@ class ProductController
     public function edit($id)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         $product = $this->productModel->getProductById($id);
         $categories = (new CategoryModel($this->db))->getCategories();
 
         if (!$product) {
-            header('Location: /webbanhang/Product');
+            header('Location: ' . BASE_URL . '/Product');
             exit();
         }
 
@@ -181,7 +181,7 @@ class ProductController
     public function update()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -211,7 +211,7 @@ class ProductController
             );
 
             if ($edit) {
-                header('Location: /webbanhang/Admin/adminCategoryList/' . urlencode($category_id));
+                header('Location: ' . BASE_URL . '/Admin/adminCategoryList/' . urlencode($category_id));
                 exit;
             } else {
                 echo "Đã xảy ra lỗi khi lưu sản phẩm.";
@@ -225,11 +225,11 @@ class ProductController
     public function delete($id)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         if ($this->productModel->deleteProduct($id)) {
-            // header('Location: /webbanhang/Admin/adminCategoryList/');
+            // header('Location: ' . BASE_URL . '/Admin/adminCategoryList/');
         } else {
             echo "Đã xảy ra lỗi khi xóa sản phẩm.";
         }
@@ -255,7 +255,7 @@ class ProductController
     private function uploadImage($file)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         $target_dir = "uploads/";
@@ -288,7 +288,7 @@ class ProductController
     public function categoryList($category_id = null)
     {
         if (is_null($category_id) || !is_numeric($category_id)) {
-            header('Location: /webbanhang/error');
+            header('Location: ' . BASE_URL . '/error');
             exit;
         }
 

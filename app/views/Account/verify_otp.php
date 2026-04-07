@@ -98,7 +98,7 @@
                                                                                     unset($_SESSION['success_message']); ?></div>
                                 <?php endif; ?>
 
-                                <form action="/webbanhang/account/verifyOtp" method="post">
+                                <form action="<?= BASE_URL ?>/account/verifyOtp" method="post">
                                     <div class="mb-4">
                                         <label class="form-label text-muted small">Nhập mã 6 số trong email</label>
                                         <input type="text" class="form-control form-control-lg otp-input" name="otp" maxlength="6" placeholder="------" required autofocus>
@@ -108,7 +108,7 @@
 
                                     <div class="text-center">
                                         <p class="small text-muted">Chưa nhận được mã? <a href="#" class="text-primary fw-bold">Gửi lại</a></p>
-                                        <a href="/webbanhang/account/register" class="text-decoration-none small text-secondary">Đăng ký lại</a>
+                                        <a href="<?= BASE_URL ?>/account/register" class="text-decoration-none small text-secondary">Đăng ký lại</a>
                                     </div>
                                 </form>
                             </div>

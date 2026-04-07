@@ -277,7 +277,7 @@
             <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Đóng"></button>
         </div>
         <div class="offcanvas-body">
-            <form action="/webbanhang/Admin/filterAccount" method="GET" id="filterForm">
+            <form action="<?= BASE_URL ?>/Admin/filterAccount" method="GET" id="filterForm">
                 <!-- Search Name -->
                 <fieldset class="filter-group">
                     <div class="form-check form-switch mb-2">
@@ -404,7 +404,7 @@
                 clearTimeout(userSearchTimeout);
                 userSearchTimeout = setTimeout(() => {
 
-                    fetch('/webbanhang/Admin/ajaxFilterUsers?keyword=' + encodeURIComponent(keyword), {
+                    fetch('<?= BASE_URL ?>/Admin/ajaxFilterUsers?keyword=' + encodeURIComponent(keyword), {
                             headers: {
                                 'X-Requested-With': 'XMLHttpRequest'
                             }
@@ -421,7 +421,7 @@
                 quickUserSearch.value = '';
                 clearUserSearch.classList.add('d-none');
 
-                fetch('/webbanhang/Admin/ajaxFilterUsers', {
+                fetch('<?= BASE_URL ?>/Admin/ajaxFilterUsers', {
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest'
                         }
@@ -489,7 +489,7 @@
                     userTableContainer.innerHTML = '<div class="text-center py-5"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Đang tải...</span></div><p class="mt-2 text-muted">Đang tải danh sách người dùng...</p></div>';
                 }
 
-                fetch('/webbanhang/Admin/ajaxFilterUsers?' + formData.toString(), {
+                fetch('<?= BASE_URL ?>/Admin/ajaxFilterUsers?' + formData.toString(), {
                         method: 'GET',
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest'
@@ -544,7 +544,7 @@
                 const userId = event.target.getAttribute("data-user-id");
                 const isActive = event.target.checked ? 1 : 0;
 
-                fetch("/webbanhang/Admin/updateUserStatus", {
+                fetch("<?= BASE_URL ?>/Admin/updateUserStatus", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/x-www-form-urlencoded",
@@ -592,7 +592,7 @@
                 return;
             }
 
-            window.location.href = `/webbanhang/Admin/userDetails?user_id=${userId}`;
+            window.location.href = `<?= BASE_URL ?>/Admin/userDetails?user_id=${userId}`;
         });
 
 

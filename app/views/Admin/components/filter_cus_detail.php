@@ -7,7 +7,7 @@
     </div>
 
     <div class="offcanvas-body">
-        <form id="orderFilterForm" method="get" action="/webbanhang/Admin/userDetails2">
+        <form id="orderFilterForm" method="get" action="<?= BASE_URL ?>/Admin/userDetails2">
 
             <!-- 🔒 khóa cứng user -->
             <input type="hidden" name="user_id" value="<?= (int)$customerInfo->id ?>">

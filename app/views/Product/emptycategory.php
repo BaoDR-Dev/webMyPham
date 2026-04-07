@@ -5,7 +5,7 @@
     <div class="row">
         <h3 class="col-12 text-center mb-4">Không có sản phẩm nào trong danh mục này</h3>
         <div class="col-12 text-center">
-            <a href="/webbanhang/Product/" class="btn btn-primary">Quay lại tất cả sản phẩm</a>
+            <a href="<?= BASE_URL ?>/Product/" class="btn btn-primary">Quay lại tất cả sản phẩm</a>
         </div>
     </div>
 </div>

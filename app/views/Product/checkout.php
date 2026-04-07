@@ -6,13 +6,13 @@
     <?php if (empty($_SESSION['cart'])): ?>
         <div class="alert alert-warning text-center">Giỏ hàng trống! Không thể thanh toán.</div>
         <div class="text-center">
-            <a href="/webbanhang/Product/" class="btn btn-primary">Quay lại mua sắm</a>
+            <a href="<?= BASE_URL ?>/Product/" class="btn btn-primary">Quay lại mua sắm</a>
         </div>
     <?php else: ?>
         <div class="row">
             <div class="col-md-6">
                 <h3>Thông tin khách hàng</h3>
-                <form method="POST" action="/webbanhang/Product/processCheckout">
+                <form method="POST" action="<?= BASE_URL ?>/Product/processCheckout">
                     <div class="form-group">
                         <label>Họ và Tên:</label>
                         <input type="text" name="name" class="form-control" required>

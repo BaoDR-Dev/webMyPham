@@ -9,8 +9,8 @@ $accessKey = 'klm05TvNBzhg7h7j';
 $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 $orderInfo = "Thanh toán qua MoMo";
 $orderId = time() . "";
-$redirectUrl = "http://localhost:889/webbanhang/Order/thankYouMoMo";  // Chuyển về Controller xử lý thankyou
-$ipnUrl = "http://localhost:889/webbanhang/Order/thankYouMoMo";
+$redirectUrl = "http://localhost:889<?= BASE_URL ?>/Order/thankYouMoMo";  // Chuyển về Controller xử lý thankyou
+$ipnUrl = "http://localhost:889<?= BASE_URL ?>/Order/thankYouMoMo";
 $extraData = "";
 
 $requestId = time() . "";

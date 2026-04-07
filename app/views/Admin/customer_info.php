@@ -217,7 +217,7 @@
                                 <td class="fw-semibold text-primary">#<?php echo $order['id']; ?></td>
                                 <td class="text-muted"><?php echo date('d/m/Y H:i', strtotime($order['created_at'])); ?></td>
                                 <td class="text-center">
-                                    <form action="/webbanhang/Admin/updateOrderStatus3" method="post" class="d-inline-block">
+                                    <form action="<?= BASE_URL ?>/Admin/updateOrderStatus3" method="post" class="d-inline-block">
                                         <input type="hidden" name="order_id" value="<?= htmlspecialchars($order['id'] ?? '') ?>">
                                         <select name="status" class="form-select order-status-select" onchange="this.form.submit()">
                                             <option value="pending" <?= ($order['status'] ?? '') === 'pending' ? 'selected' : '' ?>>Chờ xử lý</option>
@@ -230,7 +230,7 @@
                                 <td class="text-muted"><?php echo ucfirst(str_replace('_', ' ', $order['payment_method'])); ?></td>
                                 <td class="fw-bold text-end text-success"><?php echo number_format($order['total_amount'], 0, ',', '.') . ' VND'; ?></td>
                                 <td class="text-center">
-                                    <a href="/webbanhang/Admin/orderDetail/<?php echo $order['id']; ?>" class="btn btn-sm btn-outline-primary btn-detail-order">
+                                    <a href="<?= BASE_URL ?>/Admin/orderDetail/<?php echo $order['id']; ?>" class="btn btn-sm btn-outline-primary btn-detail-order">
                                         <i class="bi bi-info-circle me-1"></i>Chi Tiết
                                     </a>
                                 </td>

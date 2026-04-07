@@ -16,7 +16,7 @@
                         <!-- CỘT TRÁI: AVATAR & THÔNG TIN CƠ BẢN -->
                         <div class="profile-sidebar">
                             <div class="avatar-upload-container">
-                                <img id="profileImagePreview" src="/webbanhang/public/uploads/avatar/default.png" class="profile-avatar" alt="Avatar">
+                                <img id="profileImagePreview" src="<?= BASE_URL ?>/public/uploads/avatar/default.png" class="profile-avatar" alt="Avatar">
 
                                 <!-- Nút upload ảnh đã được style lại -->
                                 <label for="image" class="btn-upload-avatar">Thay đổi ảnh</label>

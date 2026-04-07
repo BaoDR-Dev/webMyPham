@@ -312,7 +312,7 @@ foreach ($products as $p) {
                     <i class="bi bi-funnel me-2"></i><span>Bộ lọc</span>
                 </button>
 
-                <a href="/webbanhang/Product/add"
+                <a href="<?= BASE_URL ?>/Product/add"
                     class="btn btn-primary rounded-pill fw-bold shadow d-flex align-items-center justify-content-center">
                     <i class="bi bi-plus-lg me-1"></i>
                     <span>Thêm mới</span>
@@ -365,7 +365,7 @@ foreach ($products as $p) {
         const productQuantity = parseInt(row.dataset.quantity || '0');
 
         if (confirm('Bạn có chắc muốn xóa sản phẩm này?')) {
-            fetch(`/webbanhang/Product/deleteAjax/${productId}`, {
+            fetch(`<?= BASE_URL ?>/Product/deleteAjax/${productId}`, {
                     method: 'DELETE',
                 })
                 .then(response => response.json())
@@ -447,7 +447,7 @@ foreach ($products as $p) {
                     if (value.trim() !== '') params.append(key, value.trim());
                 }
 
-                fetch(`/webbanhang/Admin/ajaxFilterProducts?category_id=${categoryId}&${params.toString()}`)
+                fetch(`<?= BASE_URL ?>/Admin/ajaxFilterProducts?category_id=${categoryId}&${params.toString()}`)
                     .then(res => res.text())
                     .then(html => {
                         productTableContainer.innerHTML = html;

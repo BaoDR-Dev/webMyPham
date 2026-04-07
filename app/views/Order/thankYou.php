@@ -39,10 +39,10 @@
 
         <!-- Các nút hành động -->
         <div class="cta-buttons">
-            <a href="/webbanhang/Order/viewOrderDetails/<?php echo htmlspecialchars($order->id ?? ''); ?>" class="btn btn-success btn-lg">
+            <a href="<?= BASE_URL ?>/Order/viewOrderDetails/<?php echo htmlspecialchars($order->id ?? ''); ?>" class="btn btn-success btn-lg">
                 <i class="bi bi-receipt me-2"></i>Xem Chi Tiết Đơn Hàng
             </a>
-            <a href="/webbanhang/product/home" class="btn btn-outline-secondary btn-lg">
+            <a href="<?= BASE_URL ?>/product/home" class="btn btn-outline-secondary btn-lg">
                 <i class="bi bi-arrow-left me-2"></i>Tiếp Tục Mua Sắm
             </a>
         </div>

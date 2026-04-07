@@ -3,7 +3,7 @@
         <h1 class="PageTitle">Xác Nhận Đơn Hàng</h1>
         <p>Vui lòng kiểm tra lại thông tin trước khi hoàn tất.</p>
     </div>
-    <form action="/webbanhang/Order/finalizeCheckout" method="POST">
+    <form action="<?= BASE_URL ?>/Order/finalizeCheckout" method="POST">
         <div class="row g-4">
             <!-- ================== CỘT TRÁI ================== -->
             <div class="col-lg-5 d-flex flex-column">
@@ -29,7 +29,7 @@
                         value="<?= (int)($selected_promo_id ?? 1) ?>">
 
                     <div class="card-body">
-                        <div class="vstack gap-3"> <label class="payment-option"> <input type="radio" name="payment_method" value="cash" checked> <img src="/webbanhang/public/images/tienmat.jpg"> <span>Thanh toán khi nhận hàng</span> </label> <label class="payment-option"> <input type="radio" name="payment_method" value="momo_qr"> <img src="/webbanhang/public/images/momoqr.webp"> <span>MoMo QR</span> </label> <label class="payment-option"> <input type="radio" name="payment_method" value="momo_atm"> <img src="/webbanhang/public/images/momo.webp"> <span>Tài khoản MoMo</span> </label> <label class="payment-option"> <input type="radio" name="payment_method" value="vnpay"> <img src="/webbanhang/public/images/vnpay.png"> <span>VNPAY</span> </label> </div> <button class="btn btn-primary w-100 mt-4 fw-bold"> HOÀN TẤT ĐƠN HÀNG </button>
+                        <div class="vstack gap-3"> <label class="payment-option"> <input type="radio" name="payment_method" value="cash" checked> <img src="<?= BASE_URL ?>/public/images/tienmat.jpg"> <span>Thanh toán khi nhận hàng</span> </label> <label class="payment-option"> <input type="radio" name="payment_method" value="momo_qr"> <img src="<?= BASE_URL ?>/public/images/momoqr.webp"> <span>MoMo QR</span> </label> <label class="payment-option"> <input type="radio" name="payment_method" value="momo_atm"> <img src="<?= BASE_URL ?>/public/images/momo.webp"> <span>Tài khoản MoMo</span> </label> <label class="payment-option"> <input type="radio" name="payment_method" value="vnpay"> <img src="<?= BASE_URL ?>/public/images/vnpay.png"> <span>VNPAY</span> </label> </div> <button class="btn btn-primary w-100 mt-4 fw-bold"> HOÀN TẤT ĐƠN HÀNG </button>
                     </div>
                 </div>
             </div> <!-- ================== CỘT PHẢI (ĐÃ TỐI ƯU) ================== -->
@@ -50,7 +50,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex align-items-center gap-3">
                                     <div class="position-relative">
-                                        <img src="/webbanhang/<?= htmlspecialchars($item['image']); ?>"
+                                        <img src="<?= BASE_URL ?>/<?= htmlspecialchars($item['image']); ?>"
                                             width="70" height="70" class="rounded-3 border object-fit-cover">
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
                                             <?= $item['quantity']; ?>

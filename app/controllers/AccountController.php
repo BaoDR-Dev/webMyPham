@@ -88,7 +88,7 @@ class AccountController
                 $_SESSION['temp_email'] = $email;
                 $_SESSION['success_message'] = "Mã OTP đã gửi tới email. Nhập ngay!";
 
-                header('Location: /webbanhang/account/verifyOtp');
+                header('Location: ' . BASE_URL . '/account/verifyOtp');
                 exit;
             } else {
                 $_SESSION['error'] = "Lỗi hệ thống, không thể tạo tài khoản.";
@@ -103,7 +103,7 @@ class AccountController
 
         // Nếu không có email trong session (truy cập trái phép) thì đá về login
         if (!isset($_SESSION['temp_email'])) {
-            header('Location: /webbanhang/account/login');
+            header('Location: ' . BASE_URL . '/account/login');
             exit;
         }
 
@@ -116,7 +116,7 @@ class AccountController
                 // --- THÀNH CÔNG ---
                 unset($_SESSION['temp_email']);
                 $_SESSION['success_message'] = "Kích hoạt thành công! Đăng nhập ngay.";
-                header('Location: /webbanhang/account/login');
+                header('Location: ' . BASE_URL . '/account/login');
                 exit;
             } else {
                 // --- THẤT BẠI (Có thể do Sai OTP hoặc OTP hết hạn) ---
@@ -131,7 +131,7 @@ class AccountController
                     unset($_SESSION['temp_email']);
 
                     $_SESSION['error'] = "Mã OTP đã hết hiệu lực. Tài khoản đăng ký đã bị hủy. Vui lòng đăng ký lại.";
-                    header('Location: /webbanhang/account/register'); // Chuyển hướng về trang đăng ký
+                    header('Location: ' . BASE_URL . '/account/register'); // Chuyển hướng về trang đăng ký
                     exit;
                 } else {
                     // Nếu chưa hết hạn -> Chỉ là nhập sai số -> Cho nhập lại
@@ -153,7 +153,7 @@ class AccountController
 
         if (empty($token)) {
             $_SESSION['error'] = 'Mã xác thực không hợp lệ.';
-            header('Location: /webbanhang/account/login');
+            header('Location: ' . BASE_URL . '/account/login');
             return;
         }
 
@@ -162,7 +162,7 @@ class AccountController
         } else {
             $_SESSION['error'] = 'Mã xác thực không tồn tại, đã hết hạn, hoặc tài khoản đã được kích hoạt.';
         }
-        header('Location: /webbanhang/account/login');
+        header('Location: ' . BASE_URL . '/account/login');
         exit;
     }
 
@@ -183,32 +183,32 @@ class AccountController
             // Không tìm thấy tài khoản
             if (!$account) {
                 $_SESSION['error'] = "Không tìm thấy tài khoản!";
-                header("Location: /webbanhang/account/login");
+                header("Location: " . BASE_URL . "/account/login");
                 exit;
             }
 
             // Tài khoản bị vô hiệu hóa
             if ($account->is_active != 1) {
                 $_SESSION['error'] = "Tài khoản của bạn đã bị vô hiệu hóa!";
-                header("Location: /webbanhang/account/login");
+                header("Location: " . BASE_URL . "/account/login");
                 exit;
             }
             if ($account->is_verified != 1) {
                 $_SESSION['error'] = "Tài khoản của bạn chưa được kích hoạt. Vui lòng kiểm tra email xác thực!";
-                header("Location: /webbanhang/account/login");
+                header("Location: " . BASE_URL . "/account/login");
                 exit;
             }
 
             // Tài khoản bị vô hiệu hóa (is_active, vẫn giữ kiểm tra này)
             if ($account->is_active != 1) {
                 $_SESSION['error'] = "Tài khoản của bạn đã bị vô hiệu hóa!";
-                header("Location: /webbanhang/account/login");
+                header("Location: " . BASE_URL . "/account/login");
                 exit;
             }
             // Mật khẩu không đúng
             if (!password_verify($password, $account->password)) {
                 $_SESSION['error'] = "Mật khẩu không đúng!";
-                header("Location: /webbanhang/account/login");
+                header("Location: " . BASE_URL . "/account/login");
                 exit;
             }
 
@@ -236,10 +236,10 @@ class AccountController
             // Điều hướng theo vai trò
             if ($account->role === 'admin') {
 
-                header("Location: /webbanhang/admin/dashboard");
+                header("Location: " . BASE_URL . "/admin/dashboard");
             } else {
 
-                header("Location: /webbanhang/product/home");
+                header("Location: " . BASE_URL . "/product/home");
                 $this->updateCartSession($account->id);
             }
             exit;
@@ -278,7 +278,7 @@ class AccountController
             } else {
                 $_SESSION['info'] = 'Nếu email tồn tại, chúng tôi đã gửi link đặt lại mật khẩu.';
             }
-            header('Location: /webbanhang/account/login');
+            header('Location: ' . BASE_URL . '/account/login');
             exit;
         }
         // Load view form quên mật khẩu
@@ -299,7 +299,7 @@ class AccountController
 
         if (!$user) {
             $_SESSION['error'] = 'Mã đặt lại mật khẩu không hợp lệ hoặc đã hết hạn.';
-            header('Location: /webbanhang/account/login');
+            header('Location: ' . BASE_URL . '/account/login');
             exit;
         }
 
@@ -319,7 +319,7 @@ class AccountController
             // Cập nhật mật khẩu và xóa token
             if ($this->accountModel->updatePasswordAndClearResetToken($user->id, $newHashedPassword)) {
                 $_SESSION['success_message'] = 'Mật khẩu đã được đặt lại thành công. Vui lòng đăng nhập.';
-                header('Location: /webbanhang/account/login');
+                header('Location: ' . BASE_URL . '/account/login');
                 exit;
             } else {
                 $_SESSION['error'] = 'Có lỗi xảy ra khi cập nhật mật khẩu.';
@@ -327,7 +327,7 @@ class AccountController
             }
             if (!$user) {
                 // Tạm thời comment dòng chuyển hướng lại
-                // header('Location: /webbanhang/account/login');
+                // header('Location: ' . BASE_URL . '/account/login');
                 // exit;
 
                 // Thêm dòng này để in lỗi ra màn hình
@@ -549,7 +549,7 @@ class AccountController
 
         session_unset();
         session_destroy();
-        header('Location: /webbanhang/account/login'); // Chuyển về trang đăng nhập
+        header('Location: ' . BASE_URL . '/account/login'); // Chuyển về trang đăng nhập
         exit;
     }
 }

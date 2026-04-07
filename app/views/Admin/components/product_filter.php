@@ -13,7 +13,7 @@
 
     <div class="offcanvas-body">
 
-        <form action="/webbanhang/Admin/ajaxFilterProducts/<?= $category_id ?>" method="GET" id="filterForm">
+        <form action="<?= BASE_URL ?>/Admin/ajaxFilterProducts/<?= $category_id ?>" method="GET" id="filterForm">
 
             <!-- Search -->
             <div class="mb-4">

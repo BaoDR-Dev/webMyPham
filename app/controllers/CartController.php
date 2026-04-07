@@ -85,7 +85,7 @@ class CartController
         $this->updateCartSession($account_id);
 
         // Chuyển hướng sang trang giỏ hàng
-        header('Location: /webbanhang/cart/index');
+        header('Location: ' . BASE_URL . '/cart/index');
         exit;
     }
 
@@ -122,7 +122,7 @@ class CartController
                 }
 
                 // Nếu không phải AJAX thì chuyển trang
-                header('Location: /webbanhang/Cart/index');
+                header('Location: ' . BASE_URL . '/Cart/index');
                 exit;
             } else {
                 $this->sendJsonResponse(false, "Sản phẩm không đủ hàng hoặc không tồn tại.");
@@ -175,7 +175,7 @@ class CartController
             // Thêm sản phẩm vào giỏ hàng
             $this->cartModel->addOrUpdateCart2($account_id, $product_id, $quantity);
             $this->updateCartSession($account_id);
-            header('Location: /webbanhang/Cart/index');
+            header('Location: ' . BASE_URL . '/Cart/index');
             exit;
         } else {
             echo "Sản phẩm không tồn tại.";
@@ -222,7 +222,7 @@ class CartController
             return;
         }
 
-        header('Location: /webbanhang/Cart/index');
+        header('Location: ' . BASE_URL . '/Cart/index');
         exit;
     }
 
@@ -286,7 +286,7 @@ class CartController
 
         $this->cartModel->removeItem($account_id, $product_id);
         $this->updateCartSession($account_id);
-        header('Location: /webbanhang/Cart/index');
+        header('Location: ' . BASE_URL . '/Cart/index');
         exit;
     }
 
@@ -302,7 +302,7 @@ class CartController
         $this->cartModel->clearCart($account_id);
         $_SESSION['cart'] = [];
         $_SESSION['cart_quantity'] = 0;
-        header('Location: /webbanhang/Cart/index');
+        header('Location: ' . BASE_URL . '/Cart/index');
         exit;
     }
     public function error()

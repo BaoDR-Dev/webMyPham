@@ -7,13 +7,13 @@
             <div class="col-md-3">
                 <h3 class="cate">Danh Mục Sản Phẩm</h3>
                 <div class="categoryLala">
-                    <a class="dropdown-item <?= empty($category_id) ? 'active-category' : '' ?>" href="/webbanhang/Product/showAll">
+                    <a class="dropdown-item <?= empty($category_id) ? 'active-category' : '' ?>" href="<?= BASE_URL ?>/Product/showAll">
                         Tất cả
                     </a>
                     <?php foreach ($categories as $category): ?>
                         <?php if ($category->id == 0) continue; ?>
                         <a class="dropdown-item <?= $category->id == $category_id ? 'active-category' : '' ?>"
-                            href="/webbanhang/Product/categoryList/<?= htmlspecialchars($category->id) ?>">
+                            href="<?= BASE_URL ?>/Product/categoryList/<?= htmlspecialchars($category->id) ?>">
                             <?= htmlspecialchars($category->name) ?>
                         </a>
                     <?php endforeach; ?>
@@ -31,8 +31,8 @@
 
                                     <div class="col-ms-2">
                                         <div class="card">
-                                            <img src="/webbanhang/<?= htmlspecialchars($product->image, ENT_QUOTES, 'UTF-8'); ?>"
-                                                onerror="this.src='/webbanhang/public/images/no-image.png';this.onerror=null;"
+                                            <img src="<?= BASE_URL ?>/<?= htmlspecialchars($product->image, ENT_QUOTES, 'UTF-8'); ?>"
+                                                onerror="this.src='<?= BASE_URL ?>/public/images/no-image.png';this.onerror=null;"
                                                 class="card-img-top" alt="Hình sản phẩm">
                                             <div class="card-body">
                                                 <h5 class="card-title"><?= htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8'); ?></h5>
@@ -40,14 +40,14 @@
                                             </div>
                                             <div class="product-actions">
                                                 <?php if (SessionHelper::isAdmin()): ?>
-                                                    <a href="/webbanhang/Product/edit/<?= $product->id; ?>" class="btn btn-warning">Sửa</a>
-                                                    <a href="/webbanhang/Product/delete/<?= $product->id; ?>" class="btn btn-danger"
+                                                    <a href="<?= BASE_URL ?>/Product/edit/<?= $product->id; ?>" class="btn btn-warning">Sửa</a>
+                                                    <a href="<?= BASE_URL ?>/Product/delete/<?= $product->id; ?>" class="btn btn-danger"
                                                         onclick="return confirm(' Bạn có chắc chắn muốn xóa sản phẩm này?');">Xóa</a>
                                                 <?php else: ?>
-                                                    <a href="/webbanhang/cart/add/<?= $product->id ?>" class="btn btn-primary">Thêm vào giỏ hàng</a>
+                                                    <a href="<?= BASE_URL ?>/cart/add/<?= $product->id ?>" class="btn btn-primary">Thêm vào giỏ hàng</a>
 
 
-                                                    <a href="/webbanhang/Product/view/<?php echo $product->id; ?>?category_id=<?= $category_id ?>" class="btn btn-primary">Chi tiết</a>
+                                                    <a href="<?= BASE_URL ?>/Product/view/<?php echo $product->id; ?>?category_id=<?= $category_id ?>" class="btn btn-primary">Chi tiết</a>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
@@ -71,7 +71,7 @@
         <?php if ($totalPages > 1): ?>
             <div class="text-end mt-4">
                 <nav aria-label="Page navigation">
-                    <?= renderPagination($totalPages, $page, isset($category_id) ? "/webbanhang/Product/categoryList/$category_id" : "/webbanhang/Product/showAll") ?>
+                    <?= renderPagination($totalPages, $page, isset($category_id) ? "<?= BASE_URL ?>/Product/categoryList/$category_id" : "<?= BASE_URL ?>/Product/showAll") ?>
                 </nav>
             </div>
         <?php endif; ?>

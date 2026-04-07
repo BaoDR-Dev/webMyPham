@@ -30,7 +30,7 @@ class AdminController
     public function promotionList()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -47,7 +47,7 @@ class AdminController
     public function addPromotion()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -61,12 +61,12 @@ class AdminController
     {
         // Check quyền admin
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /webbanhang/Admin/promotionList');
+            header('Location: ' . BASE_URL . '/Admin/promotionList');
             exit;
         }
 
@@ -103,13 +103,13 @@ class AdminController
         // ===== VALIDATE CƠ BẢN =====
         if (empty($data['name']) || empty($data['start_date']) || empty($data['end_date'])) {
             $_SESSION['error'] = 'Vui lòng nhập đầy đủ thông tin bắt buộc';
-            header('Location: /webbanhang/Admin/addPromotion');
+            header('Location: ' . BASE_URL . '/Admin/addPromotion');
             exit;
         }
 
         if (strtotime($data['start_date']) > strtotime($data['end_date'])) {
             $_SESSION['error'] = 'Ngày bắt đầu không được lớn hơn ngày kết thúc';
-            header('Location: /webbanhang/Admin/addPromotion');
+            header('Location: ' . BASE_URL . '/Admin/addPromotion');
             exit;
         }
 
@@ -117,26 +117,26 @@ class AdminController
         $this->promotionModel->create($data);
 
         $_SESSION['success'] = 'Thêm khuyến mãi thành công';
-        header('Location: /webbanhang/Admin/promotionList');
+        header('Location: ' . BASE_URL . '/Admin/promotionList');
         exit;
     }
     public function deletePromotion()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
         $id = $_GET['id'];
         $this->promotionModel->delete($id);
 
-        header('Location: /webbanhang/Admin/promotionList');
+        header('Location: ' . BASE_URL . '/Admin/promotionList');
         exit;
     }
     public function editPromotion()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         $id = $_GET['id'];
@@ -149,12 +149,12 @@ class AdminController
     {
         // Check quyền admin
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /webbanhang/Admin/promotionList');
+            header('Location: ' . BASE_URL . '/Admin/promotionList');
             exit;
         }
 
@@ -189,7 +189,7 @@ class AdminController
         // Validate ngày
         if (strtotime($data['start_date']) > strtotime($data['end_date'])) {
             $_SESSION['error'] = 'Ngày bắt đầu không được lớn hơn ngày kết thúc';
-            header('Location: /webbanhang/Admin/editPromotion/' . $id);
+            header('Location: ' . BASE_URL . '/Admin/editPromotion/' . $id);
             exit;
         }
 
@@ -197,7 +197,7 @@ class AdminController
         $this->promotionModel->update($id, $data);
 
         $_SESSION['success'] = 'Cập nhật khuyến mãi thành công';
-        header('Location: /webbanhang/Admin/promotionList');
+        header('Location: ' . BASE_URL . '/Admin/promotionList');
         exit;
     }
 
@@ -279,7 +279,7 @@ class AdminController
     public function manageUsers()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         // Lấy danh sách người dùng từ AccountModel
@@ -295,7 +295,7 @@ class AdminController
         }
 
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -327,7 +327,7 @@ class AdminController
     public function updateOrderStatus()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -346,7 +346,7 @@ class AdminController
             $orderModel->updateOrderStatus($order_id, $status);
 
             // Redirect lại trang chi tiết khách hàng
-            header("Location: /webbanhang/Admin/userDetails?user_id=" . $user_id);
+            header("Location: " . BASE_URL . "/Admin/userDetails?user_id=" . $user_id);
             exit;
         } else {
             echo "Phương thức không hợp lệ.";
@@ -356,7 +356,7 @@ class AdminController
     public function updateOrderStatus2()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -377,7 +377,7 @@ class AdminController
             $this->orderModel->updateOrderStatus($order_id, $status);
 
             // Redirect lại trang chi tiết khách hàng
-            header("Location: /webbanhang/Admin/orderList");
+            header("Location: " . BASE_URL . "/Admin/orderList");
             exit;
         } else {
             echo "Phương thức không hợp lệ.";
@@ -386,7 +386,7 @@ class AdminController
     public function updateOrderStatus3()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -404,7 +404,7 @@ class AdminController
             $this->orderModel->updateOrderStatus($order_id, $status);
 
             // ✅ Redirect lại trang chi tiết khách hàng và truyền order_id
-            header("Location: /webbanhang/Admin/customerInfo/$order_id");
+            header("Location: " . BASE_URL . "/Admin/customerInfo/$order_id");
             exit;
         } else {
             echo "Phương thức không hợp lệ.";
@@ -416,7 +416,7 @@ class AdminController
         $this->ensureSessionStarted();
 
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -538,18 +538,18 @@ class AdminController
     public function adminCategoryList($category_id = null)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
         // Kiểm tra quyền admin
         if (!SessionHelper::isAdmin()) {
-            header('Location: /webbanhang/error');
+            header('Location: ' . BASE_URL . '/error');
             exit;
         }
 
         if (is_null($category_id) || !is_numeric($category_id)) {
-            header('Location: /webbanhang/error');
+            header('Location: ' . BASE_URL . '/error');
             exit;
         }
 
@@ -583,7 +583,7 @@ class AdminController
     public function showAll()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -603,7 +603,7 @@ class AdminController
     public function searchSuggestions()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -622,7 +622,7 @@ class AdminController
     public function searchProductSuggestions()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -649,7 +649,7 @@ class AdminController
     public function adminCategoryTable($category_id)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -670,7 +670,7 @@ class AdminController
     public function adminCategoryTable2($category_id)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -712,7 +712,7 @@ class AdminController
     public function ajaxFilterProducts()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -748,7 +748,7 @@ class AdminController
     public function orderList()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -756,7 +756,7 @@ class AdminController
 
         // Kiểm tra quyền admin
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -770,7 +770,7 @@ class AdminController
         if (session_status() === PHP_SESSION_NONE) session_start();
 
         if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -836,7 +836,7 @@ class AdminController
     public function customerInfo($orderId)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         // Lấy thông tin đơn hàng để truy ra account_id
@@ -858,7 +858,7 @@ class AdminController
     public function orderDetail($orderId)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -871,7 +871,7 @@ class AdminController
     public function orderDetail2($orderId)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -884,7 +884,7 @@ class AdminController
     public function filterAccount()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         $filters = [
@@ -907,7 +907,7 @@ class AdminController
     public function ajaxFilterUsers()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 

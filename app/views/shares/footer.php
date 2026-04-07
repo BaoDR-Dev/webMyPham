@@ -7,11 +7,11 @@
             <div class="footer-col">
                 <h5>Thông Tin Website</h5>
                 <ul>
-                    <li><a href="/webbanhang/product/home">Trang chủ</a></li>
-                    <li><a href="/webbanhang/Product/showAll">Danh mục sản phẩm</a></li>
-                    <li><a href="/webbanhang/app/views/shares/contact.php">Liên hệ</a></li>
-                    <li><a href="/webbanhang/cart/index">Giỏ hàng</a></li>
-                    <li><a href="/webbanhang/Order/index">Đơn hàng</a></li>
+                    <li><a href="<?= BASE_URL ?>/product/home">Trang chủ</a></li>
+                    <li><a href="<?= BASE_URL ?>/Product/showAll">Danh mục sản phẩm</a></li>
+                    <li><a href="<?= BASE_URL ?>/app/views/shares/contact.php">Liên hệ</a></li>
+                    <li><a href="<?= BASE_URL ?>/cart/index">Giỏ hàng</a></li>
+                    <li><a href="<?= BASE_URL ?>/Order/index">Đơn hàng</a></li>
                 </ul>
             </div>
 
@@ -33,7 +33,7 @@
                     <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
                     <a href="https://twitter.com" target="_blank"><i class="bi bi-twitter-x"></i></a>
                     <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
-                    <a href="https://zalo.me" target="_blank"><img src="/webbanhang/public/images/zalo.png" alt="Zalo"></a>
+                    <a href="https://zalo.me" target="_blank"><img src="<?= BASE_URL ?>/public/images/zalo.png" alt="Zalo"></a>
                 </div>
             </div>
 
@@ -58,12 +58,12 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="/webbanhang/public/js/modal.js"></script>
+<script src="<?= BASE_URL ?>/public/js/modal.js"></script>
 
-<script src="/webbanhang/public/js/order.js"></script>
-<script src="/webbanhang/public/js/slideshow.js"></script>
-<script src="/webbanhang/public/js/footer.js"></script>
-<script src="/webbanhang/public/js/show.js?v=2"></script>
+<script src="<?= BASE_URL ?>/public/js/order.js"></script>
+<script src="<?= BASE_URL ?>/public/js/slideshow.js"></script>
+<script src="<?= BASE_URL ?>/public/js/footer.js"></script>
+<script src="<?= BASE_URL ?>/public/js/show.js?v=2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
 
 <!-- Linking Emoji Mart script for emoji picker -->
@@ -73,7 +73,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
 
 <!-- Linking custom script -->
-<script src="/webbanhang/public/js/chatbot.js"></script>
+<script src="<?= BASE_URL ?>/public/js/chatbot.js"></script>
 
 <?php include __DIR__ . '/../Account/profile.php'; ?>
 <?php include __DIR__ . '/../Account/changepassword.php'; ?>

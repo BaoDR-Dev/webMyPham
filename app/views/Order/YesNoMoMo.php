@@ -11,7 +11,7 @@ if (isset($_GET['resultCode']) && $_GET['resultCode'] == 0) {
 
     // 🔥 THAY ĐỔI QUAN TRỌNG:
     // Chuyển hướng đến một PHƯƠNG THỨC CONTROLLER, không phải một file view.
-    header('Location: /webbanhang/order/success'); // Giả sử bạn có route này
+    header('Location: ' . BASE_URL . '/order/success'); // Giả sử bạn có route này
     exit;
 } else {
     // Thanh toán thất bại
@@ -21,6 +21,6 @@ if (isset($_GET['resultCode']) && $_GET['resultCode'] == 0) {
 
     // 🔥 THAY ĐỔI QUAN TRỌNG:
     // Chuyển hướng đến một PHƯƠNG THỨC CONTROLLER, không phải một file view.
-    header('Location: /webbanhang/order/failure'); // Giả sử bạn có route này
+    header('Location: ' . BASE_URL . '/order/failure'); // Giả sử bạn có route này
     exit;
 }

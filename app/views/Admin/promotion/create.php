@@ -38,7 +38,7 @@
         </div>
 
         <form method="POST"
-            action="/webbanhang/Admin/storePromotion"
+            action="<?= BASE_URL ?>/Admin/storePromotion"
             class="form-container-card"
             id="promotionForm">
 
@@ -145,7 +145,7 @@
                         <button type="submit" class="btn btn-primary btn-lg shadow-sm fw-bold">
                             <i class="bi bi-save me-2"></i>Lưu khuyến mãi
                         </button>
-                        <a href="/webbanhang/Admin/promotionList" class="btn btn-outline-secondary border-0">
+                        <a href="<?= BASE_URL ?>/Admin/promotionList" class="btn btn-outline-secondary border-0">
                             Quay lại danh sách
                         </a>
                     </div>

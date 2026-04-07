@@ -260,7 +260,7 @@
         <div class="cart-empty">
             <h3>Giỏ hàng của bạn đang trống!</h3>
             <p>Hãy khám phá thêm các sản phẩm tuyệt vời của chúng tôi.</p>
-            <a href="/webbanhang/product/home" class=" btn btn-primary btn-lg">Bắt đầu mua sắm</a>
+            <a href="<?= BASE_URL ?>/product/home" class=" btn btn-primary btn-lg">Bắt đầu mua sắm</a>
         </div>
     <?php else: ?>
         <div class="table-responsive">
@@ -287,13 +287,13 @@
                         <tr data-product-id="<?php echo $id; ?>">
                             <td data-label="Chọn">
                                 <input type="checkbox" class="toggle-checkbox"
-                                    data-url="/webbanhang/Cart/toggle/<?php echo $id; ?>"
+                                    data-url="<?= BASE_URL ?>/Cart/toggle/<?php echo $id; ?>"
                                     <?php echo $item['toggle'] ? 'checked' : ''; ?>
                                     title="<?php echo $item['toggle'] ? 'Đã chọn' : 'Chọn sản phẩm này'; ?>">
                             </td>
                             <td class="product-info-cell" data-label="Sản phẩm">
                                 <div class="product-info">
-                                    <img src="/webbanhang/<?php echo htmlspecialchars($item['image']); ?>" alt="Ảnh sản phẩm" onerror="this.src='/webbanhang/public/images/no-image.png';this.onerror=null;">
+                                    <img src="<?= BASE_URL ?>/<?php echo htmlspecialchars($item['image']); ?>" alt="Ảnh sản phẩm" onerror="this.src='<?= BASE_URL ?>/public/images/no-image.png';this.onerror=null;">
                                     <div>
                                         <div class="product-name"><?php echo htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8'); ?></div>
                                     </div>
@@ -314,7 +314,7 @@
                                 <strong><?php echo number_format($subtotal, 0, ',', '.'); ?> VND</strong>
                             </td>
                             <td data-label="Hành động">
-                                <a href="/webbanhang/Cart/remove/<?php echo $id; ?>" class="remove-btn" title="Xóa sản phẩm">
+                                <a href="<?= BASE_URL ?>/Cart/remove/<?php echo $id; ?>" class="remove-btn" title="Xóa sản phẩm">
                                     <svg viewBox="0 0 24 24">
                                         <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
                                     </svg>
@@ -329,8 +329,8 @@
         <div class="cart-summary">
             <h4><strong>Tổng thanh toán: <span id="overallTotal" class="total-price"><?php echo number_format($total, 0, ',', '.'); ?> VND</span></strong></h4>
             <div class="summary-actions">
-                <a href="/webbanhang/product/home" class="btn btn-secondary btn-lg">Tiếp tục mua sắm</a>
-                <a href="/webbanhang/Order/checkout" class="btn btn-success btn-lg">Thanh toán ngay 💳</a>
+                <a href="<?= BASE_URL ?>/product/home" class="btn btn-secondary btn-lg">Tiếp tục mua sắm</a>
+                <a href="<?= BASE_URL ?>/Order/checkout" class="btn btn-success btn-lg">Thanh toán ngay 💳</a>
             </div>
         </div>
     <?php endif; ?>
@@ -371,7 +371,7 @@
         }
 
         function updateCartCount() {
-            fetch('/webbanhang/Cart/getCartQuantity', {
+            fetch('<?= BASE_URL ?>/Cart/getCartQuantity', {
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest'
                     }
@@ -405,7 +405,7 @@
                     let formData = new FormData();
                     formData.append('quantity', newQuantity);
 
-                    fetch(`/webbanhang/Cart/updateQuantity/${productId}`, {
+                    fetch(`<?= BASE_URL ?>/Cart/updateQuantity/${productId}`, {
                             method: 'POST',
                             body: formData,
                             headers: {

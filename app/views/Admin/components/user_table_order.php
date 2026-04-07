@@ -26,7 +26,7 @@
                                 default => 'dark'
                             };
                             ?>
-                            <form method="post" action="/webbanhang/Admin/updateOrderStatus2" class="d-inline-block">
+                            <form method="post" action="<?= BASE_URL ?>/Admin/updateOrderStatus2" class="d-inline-block">
                                 <input type="hidden" name="order_id" value="<?= htmlspecialchars($order->id ?? '') ?>">
                                 <select name="status"
                                     class="order-status-select bg-<?= $statusClass ?>-subtle text-<?= $statusClass ?>"
@@ -50,7 +50,7 @@
                         </td>
                         <td class="fw-bold text-end text-success"><?= number_format($order->total_amount, 0, ',', '.') ?> VND</td>
                         <td class="text-center">
-                            <a href="/webbanhang/Admin/orderDetail2/<?= htmlspecialchars($order->id) ?>" class="btn btn-sm btn-outline-primary btn-detail-order-custom">
+                            <a href="<?= BASE_URL ?>/Admin/orderDetail2/<?= htmlspecialchars($order->id) ?>" class="btn btn-sm btn-outline-primary btn-detail-order-custom">
                                 <i class="bi bi-eye me-1"></i>Xem chi tiết
                             </a>
                         </td>

@@ -155,7 +155,7 @@ class OrderController
         $_SESSION['totalAmount'] = $totalAmount;
 
         // Redirect to details preview page
-        header('Location: /webbanhang/Order/detailsPreview');
+        header('Location: ' . BASE_URL . '/Order/detailsPreview');
         exit;
     }
 
@@ -365,13 +365,13 @@ class OrderController
             // --- KẾT THÚC THAY ĐỔI ---
 
             // Chuyển về trang cảm ơn
-            header("Location: /webbanhang/Order/thankYouSuccess");
+            header("Location: " . BASE_URL . "/Order/thankYouSuccess");
             exit;
         } else {
             // Xử lý lỗi nếu không tạo được đơn hàng
             error_log("Không thể tạo đơn hàng từ createOrderAndRedirectThankYou");
             // Chuyển hướng về trang giỏ hàng hoặc trang lỗi
-            header("Location: /webbanhang/cart/error");
+            header("Location: " . BASE_URL . "/cart/error");
             exit;
         }
     }
@@ -704,7 +704,7 @@ class OrderController
     {
         if (session_status() === PHP_SESSION_NONE) session_start();
         if (!isset($_SESSION['user_id'])) {
-            header('Location: /webbanhang/Auth/login');
+            header('Location: ' . BASE_URL . '/Auth/login');
             exit;
         }
 

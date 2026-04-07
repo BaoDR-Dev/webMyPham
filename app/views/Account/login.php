@@ -197,7 +197,7 @@
                         <!-- CỘT TRÁI: BANNER -->
                         <div class="col-md-6 d-none d-md-block">
                             <div class="banner-login-new">
-                                <img src="/webbanhang/public/images/Logo.png" alt="Logo" style="width: 80px; margin-bottom: 20px; z-index: 1;">
+                                <img src="<?= BASE_URL ?>/public/images/Logo.png" alt="Logo" style="width: 80px; margin-bottom: 20px; z-index: 1;">
                                 <h3>The Boys</h3>
                                 <p>Mỹ phẩm chính hãng<br>cho vẻ đẹp của bạn.</p>
                             </div>
@@ -218,7 +218,7 @@
                                     <?php unset($_SESSION['error']); ?>
                                 <?php endif; ?>
 
-                                <form action="/webbanhang/account/checklogin" method="post">
+                                <form action="<?= BASE_URL ?>/account/checklogin" method="post">
 
                                     <div class="form-floating mb-3">
                                         <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
@@ -237,7 +237,7 @@
                                                 Ghi nhớ tôi
                                             </label>
                                         </div>
-                                        <a href="/webbanhang/account/forgotPassword" class="link-forgot-new">Quên mật khẩu?</a>
+                                        <a href="<?= BASE_URL ?>/account/forgotPassword" class="link-forgot-new">Quên mật khẩu?</a>
                                     </div>
 
                                     <button type="submit" class="btn btn-primary w-100 btn-login-new">
@@ -245,7 +245,7 @@
                                     </button>
 
                                     <div class="link-register-new">
-                                        <p>Bạn chưa có tài khoản? <a href="/webbanhang/account/register">Đăng ký ngay</a></p>
+                                        <p>Bạn chưa có tài khoản? <a href="<?= BASE_URL ?>/account/register">Đăng ký ngay</a></p>
                                     </div>
                                 </form>
                             </div>
@@ -256,7 +256,7 @@
 
                 <!-- Nút quay về trang chủ (mobile) -->
                 <div class="text-center mt-3 d-md-none">
-                    <a href="/webbanhang/" class="text-muted text-decoration-none small">
+                    <a href="<?= BASE_URL ?>/" class="text-muted text-decoration-none small">
                         <i class="bi bi-arrow-left"></i> Quay về trang chủ
                     </a>
                 </div>

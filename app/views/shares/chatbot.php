@@ -7,7 +7,7 @@
      <!-- Chatbot Header -->
      <div class="chat-header">
          <div class="header-info">
-             <img class="chatbot-logo" src="/webbanhang/public/images/Logo.png" />
+             <img class="chatbot-logo" src="<?= BASE_URL ?>/public/images/Logo.png" />
              <h2 class="logo-text">Trung Tâm Hỗ Trợ Khách Hàng</h2>
          </div>
          <button id="close-chatbot" class="material-symbols-rounded">keyboard_arrow_down</button>
@@ -15,7 +15,7 @@
      <!-- Chatbot Body -->
      <div class="chat-body">
          <div class="message bot-message">
-             <img class="bot-avatar" src="/webbanhang/public/images/CSKH.png" />
+             <img class="bot-avatar" src="<?= BASE_URL ?>/public/images/CSKH.png" />
              <!-- prettier-ignore -->
              <div class="message-text"> Hello 👋<br />Tôi là nhân viên chăm sóc khách hàng của The Boys Cosmetics.<br />Tôi có thể giúp gì cho bạn hôm nay? </div>
          </div>

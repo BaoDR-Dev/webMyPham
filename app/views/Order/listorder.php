@@ -133,7 +133,7 @@
                 </div>
                 <div class="order-card-footer">
                     <!-- SỬA Ở ĐÂY: Dùng $order->id -->
-                    <a href="/webbanhang/Order/viewOrderDetails/<?php echo htmlspecialchars($order->id ?? ''); ?>" class="btn btn-dark btn-sm">
+                    <a href="<?= BASE_URL ?>/Order/viewOrderDetails/<?php echo htmlspecialchars($order->id ?? ''); ?>" class="btn btn-dark btn-sm">
                         Xem Chi Tiết<i class="bi bi-arrow-right-short ms-2"></i>
                     </a>
                 </div>

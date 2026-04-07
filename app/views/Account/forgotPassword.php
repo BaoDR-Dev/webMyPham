@@ -166,7 +166,7 @@
                                     <?php unset($_SESSION['error']); ?>
                                 <?php endif; ?>
 
-                                <form action="/webbanhang/account/forgotPassword" method="post">
+                                <form action="<?= BASE_URL ?>/account/forgotPassword" method="post">
                                     <div class="form-floating mb-4">
                                         <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
                                         <label for="email"><i class="bi bi-envelope me-1"></i> Email đăng ký</label>
@@ -177,7 +177,7 @@
                                     </button>
 
                                     <div class="text-center mt-4">
-                                        <a href="/webbanhang/account/login" class="text-decoration-none text-secondary">
+                                        <a href="<?= BASE_URL ?>/account/login" class="text-decoration-none text-secondary">
                                             <i class="bi bi-arrow-left"></i> Quay lại Đăng nhập
                                         </a>
                                     </div>
