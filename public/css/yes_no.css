@@ -1,0 +1,211 @@
+/* ----- Thank You Page Styling ----- */
+    /* ----- Order Success Card Styling ----- */
+    .order-success-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: 3rem auto;
+        padding: 2.5rem;
+        text-align: center;
+    }
+
+    /* ----- Success Icon Styling ----- */
+    .success-icon {
+        width: 80px;
+        height: 80px;
+        background-color: #d1e7dd;
+        /* Light green */
+        color: #0f5132;
+        /* Dark green */
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .success-icon .bi {
+        font-size: 2.5rem;
+        line-height: 1;
+    }
+
+    .order-success-card h1 {
+        font-weight: 700;
+        color: #198754;
+        /* Success color */
+    }
+
+    .order-success-card .lead {
+        color: #6c757d;
+        /* Muted text color */
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* ----- Order Details Summary ----- */
+    .order-details-summary {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        text-align: left;
+    }
+
+    .order-details-summary p {
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .order-details-summary strong {
+        color: #0d6efd;
+        /* Primary color for Order ID */
+    }
+
+    /* ----- Next Steps Section ----- */
+    .next-steps {
+        text-align: left;
+        margin-top: 2rem;
+    }
+
+    .next-steps ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .next-steps ul li {
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .next-steps .bi {
+        color: #198754;
+        font-size: 1.2rem;
+        margin-right: 0.75rem;
+    }
+
+    /* ----- Call to Action Buttons ----- */
+    .cta-buttons {
+        margin-top: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    /* Responsive adjustments for buttons */
+    @media (min-width: 576px) {
+        .cta-buttons {
+            flex-direction: row;
+            justify-content: center;
+            gap: 1rem;
+        }
+    }
+/* ----- Sorry ----- */
+ /* ----- General Styling ----- */
+
+    /* ----- Payment Fail Card Styling ----- */
+    .payment-fail-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: 3rem auto;
+        padding: 2.5rem;
+        text-align: center;
+        border-top: 5px solid #dc3545;
+        /* Red top border for emphasis */
+    }
+
+    /* ----- Fail Icon Styling ----- */
+    .fail-icon {
+        width: 80px;
+        height: 80px;
+        background-color: #f8d7da;
+        /* Light red */
+        color: #842029;
+        /* Dark red */
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .fail-icon .bi {
+        font-size: 2.5rem;
+        line-height: 1;
+    }
+
+    .payment-fail-card h1 {
+        font-weight: 700;
+        color: #dc3545;
+        /* Danger color */
+    }
+
+    .payment-fail-card .lead {
+        color: #212529;
+        /* Dark text for reassurance */
+        font-weight: 500;
+        font-size: 1.25rem;
+    }
+
+    /* ----- Troubleshooting Box ----- */
+    .troubleshooting-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        text-align: left;
+    }
+
+    .troubleshooting-box ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+    .troubleshooting-box ul li {
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .troubleshooting-box ul li:last-child {
+        margin-bottom: 0;
+    }
+
+    .troubleshooting-box .bi {
+        color: #6c757d;
+        font-size: 1.1rem;
+        margin-right: 0.75rem;
+        margin-top: 0.2rem;
+    }
+
+    /* ----- Call to Action Buttons ----- */
+    .cta-buttons {
+        margin-top: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    /* Responsive adjustments for buttons */
+    /* @media (min-width: 576px) {
+        .cta-buttons {
+            flex-direction: row;
+            justify-content: center;
+            gap: 1rem;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .payment-fail-card {
+            padding: 1.5rem;
+            margin: 1.5rem auto;
+        }
+    }
+   */

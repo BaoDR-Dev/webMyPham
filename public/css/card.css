@@ -1,0 +1,23 @@
+.toggle-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    appearance: none;
+    border: 2px solid #28a745;
+    border-radius: 4px;
+    position: relative;
+}
+
+.toggle-checkbox:checked {
+    background-color: #28a745;
+}
+
+.toggle-checkbox:checked::after {
+    content: "✓";
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

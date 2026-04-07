@@ -1,0 +1,82 @@
+ .custom-modal .modal-content {
+        border-radius: 15px;
+        border: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-modal .modal-header {
+        background: linear-gradient(45deg, #0d6efd, #6f42c1);
+        color: white;
+        border-bottom: none;
+        padding: 20px 25px;
+    }
+    
+    .custom-modal .modal-header .modal-title {
+        font-weight: 600;
+    }
+
+    .custom-modal .btn-close {
+        /* Dùng cho Bootstrap 5, nếu bạn dùng BS4 thì bỏ qua */
+        filter: invert(1) grayscale(100%) brightness(200%);
+    }
+    .custom-modal .modal-header .close {
+        /* Dùng cho Bootstrap 4 */
+        color: white;
+        opacity: 0.9;
+        text-shadow: none;
+    }
+
+    .custom-modal .modal-body {
+        padding: 25px 30px 30px;
+    }
+
+    /* Cải tiến cho các ô input */
+    .input-group-text {
+        background-color: #f8f9fa;
+        border-right: none;
+        width: 45px; /* Đảm bảo các icon thẳng hàng */
+        justify-content: center;
+    }
+    .input-group .form-control {
+        border-left: none;
+    }
+    .input-group .form-control:focus {
+        box-shadow: none; /* Bỏ box-shadow mặc định */
+        border-color: #86b7fe; /* Thêm border-color khi focus */
+    }
+    .form-control:disabled {
+        background-color: #e9ecef;
+        font-style: italic;
+    }
+    .password-hint {
+        font-size: 0.875em;
+        color: #6c757d;
+        margin-top: 5px;
+    }
+
+    /* Nút bấm nổi bật */
+    .btn-gradient-primary {
+        background: linear-gradient(45deg, #0d6efd, #5a28b1);
+        border: none;
+        color: white;
+        font-weight: 600;
+        padding: 12px 20px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-gradient-primary:hover {
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-footer {
+        border-top: none;
+        padding: 0 30px 25px;
+        justify-content: center !important
+    }
+
+    .btn-center {
+    display: block;
+    margin: 0 auto;
+}

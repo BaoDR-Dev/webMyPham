@@ -1,0 +1,36 @@
+
+
+
+
+
+
+
+.custom-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Mặc định 1 cột */
+    gap: 1.5rem; /* Tương đương g-4 (~24px) */
+    margin-left: 60px;
+    margin-top: 70px;
+    margin-bottom: 80px;
+}
+
+/* Từ kích thước nhỏ (≥576px) trở lên: 2 cột */
+@media (min-width: 576px) {
+    .custom-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Từ trung bình (≥768px): 3 cột */
+@media (min-width: 768px) {
+    .custom-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Từ lớn (≥992px): 4 cột */
+@media (min-width: 992px) {
+    .custom-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
