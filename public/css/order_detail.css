@@ -1,0 +1,126 @@
+
+    /* 1. BIẾN MÀU SẮC ĐỂ DỄ DÀNG TUỲ CHỈNH */
+    :root {
+        --primary-color: #0d6efd;
+        --secondary-color: #6f42c1; /* Màu tím bổ sung */
+        --light-bg: #f8f9fa;
+        --card-bg: #ffffff;
+        --text-dark: #212529;
+        --text-muted: #6c757d;
+        --border-color: #e9ecef;
+    }
+
+    /* 2. CẢI TIẾN TỔNG THỂ */
+    .order-details-container {
+        background-color: var(--light-bg);
+        padding: 50px 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font chữ dễ đọc hơn */
+    }
+
+    /* 3. LÀM NỔI BẬT TIÊU ĐỀ CHÍNH VỚI GRADIENT */
+    .display-5 {
+        font-weight: 700;
+        color: transparent; /* Ẩn màu gốc */
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        background-clip: text;
+        font: 6em sans-serif;
+    }
+
+    /* 4. NÂNG CẤP CÁC THẺ THÔNG TIN (CARD) */
+    .info-card-detail,
+    .info-card-product {
+        background-color: var(--card-bg);
+        border-radius: 15px; /* Bo tròn nhiều hơn */
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08); /* Đổ bóng mềm mại hơn */
+        padding: 30px;
+        margin-bottom: 30px;
+        border: 1px solid var(--border-color); /* Thêm đường viền rất mờ */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+    }
+
+    /* Hiệu ứng nâng lên khi di chuột */
+    .info-card-detail:hover,
+    .info-card-product:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-card-detail {
+        height: auto; /* Bỏ chiều cao cố định để nội dung tự co giãn */
+        min-height: 250px;
+    }
+    .info-card-product {
+        height: 100%;
+    }
+
+    /* 5. TRANG TRÍ TIÊU ĐỀ TRONG CARD */
+    .info-card-detail h4,
+    .info-card-product h4 {
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 25px;
+        border-bottom: none; /* Bỏ đường viền cũ */
+        position: relative;
+        padding-bottom: 15px;
+    }
+    /* Thêm đường gạch chân gradient */
+    .info-card-detail h4::after,
+    .info-card-product h4::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 4px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    }
+    /* Tô màu cho icon */
+    .info-card-detail h4 .fas,
+    .info-card-product h4 .fas {
+        color: var(--primary-color);
+    }
+    
+    /* 6. CẢI TIẾN DANH SÁCH THÔNG TIN */
+    .info-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 5px;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 1rem;
+    }
+    .info-list li:last-child { border-bottom: none; }
+    .info-list .label { color: var(--text-muted); }
+    .info-list .value { font-weight: 500; color: var(--text-dark); }
+    
+    /* 7. DANH SÁCH SẢN PHẨM */
+    .product-item-details {
+        display: flex;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .product-item-details:last-child { border-bottom: none; }
+
+    .product-image-details {
+        width: 75px;
+        height: 75px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-right: 20px;
+        border: 1px solid var(--border-color);
+    }
+
+    .product-info h6 {
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 4px;
+    }
+    
+    /* 8. CÁC BADGE TRẠNG THÁI (Giữ nguyên nhưng bạn có thể tinh chỉnh màu sắc ở đây) */
+    .status-badge { padding: 5px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; }
+    .status-completed { background-color: #d1e7dd; color: #0f5132; }
+    .status-pending { background-color: #fff3cd; color: #664d03; }
+    .status-processing { background-color: #cff4fc; color: #055160; }
+    .status-cancelled { background-color: #f8d7da; color: #842029; }
