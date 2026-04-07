@@ -1,0 +1,133 @@
+/* --- GIAO DIỆN HEADER "GRADIENT FLOW" - PHIÊN BẢN SỬA LỖI --- */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+    --gradient-start: #6e8ce9;
+    --gradient-end: #06B6D4;
+    --text-on-gradient: #FFFFFF;
+    --bg-light: #F8FAFC;
+}
+
+body {
+    padding-top: 90px;
+    font-family: 'Manrope', sans-serif;
+    background-color: var(--bg-light);
+}
+
+.gradient-navbar {
+    padding: 1rem 0;
+    font-family: 'Manrope', sans-serif;
+    background: linear-gradient(90deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+}
+
+/* ------------------------------------------------------------------ */
+/* SỬA LỖI 1: BIỂU TƯỢNG TÌM KIẾM */
+/* ------------------------------------------------------------------ */
+.search-form-gradient {
+    position: relative; /* Đảm bảo form là gốc để định vị icon */
+}
+
+.search-form-gradient .form-control {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding-left: 2.75rem; /* Chừa khoảng trống cho icon */
+    height: 44px; /* Cố định chiều cao cho đẹp */
+}
+
+.search-form-gradient .form-control::placeholder { color: rgba(255, 255, 255, 0.7); }
+.search-form-gradient .form-control:focus { background-color: rgba(255, 255, 255, 0.2); box-shadow: none; }
+
+.search-form-gradient .search-btn {
+    position: absolute;
+    left: 0; /* Nằm ở mép trái */
+    top: 0; /* Nằm ở mép trên */
+    height: 100%; /* Cao bằng ô input */
+    width: 44px; /* Rộng vừa đủ cho icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+}
+/* ------------------------------------------------------------------ */
+
+
+.gradient-navbar .brand-name,
+.gradient-navbar .nav-link,
+.gradient-navbar .nav-icon {
+    color: rgba(255, 255, 255, 0.85);
+    transition: all 0.2s ease;
+}
+
+.gradient-navbar .brand-name { font-weight: 700; font-size: 1.3rem; }
+.gradient-navbar .nav-link { font-weight: 600; }
+
+.gradient-navbar .nav-link:hover,
+.gradient-navbar .nav-link.active {
+    color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+}
+
+.gradient-navbar .user-avatar {
+    width: 45px; height: 45px; border-radius: 50%; object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.9); cursor: pointer;
+}
+.gradient-navbar .nav-icon:hover { color: #FFFFFF; }
+.gradient-navbar .badge-count { border: 2px solid var(--gradient-end); }
+
+.navbar-toggler { border: none; font-size: 1.8rem; color: white; }
+.navbar-toggler:focus { box-shadow: none; }
+
+/* ------------------------------------------------------------------ */
+/* SỬA LỖI 2 & 3: MÀU SẮC VÀ HIỆU ỨNG NÚT BẤM */
+/* Thêm `.gradient-navbar` ở đầu để tăng độ ưu tiên */
+/* ------------------------------------------------------------------ */
+
+/* Nút Đăng ký (chính) */
+.gradient-navbar .btn-primary-gradient {
+    background-color: #FFFFFF;
+    color: var(--gradient-start);
+    border: 2px solid #FFFFFF;
+    border-radius: 10px; font-weight: 700; padding: 0.7rem 1.5rem;
+    line-height: 1.5;
+}
+.gradient-navbar .btn-primary-gradient:hover {
+    background-color: #F0FDF4;
+    color: var(--gradient-start);
+    transform: translateY(-2px);
+}
+
+/* Nút Đăng nhập (phụ) */
+.gradient-navbar .btn-secondary-gradient {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 10px; font-weight: 600; padding: 0.7rem 1.5rem;
+    line-height: 1.5;
+}
+.gradient-navbar .btn-secondary-gradient:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #FFFFFF;
+}
+
+/* HIỆU ỨNG KHI NHẤN (ACTIVE) - CHUYỂN TRẮNG */
+.gradient-navbar .btn-secondary-gradient:active,
+.gradient-navbar .btn-secondary-gradient:focus {
+    background-color: #FFFFFF !important;
+    color: var(--gradient-start) !important;
+    border-color: #FFFFFF !important;
+}
+
+.welcome-text {
+    color: rgba(255, 255, 255, 0.9); /* Màu trắng hơi trong, hợp với các link khác */
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap; /* Đảm bảo tên không bị xuống dòng */
+}
