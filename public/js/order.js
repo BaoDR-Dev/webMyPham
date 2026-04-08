@@ -1,19 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
-    /**
-     * Hàm cập nhật số lượng sản phẩm trong giỏ hàng hiển thị trên header
-     */
+    const BASE_URL = window.BASE_URL || '';
+
     function updateCartCount() {
-        fetch('/webbanhang/Cart/getCartQuantity', {
+        fetch(BASE_URL + '/Cart/getCartQuantity', {
             method: 'GET',
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            }
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
         })
         .then(response => response.json())
         .then(data => {
             let cartCountEl = document.getElementById('cart-count');
             if (cartCountEl) {
-                cartCountEl.textContent = data.cartQuantity; // Cập nhật hiển thị số lượng
+                cartCountEl.textContent = data.cartQuantity;
             }
         })
         .catch(error => {
@@ -21,6 +18,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Gọi hàm cập nhật số lượng giỏ hàng khi trang tải
     updateCartCount();
 });
