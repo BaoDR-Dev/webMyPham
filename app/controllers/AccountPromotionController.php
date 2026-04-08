@@ -26,7 +26,7 @@ class AccountPromotionController
     public function myPromotions()
     {
         if (!isset($_SESSION['account_id'])) {
-            header('Location: /webbanhang/account/login');
+            header('Location: ' . BASE_URL . '/account/login');
             exit;
         }
 
@@ -60,7 +60,7 @@ class AccountPromotionController
     public function receive($promotionId)
     {
         if (!SessionHelper::isLoggedIn()) {
-            header('Location: /webbanhang/account/login');
+            header('Location: ' . BASE_URL . '/account/login');
             exit;
         }
 
@@ -70,14 +70,14 @@ class AccountPromotionController
         $promotion = $this->promotionModel->findById($promotionId);
         if (!$promotion || strtotime($promotion->end_date) < time()) {
             $_SESSION['error'] = 'Khuyến mãi không hợp lệ hoặc đã hết hạn';
-            header('Location: /webbanhang/promotions');
+            header('Location: ' . BASE_URL . '/promotions');
             exit;
         }
 
         $this->accountPromotionModel->receivePromotion($accountId, $promotionId);
 
         $_SESSION['success'] = 'Nhận khuyến mãi thành công';
-        header('Location: /webbanhang/promotions');
+        header('Location: ' . BASE_URL . '/promotions');
         exit;
     }
 
@@ -162,7 +162,7 @@ class AccountPromotionController
     public function removeApplied()
     {
         unset($_SESSION['applied_promotion']);
-        header('Location: /webbanhang/cart/checkout');
+        header('Location: ' . BASE_URL . '/cart/checkout');
         exit;
     }
 }

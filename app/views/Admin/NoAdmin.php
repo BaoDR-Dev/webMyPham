@@ -62,12 +62,12 @@
     <div class="no-access-wrapper">
         <div class="no-access-box">
 
-            <img src="/webbanhang/public/images/Khoa.jpg" alt="Logo" height="200">
+            <img src="<?= BASE_URL ?>/public/images/Khoa.jpg" alt="Logo" height="200">
             <h1 class="no-access-title">Bạn không có quyền Admin</h1>
             <p class="no-access-message">Bạn cần có quyền quản trị để truy cập nội dung này.</p>
             <div class="no-access-buttons">
-                <a href="/webbanhang/account/login" class="no-access-btn">Đăng nhập lại</a>
-                <a href="/webbanhang/product/home" class="no-access-btn">Về trang chủ</a>
+                <a href="<?= BASE_URL ?>/account/login" class="no-access-btn">Đăng nhập lại</a>
+                <a href="<?= BASE_URL ?>/product/home" class="no-access-btn">Về trang chủ</a>
             </div>
         </div>
     </div>

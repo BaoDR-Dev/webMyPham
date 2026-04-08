@@ -36,7 +36,7 @@ class PromotionController
     public function receive($promotionId)
     {
         if (empty($_SESSION['account_id'])) {
-            header('Location: /webbanhang/account/login');
+            header('Location: ' . BASE_URL . '/account/login');
             exit;
         }
 

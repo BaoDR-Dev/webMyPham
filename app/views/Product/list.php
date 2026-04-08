@@ -13,8 +13,8 @@
                     <div class="col-md-4 mb-4">
                         <div class="card product-card">
                             <!-- Hình ảnh sản phẩm -->
-                            <img src="/webbanhang/<?php echo htmlspecialchars($product->image, ENT_QUOTES, 'UTF-8'); ?>"
-                                onerror="this.src='/webbanhang/public/images/no-image.png';this.onerror=null;"
+                            <img src="<?= BASE_URL ?>/<?php echo htmlspecialchars($product->image, ENT_QUOTES, 'UTF-8'); ?>"
+                                onerror="this.src='<?= BASE_URL ?>/public/images/no-image.png';this.onerror=null;"
                                 class="card-img-top"
                                 alt="Hình sản phẩm">
 
@@ -28,12 +28,12 @@
                             <!-- Nút hành động -->
                             <div class="product-actions">
                                 <?php if (SessionHelper::isAdmin()): ?>
-                                    <a href="/webbanhang/Product/edit/<?php echo $product->id; ?>" class="btn btn-warning">Sửa</a>
-                                    <a href="/webbanhang/Product/delete/<?php echo $product->id; ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');">Xóa</a>
-                                    <a href="/webbanhang/Product/view/<?php echo $product->id; ?>" class="btn btn-primary">Chi tiết</a>
+                                    <a href="<?= BASE_URL ?>/Product/edit/<?php echo $product->id; ?>" class="btn btn-warning">Sửa</a>
+                                    <a href="<?= BASE_URL ?>/Product/delete/<?php echo $product->id; ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');">Xóa</a>
+                                    <a href="<?= BASE_URL ?>/Product/view/<?php echo $product->id; ?>" class="btn btn-primary">Chi tiết</a>
                                 <?php else: ?>
-                                    <a href="/webbanhang/Cart/add/<?php echo $product->id; ?>" class="btn btn-primary">Thêm vào giỏ hàng</a>
-                                    <a href="/webbanhang/Product/view/<?php echo $product->id; ?>" class="btn btn-info">Chi tiết</a>
+                                    <a href="<?= BASE_URL ?>/Cart/add/<?php echo $product->id; ?>" class="btn btn-primary">Thêm vào giỏ hàng</a>
+                                    <a href="<?= BASE_URL ?>/Product/view/<?php echo $product->id; ?>" class="btn btn-info">Chi tiết</a>
                                 <?php endif; ?>
                             </div>
                         </div>

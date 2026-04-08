@@ -52,7 +52,7 @@ if (!empty($orders)) {
         </div>
         <!-- NÚT QUAY LẠI -->
         <div class="mb-5">
-            <a href="/webbanhang/Admin/manageUsers" class="btn btn-outline-primary btn-sm d-flex align-items-center gap-1">
+            <a href="<?= BASE_URL ?>/Admin/manageUsers" class="btn btn-outline-primary btn-sm d-flex align-items-center gap-1">
                 <i class="bi bi-arrow-left"></i>
                 Quay lại
             </a>
@@ -212,7 +212,7 @@ if (!empty($orders)) {
 
             const params = new URLSearchParams(new FormData(form)).toString();
 
-            fetch(`/webbanhang/Admin/userDetails2?${params}`)
+            fetch(`<?= BASE_URL ?>/Admin/userDetails2?${params}`)
                 .then(res => {
                     if (!res.ok) throw new Error('HTTP ' + res.status);
                     return res.text();
@@ -242,7 +242,7 @@ if (!empty($orders)) {
 
             const userId = document.querySelector('input[name="user_id"]').value;
 
-            fetch(`/webbanhang/Admin/userDetails2?user_id=${userId}`)
+            fetch(`<?= BASE_URL ?>/Admin/userDetails2?user_id=${userId}`)
                 .then(res => res.text())
                 .then(html => {
                     document.getElementById('orderTableWrapper').innerHTML = html;

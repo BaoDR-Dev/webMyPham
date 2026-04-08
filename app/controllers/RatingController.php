@@ -70,7 +70,7 @@ class RatingController
         );
 
         if ($success) {
-            header("Location: /webbanhang/Order/viewOrderDetails/$orderId");
+            header("Location: " . BASE_URL . "/Order/viewOrderDetails/$orderId");
             exit;
         }
 
@@ -118,7 +118,7 @@ class RatingController
             $this->orderModel->updateReviewStatus($orderId, $productId);
             $this->productModel->updateRatingStats($productId);
             // Chuyển hướng sau khi hoàn tất
-            header("Location: /webbanhang/Order/viewOrderDetails/$orderId");
+            header("Location: " . BASE_URL . "/Order/viewOrderDetails/$orderId");
             exit;
         }
     }

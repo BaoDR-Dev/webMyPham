@@ -30,7 +30,7 @@ class AdminController
     public function promotionList()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -40,33 +40,33 @@ class AdminController
         // 👉 DANH SÁCH KHUYẾN MÃI
         $promotions = $this->promotionModel->getAll();
 
-        require_once 'app/views/admin/promotion/index.php';
+        require_once 'app/views/Admin/promotion/index.php';
     }
 
 
     public function addPromotion()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
         $types = $this->promotionTypeModel->getAll();
         $categories = $this->categoryModel->getAll(); // 🔥 THÊM DÒNG NÀY
 
-        require_once('app/views/admin/promotion/create.php');
+        require_once('app/views/Admin/promotion/create.php');
     }
 
     public function storePromotion()
     {
         // Check quyền admin
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /webbanhang/Admin/promotionList');
+            header('Location: ' . BASE_URL . '/Admin/promotionList');
             exit;
         }
 
@@ -103,13 +103,13 @@ class AdminController
         // ===== VALIDATE CƠ BẢN =====
         if (empty($data['name']) || empty($data['start_date']) || empty($data['end_date'])) {
             $_SESSION['error'] = 'Vui lòng nhập đầy đủ thông tin bắt buộc';
-            header('Location: /webbanhang/Admin/addPromotion');
+            header('Location: ' . BASE_URL . '/Admin/addPromotion');
             exit;
         }
 
         if (strtotime($data['start_date']) > strtotime($data['end_date'])) {
             $_SESSION['error'] = 'Ngày bắt đầu không được lớn hơn ngày kết thúc';
-            header('Location: /webbanhang/Admin/addPromotion');
+            header('Location: ' . BASE_URL . '/Admin/addPromotion');
             exit;
         }
 
@@ -117,44 +117,44 @@ class AdminController
         $this->promotionModel->create($data);
 
         $_SESSION['success'] = 'Thêm khuyến mãi thành công';
-        header('Location: /webbanhang/Admin/promotionList');
+        header('Location: ' . BASE_URL . '/Admin/promotionList');
         exit;
     }
     public function deletePromotion()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
         $id = $_GET['id'];
         $this->promotionModel->delete($id);
 
-        header('Location: /webbanhang/Admin/promotionList');
+        header('Location: ' . BASE_URL . '/Admin/promotionList');
         exit;
     }
     public function editPromotion()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         $id = $_GET['id'];
         $promotion = $this->promotionModel->getById($id);
         $types = $this->promotionTypeModel->getAll();
 
-        require_once('app/views/admin/promotion/edit.php');
+        require_once('app/views/Admin/promotion/edit.php');
     }
     public function updatePromotion()
     {
         // Check quyền admin
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /webbanhang/Admin/promotionList');
+            header('Location: ' . BASE_URL . '/Admin/promotionList');
             exit;
         }
 
@@ -189,7 +189,7 @@ class AdminController
         // Validate ngày
         if (strtotime($data['start_date']) > strtotime($data['end_date'])) {
             $_SESSION['error'] = 'Ngày bắt đầu không được lớn hơn ngày kết thúc';
-            header('Location: /webbanhang/Admin/editPromotion/' . $id);
+            header('Location: ' . BASE_URL . '/Admin/editPromotion/' . $id);
             exit;
         }
 
@@ -197,7 +197,7 @@ class AdminController
         $this->promotionModel->update($id, $data);
 
         $_SESSION['success'] = 'Cập nhật khuyến mãi thành công';
-        header('Location: /webbanhang/Admin/promotionList');
+        header('Location: ' . BASE_URL . '/Admin/promotionList');
         exit;
     }
 
@@ -279,7 +279,7 @@ class AdminController
     public function manageUsers()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         // Lấy danh sách người dùng từ AccountModel
@@ -295,7 +295,7 @@ class AdminController
         }
 
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -319,7 +319,7 @@ class AdminController
 
         $orders = $this->orderModel->getOrdersByAccountId($user_id);
 
-        include 'app/views/admin/customer_details.php';
+        include 'app/views/Admin/customer_details.php';
     }
 
 
@@ -327,7 +327,7 @@ class AdminController
     public function updateOrderStatus()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -346,7 +346,7 @@ class AdminController
             $orderModel->updateOrderStatus($order_id, $status);
 
             // Redirect lại trang chi tiết khách hàng
-            header("Location: /webbanhang/Admin/userDetails?user_id=" . $user_id);
+            header("Location: " . BASE_URL . "/Admin/userDetails?user_id=" . $user_id);
             exit;
         } else {
             echo "Phương thức không hợp lệ.";
@@ -356,7 +356,7 @@ class AdminController
     public function updateOrderStatus2()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -377,7 +377,7 @@ class AdminController
             $this->orderModel->updateOrderStatus($order_id, $status);
 
             // Redirect lại trang chi tiết khách hàng
-            header("Location: /webbanhang/Admin/orderList");
+            header("Location: " . BASE_URL . "/Admin/orderList");
             exit;
         } else {
             echo "Phương thức không hợp lệ.";
@@ -386,7 +386,7 @@ class AdminController
     public function updateOrderStatus3()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -404,7 +404,7 @@ class AdminController
             $this->orderModel->updateOrderStatus($order_id, $status);
 
             // ✅ Redirect lại trang chi tiết khách hàng và truyền order_id
-            header("Location: /webbanhang/Admin/customerInfo/$order_id");
+            header("Location: " . BASE_URL . "/Admin/customerInfo/$order_id");
             exit;
         } else {
             echo "Phương thức không hợp lệ.";
@@ -416,7 +416,7 @@ class AdminController
         $this->ensureSessionStarted();
 
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -532,24 +532,24 @@ class AdminController
             }
         }
 
-        include 'app/views/admin/dashboard.php';
+        include 'app/views/Admin/dashboard.php';
     }
 
     public function adminCategoryList($category_id = null)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
         // Kiểm tra quyền admin
         if (!SessionHelper::isAdmin()) {
-            header('Location: /webbanhang/error');
+            header('Location: ' . BASE_URL . '/error');
             exit;
         }
 
         if (is_null($category_id) || !is_numeric($category_id)) {
-            header('Location: /webbanhang/error');
+            header('Location: ' . BASE_URL . '/error');
             exit;
         }
 
@@ -574,16 +574,16 @@ class AdminController
             $categoryName = htmlspecialchars($category->name, ENT_QUOTES, 'UTF-8');
 
             // Truyền dữ liệu qua view
-            include 'app/views/admin/products_list.php';
+            include 'app/views/Admin/products_list.php';
         } else {
-            include 'app/views/admin/product/emptycategory.php';
+            include 'app/views/Product/emptycategory.php';
         }
     }
 
     public function showAll()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -598,12 +598,12 @@ class AdminController
         $totalProducts = $this->productModel->countAllProducts($search, $minPrice, $maxPrice);
 
 
-        include 'app/views/admin/products_list.php';
+        include 'app/views/Admin/products_list.php';
     }
     public function searchSuggestions()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -622,7 +622,7 @@ class AdminController
     public function searchProductSuggestions()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -649,7 +649,7 @@ class AdminController
     public function adminCategoryTable($category_id)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -665,12 +665,12 @@ class AdminController
 
         $categories = $this->categoryModel->getAll(); // để hiển thị danh mục bên trái
 
-        require_once __DIR__ . '/../views/admin/products_list.php';
+        require_once __DIR__ . '/../views/Admin/products_list.php';
     }
     public function adminCategoryTable2($category_id)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -706,13 +706,13 @@ class AdminController
         $categories = $this->categoryModel->getAll();
         $categoryName = $this->categoryModel->getNameById($category_id);
 
-        require_once __DIR__ . '/../views/admin/products_list.php';
+        require_once __DIR__ . '/../views/Admin/products_list.php';
     }
 
     public function ajaxFilterProducts()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -741,14 +741,14 @@ class AdminController
             $products = $this->productModel->filterProductsByCategory($category_id, $filters);
         }
 
-        require_once __DIR__ . '/../views/admin/components/products_table_partial.php';
+        require_once __DIR__ . '/../views/Admin/components/products_table_partial.php';
     }
 
 
     public function orderList()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -756,12 +756,12 @@ class AdminController
 
         // Kiểm tra quyền admin
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
         $orders = $this->orderModel->getAllOrdersWithUser();
-        include 'app/views/admin/order_list.php';
+        include 'app/views/Admin/order_list.php';
     }
 
     public function filter()
@@ -770,7 +770,7 @@ class AdminController
         if (session_status() === PHP_SESSION_NONE) session_start();
 
         if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -796,7 +796,7 @@ class AdminController
 
         // Truyền dữ liệu và include view
         $filters = $_GET; // để dễ hiển thị lại trong form nếu cần
-        require_once __DIR__ . '/../views/admin/components/order_table.php';
+        require_once __DIR__ . '/../views/Admin/components/order_table.php';
     }
 
     public function userDetails2()
@@ -828,7 +828,7 @@ class AdminController
         $orders = $this->orderModel->filterOrdersByUser3($filters);
 
         // ⚠️ CHỈ RETURN TABLE
-        include 'app/views/admin/components/user_table_order.php';
+        include 'app/views/Admin/components/user_table_order.php';
     }
 
 
@@ -836,7 +836,7 @@ class AdminController
     public function customerInfo($orderId)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         // Lấy thông tin đơn hàng để truy ra account_id
@@ -858,7 +858,7 @@ class AdminController
     public function orderDetail($orderId)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -866,12 +866,12 @@ class AdminController
         $orderDetails = $this->orderModel->getOrderDetails($orderId);
         $customerInfo = $this->orderModel->getCustomerByOrderId($orderId);
 
-        require_once 'app/views/admin/orderdetail.php';
+        require_once 'app/views/Admin/orderdetail.php';
     }
     public function orderDetail2($orderId)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -879,12 +879,12 @@ class AdminController
         $orderDetails = $this->orderModel->getOrderDetails($orderId);
         $customerInfo = $this->orderModel->getCustomerByOrderId($orderId);
 
-        require_once 'app/views/admin/orderdetail2.php';
+        require_once 'app/views/Admin/orderdetail2.php';
     }
     public function filterAccount()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         $filters = [
@@ -901,13 +901,13 @@ class AdminController
         ];
 
         $users = $this->accountModel->filterUsers($filters);
-        require_once __DIR__ . '/../views/admin/components/users_table.php';
+        require_once __DIR__ . '/../views/Admin/components/users_table.php';
     }
 
     public function ajaxFilterUsers()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
 
@@ -926,7 +926,7 @@ class AdminController
         ];
 
         $users = $this->accountModel->filterUsers($filters);
-        require_once __DIR__ . '/../views/admin/components/users_table.php';
+        require_once __DIR__ . '/../views/Admin/components/users_table.php';
     }
 
 
@@ -993,7 +993,7 @@ class AdminController
         $orders = $this->orderModel->filterOrders($filters);
 
         // Render bảng (AJAX)
-        require_once __DIR__ . '/../views/admin/components/order_table.php';
+        require_once __DIR__ . '/../views/Admin/components/order_table.php';
     }
 
 

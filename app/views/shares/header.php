@@ -47,30 +47,30 @@ function isActive0($path)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cửa hàng Mỹ Phẩm The Boys</title>
-    <link rel="icon" href="/webbanhang/public/images/Logo.png" type="image/png">
+    <link rel="icon" href="<?= BASE_URL ?>/public/images/Logo.png" type="image/png">
 
     <!-- 3. CSS LIBS (Giữ nguyên các file CSS của bạn) -->
     <!-- 1. CSS CỦA WEBSITE -->
-    <link href="/webbanhang/public/css/style.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/footer.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/pay.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/login.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/home.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/show.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/product.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/rating.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/order.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/result-search.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/card.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/productAdmin.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/order_list.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/chatbot.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/contact.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/yes_no.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/profile.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/order_detail.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/changepasswor.css" rel="stylesheet">
-    <link href="/webbanhang/public/css/nav.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/style.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/footer.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/pay.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/login.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/home.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/show.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/product.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/rating.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/order.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/result-search.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/card.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/productAdmin.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/order_list.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/chatbot.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/contact.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/yes_no.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/profile.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/order_detail.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/changepasswor.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>/public/css/nav.css" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,6 +92,8 @@ function isActive0($path)
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>window.BASE_URL = '<?= BASE_URL ?>';</script>
+    <script src="<?= BASE_URL ?>/public/js/modal.js"></script>
     <style>
         /* LOGIC CSS RIÊNG BIỆT CHO 2 GIAO DIỆN */
         <?php if ($isAdmin): ?>
@@ -171,13 +173,9 @@ function isActive0($path)
 
 <body>
     <?php
-    $avatarPath = '/webbanhang/public/uploads/avatar/default.png';
+    $avatarPath = BASE_URL . '/public/uploads/avatar/default.png';
     if (isset($_SESSION['image']) && !empty($_SESSION['image'])) {
-        $userImagePath_relative = $_SESSION['image'];
-        $userImagePath_absolute = $_SERVER['DOCUMENT_ROOT'] . '/webbanhang/' . $userImagePath_relative;
-        if (file_exists($userImagePath_absolute)) {
-            $avatarPath = '/webbanhang/' . htmlspecialchars($userImagePath_relative);
-        }
+        $avatarPath = BASE_URL . '/' . htmlspecialchars($_SESSION['image']);
     }
     ?>
 
@@ -195,15 +193,15 @@ function isActive0($path)
                 </button>
 
                 <!-- Logo -->
-                <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="/webbanhang/Admin/dashboard">
-                    <img src="/webbanhang/public/images/Logo.png" alt="Logo" height="35" class="me-2">
+                <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="<?= BASE_URL ?>/Admin/dashboard">
+                    <img src="<?= BASE_URL ?>/public/images/Logo.png" alt="Logo" height="35" class="me-2">
                     24/7 Store
                 </a>
 
                 <!-- User Dropdown (Góc phải) -->
                 <div class="ms-auto dropdown">
                     <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-dark" id="admDrp" data-bs-toggle="dropdown">
-                        <img src="<?= $avatarPath ?>" width="32" height="32" class="rounded-circle me-2 border object-fit-cover">
+                        <img src="<?= $avatarPath ?>" width="32" height="32" class="rounded-circle me-2 border object-fit-cover" onerror="this.src='<?= BASE_URL ?>/public/uploads/avatar/default.png'">
                         <span class="d-none d-sm-inline fw-bold small"><?= htmlspecialchars($_SESSION['full_name']) ?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow border-0">
@@ -211,7 +209,7 @@ function isActive0($path)
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item text-danger" href="/webbanhang/account/logout">Đăng xuất</a></li>
+                        <li><a class="dropdown-item text-danger" href="<?= BASE_URL ?>/account/logout">Đăng xuất</a></li>
                     </ul>
                 </div>
             </div>
@@ -222,7 +220,7 @@ function isActive0($path)
             <div class="px-3 mb-3 text-uppercase text-white-50 small fw-bold">Quản lý cửa hàng</div>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link <?= isActive0('/Admin/dashboard') ?>" href="/webbanhang/Admin/dashboard">
+                    <a class="nav-link <?= isActive0('/Admin/dashboard') ?>" href="<?= BASE_URL ?>/Admin/dashboard">
                         <i class="bi bi-speedometer2 me-3 fs-5"></i> Thống kê
                     </a>
                 </li>
@@ -236,12 +234,12 @@ function isActive0($path)
                     <div class="collapse <?= (strpos($_SERVER['REQUEST_URI'], 'Category') !== false || strpos($_SERVER['REQUEST_URI'], 'addProduct') !== false) ? 'show' : '' ?>" id="prodMenu">
                         <ul class="nav flex-column ms-3 ps-2 border-start border-secondary">
                             <!-- <li class="nav-item">
-                                <a class="nav-link py-1 small" href="/webbanhang/Admin/addProduct">Thêm mới</a>
+                                <a class="nav-link py-1 small" href="<?= BASE_URL ?>/Admin/addProduct">Thêm mới</a>
                             </li> -->
                             <?php foreach ($categories as $category): ?>
                                 <?php if ($category->id != 0): ?>
                                     <li class="nav-item">
-                                        <a class="nav-link py-1 small" href="/webbanhang/Admin/adminCategoryList/<?= $category->id ?>">
+                                        <a class="nav-link py-1 small" href="<?= BASE_URL ?>/Admin/adminCategoryList/<?= $category->id ?>">
                                             <?= $category->name ?>
                                         </a>
                                     </li>
@@ -252,18 +250,18 @@ function isActive0($path)
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link <?= isActive0('/Admin/orderList') ?>" href="/webbanhang/Admin/orderList">
+                    <a class="nav-link <?= isActive0('/Admin/orderList') ?>" href="<?= BASE_URL ?>/Admin/orderList">
                         <i class="bi bi-receipt me-3 fs-5"></i> Đơn hàng
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link <?= isActive0('/Admin/manageUsers') ?>" href="/webbanhang/Admin/manageUsers">
+                    <a class="nav-link <?= isActive0('/Admin/manageUsers') ?>" href="<?= BASE_URL ?>/Admin/manageUsers">
                         <i class="bi bi-people me-3 fs-5"></i> Tài khoản
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= isActive0('/Admin/promotion') ?>" href="/webbanhang/Admin/promotionList">
+                    <a class="nav-link <?= isActive0('/Admin/promotion') ?>" href="<?= BASE_URL ?>/Admin/promotionList">
                         <i class="bi bi-tags me-3 fs-5"></i> khuyến mãi
                     </a>
                 </li>
@@ -280,8 +278,8 @@ function isActive0($path)
         <nav class="navbar navbar-expand-lg fixed-top gradient-navbar">
             <div class="container-fluid px-4">
                 <!-- Logo -->
-                <a class="navbar-brand d-flex align-items-center" href="/webbanhang/product/home">
-                    <img src="/webbanhang/public/images/Logo.png" alt="Logo" height="45">
+                <a class="navbar-brand d-flex align-items-center" href="<?= BASE_URL ?>/product/home">
+                    <img src="<?= BASE_URL ?>/public/images/Logo.png" alt="Logo" height="45">
                     <span class="brand-name">The Boys</span>
                 </a>
 
@@ -293,23 +291,23 @@ function isActive0($path)
                 <!-- Menu User -->
                 <div class="collapse navbar-collapse" id="userNavbar">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link <?= isActive0('/product/home') ?>" href="/webbanhang/product/home">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link <?= isActive0('/Product/') ?>" href="/webbanhang/Product/showAll">Sản phẩm</a></li>
-                        <li class="nav-item"><a class="nav-link <?= isActive0('/shop/contact') ?>" href="/webbanhang/shop/contact">Liên hệ</a></li>
+                        <li class="nav-item"><a class="nav-link <?= isActive0('/product/home') ?>" href="<?= BASE_URL ?>/product/home">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link <?= isActive0('/Product/') ?>" href="<?= BASE_URL ?>/Product/showAll">Sản phẩm</a></li>
+                        <li class="nav-item"><a class="nav-link <?= isActive0('/shop/contact') ?>" href="<?= BASE_URL ?>/shop/contact">Liên hệ</a></li>
                     </ul>
 
                     <!-- Hành động bên phải -->
                     <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
 
                         <!-- Search Form -->
-                        <form class="search-form-gradient" action="/webbanhang/Product/search" method="GET">
+                        <form class="search-form-gradient" action="<?= BASE_URL ?>/Product/search" method="GET">
                             <button type="submit" class="search-btn"><i class="bi bi-search"></i></button>
                             <input class="form-control" type="search" name="keyword" placeholder="Tìm kiếm...">
                         </form>
 
                         <?php if (isset($_SESSION['email'])): ?>
                             <!-- Cart -->
-                            <a class="nav-icon position-relative text-white" href="/webbanhang/cart/index">
+                            <a class="nav-icon position-relative text-white" href="<?= BASE_URL ?>/cart/index">
                                 <i class="bi bi-bag fs-5"></i>
                                 <?php if ($cartCount > 0): ?>
                                     <span class="badge-count"><?= $cartCount ?></span>
@@ -320,7 +318,7 @@ function isActive0($path)
                             <div class="dropdown d-flex align-items-center gap-2">
                                 <span class="welcome-text d-none d-lg-block text-white">Chào, <?= htmlspecialchars($_SESSION['full_name']) ?></span>
                                 <a href="#" class="p-0" data-bs-toggle="dropdown">
-                                    <img src="<?= $avatarPath ?>" class="user-avatar border" alt="User Avatar">
+                                    <img src="<?= $avatarPath ?>" class="user-avatar border" alt="User Avatar" onerror="this.src='<?= BASE_URL ?>/public/uploads/avatar/default.png'">
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 mt-2">
                                     <li>
@@ -329,12 +327,12 @@ function isActive0($path)
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="/webbanhang/order/index">
+                                        <a class="dropdown-item" href="<?= BASE_URL ?>/order/index">
                                             <i class="bi bi-box-seam me-2 text-success"></i> Quản lý đơn hàng
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="/webbanhang/AccountPromotion/myPromotions">
+                                        <a class="dropdown-item" href="<?= BASE_URL ?>/AccountPromotion/myPromotions">
                                             <i class="bi bi-ticket-perforated me-2 text-danger"></i> Kho khuyến mãi
                                         </a>
                                     </li>
@@ -347,15 +345,15 @@ function isActive0($path)
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li>
-                                        <a class="dropdown-item text-danger" href="/webbanhang/account/logout">
+                                        <a class="dropdown-item text-danger" href="<?= BASE_URL ?>/account/logout">
                                             <i class="bi bi-box-arrow-right me-2"></i> Đăng xuất
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         <?php else: ?>
-                            <a class="btn btn-primary-gradient" href="/webbanhang/account/login">Đăng nhập</a>
-                            <a class="btn btn-primary-gradient" href="/webbanhang/account/register">Đăng ký</a>
+                            <a class="btn btn-primary-gradient" href="<?= BASE_URL ?>/account/login">Đăng nhập</a>
+                            <a class="btn btn-primary-gradient" href="<?= BASE_URL ?>/account/register">Đăng ký</a>
                         <?php endif; ?>
                     </div>
                 </div>

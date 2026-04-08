@@ -247,7 +247,7 @@
     }
 </style>
 
-<link rel="stylesheet" href="/webbanhang/public/css/promotion-custom.css">
+<link rel="stylesheet" href="<?= BASE_URL ?>/public/css/promotion-custom.css">
 
 <div class="container-fluid mt-4 promotion-management">
 
@@ -264,7 +264,7 @@
             </button>
 
             <!-- Nút Thêm mới -->
-            <a href="/webbanhang/Admin/addPromotion" class="btn-add-new">
+            <a href="<?= BASE_URL ?>/Admin/addPromotion" class="btn-add-new">
                 <i class="bi bi-plus-lg me-1"></i>Thêm khuyến mãi
             </a>
         </div>
@@ -344,7 +344,7 @@
             const form = e.target;
             const params = new URLSearchParams(new FormData(form)).toString();
 
-            fetch('/webbanhang/Admin/ajaxFilterPromotions?' + params)
+            fetch('<?= BASE_URL ?>/Admin/ajaxFilterPromotions?' + params)
                 .then(res => res.text())
                 .then(html => {
                     document.getElementById('promotionTableWrapper').innerHTML = html;

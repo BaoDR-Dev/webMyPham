@@ -292,7 +292,7 @@
             <h2 class="rating-title">Đánh Giá Sản Phẩm</h2>
 
             <div class="rating-product">
-                <img src="/webbanhang/<?php echo htmlspecialchars($product->image ?? 'assets/img/no-image.png'); ?>"
+                <img src="<?= BASE_URL ?>/<?php echo htmlspecialchars($product->image ?? 'assets/img/no-image.png'); ?>"
                     alt="<?php echo htmlspecialchars($product->name ?? 'Sản phẩm'); ?>">
                 <div class="rating-product-info">
                     <h4><?php echo htmlspecialchars($product->name ?? 'Không xác định'); ?></h4>
@@ -300,7 +300,7 @@
                 </div>
             </div>
 
-            <form action="/webbanhang/Rating/store" method="POST" class="rating-form">
+            <form action="<?= BASE_URL ?>/Rating/store" method="POST" class="rating-form">
                 <input type="hidden" name="product_id" value="<?php echo $product->id ?? ''; ?>">
                 <input type="hidden" name="order_id" value="<?php echo $order_id ?? ''; ?>">
 
@@ -322,7 +322,7 @@
 
                 <div class="rating-actions">
                     <button type="submit" class="btn-submit">Gửi đánh giá</button>
-                    <a href="/webbanhang/Order/viewOrderDetails/<?= htmlspecialchars($order_id) ?>"
+                    <a href="<?= BASE_URL ?>/Order/viewOrderDetails/<?= htmlspecialchars($order_id) ?>"
                         class="btn-cancel-rating">Hủy</a>
                 </div>
             </form>

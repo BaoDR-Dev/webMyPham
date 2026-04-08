@@ -136,7 +136,7 @@
                 if ($promo->promotion_type_id == 1) $img_name = "phantram.png";
                 elseif ($promo->promotion_type_id == 2) $img_name = "-$2.png";
 
-                $img_path = "/webbanhang/uploads/Promotions/" . $img_name;
+                $img_path = "<?= BASE_URL ?>/uploads/Promotions/" . $img_name;
                 ?>
 
                 <div class="promo-item <?= !$is_active ? 'promo-disabled' : '' ?>"
@@ -152,7 +152,7 @@
                     data-category="<?= htmlspecialchars($promo->category_name ?? 'Tất cả sản phẩm') ?>"
                     data-remain="<?= $remain ?>"
                     data-status="<?= $is_active ? '1' : '0' ?>"
-                    data-use-url="/webbanhang/cart/index">
+                    data-use-url="<?= BASE_URL ?>/cart/index">
 
                     <div class="promo-left">
                         <img src="<?= $img_path ?>" alt="Promo">

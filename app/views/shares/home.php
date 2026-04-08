@@ -19,21 +19,21 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
 
         <div class="services-container">
             <div class="service">
-                <img src="/webbanhang/public/images/A1.png" alt="Icon thanh toán đa dạng">
+                <img src="<?= BASE_URL ?>/public/images/A1.png" alt="Icon thanh toán đa dạng">
                 <div class="text-container">
                     <h3>Thanh Toán Linh Hoạt</h3>
                     <p>Hỗ trợ nhiều phương thức thanh toán an toàn và tiện lợi.</p>
                 </div>
             </div>
             <div class="service">
-                <img src="/webbanhang/public/images/A2.png" alt="Icon cam kết chính hãng">
+                <img src="<?= BASE_URL ?>/public/images/A2.png" alt="Icon cam kết chính hãng">
                 <div class="text-container">
                     <h3>Cam Kết Chính Hãng</h3>
                     <p>100% sản phẩm chính hãng, đảm bảo chất lượng và nguồn gốc.</p>
                 </div>
             </div>
             <div class="service">
-                <img src="/webbanhang/public/images/A3.png" alt="Icon giao hàng nhanh">
+                <img src="<?= BASE_URL ?>/public/images/A3.png" alt="Icon giao hàng nhanh">
                 <div class="text-container">
                     <h3>Giao Hàng Siêu Tốc 2H</h3>
                     <p>Dịch vụ giao nhanh trong nội thành TP. Hồ Chí Minh.</p>
@@ -61,12 +61,12 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
                 <div class=" category-grid">
                     <?php foreach ($featuredCategories as $category): ?>
                         <?php if (!empty($category) && $category['id'] == 0) continue; ?>
-                        <a href="/webbanhang/Product/CategoryList/<?= $category['id'] ?>" class="category-card">
+                        <a href="<?= BASE_URL ?>/Product/CategoryList/<?= $category['id'] ?>" class="category-card">
                             <img
-                                src="<?= !empty($category['image']) ? '/webbanhang/' . htmlspecialchars($category['image']) : '/webbanhang/public/images/A1.png' ?>"
+                                src="<?= !empty($category['image']) ? BASE_URL . '/' . htmlspecialchars($category['image']) : BASE_URL . '/public/images/A1.png' ?>"
                                 class="category-image"
                                 alt="<?= htmlspecialchars($category['name']) ?>"
-                                onerror="this.src='/webbanhang/public/images/A1.png'">
+                                onerror="this.src='<?= BASE_URL ?>/public/images/A1.png'">
                             <h3 class="category-name">
                                 <?= htmlspecialchars($category['name']) ?>
                             </h3>
@@ -105,7 +105,7 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
 
 
                     <div class="promo-icon">
-                        <img src="/webbanhang/uploads/Promotions/<?= $img ?>">
+                        <img src="<?= BASE_URL ?>/uploads/Promotions/<?= $img ?>">
                     </div>
 
                     <div class="promo-info">
@@ -129,7 +129,7 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
                         <?php if (!$hasRecord): ?>
 
                             <!-- CHƯA NHẬN -->
-                            <a href="/webbanhang/promotion/receive/<?= (int)$promo['id'] ?>"
+                            <a href="<?= BASE_URL ?>/promotion/receive/<?= (int)$promo['id'] ?>"
                                 class="btn btn-sm btn-primary mt-2">
                                 Nhận ngay
                             </a>
@@ -169,8 +169,8 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
                 <div class="product-grid">
                     <?php foreach ($topProducts as $product): ?>
                         <div class="product-card">
-                            <a href="/webbanhang/Product/view/<?= htmlspecialchars($product['id']); ?>" class="product-image-link">
-                                <img src="/webbanhang/<?= htmlspecialchars($product['image']); ?>" alt="<?= htmlspecialchars($product['name']); ?>" class="product-image" onerror="this.src='/webbanhang/public/images/no-image.png';this.onerror=null;">
+                            <a href="<?= BASE_URL ?>/Product/view/<?= htmlspecialchars($product['id']); ?>" class="product-image-link">
+                                <img src="<?= BASE_URL ?>/<?= htmlspecialchars($product['image']); ?>" alt="<?= htmlspecialchars($product['name']); ?>" class="product-image" onerror="this.src='<?= BASE_URL ?>/public/images/no-image.png';this.onerror=null;">
                             </a>
                             <div class="product-info">
                                 <h3 class="product-name"><?= htmlspecialchars($product['name']); ?></h3>
@@ -180,8 +180,8 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
                                 </div>
                             </div>
                             <div class="product-actions">
-                                <a href="/webbanhang/cart/add/<?= htmlspecialchars($product['id']); ?>" class="btn btn-primary">Thêm vào giỏ</a>
-                                <a href="/webbanhang/Product/view/<?= htmlspecialchars($product['id']); ?>" class="btn btn-secondary">Chi tiết</a>
+                                <a href="<?= BASE_URL ?>/cart/add/<?= htmlspecialchars($product['id']); ?>" class="btn btn-primary">Thêm vào giỏ</a>
+                                <a href="<?= BASE_URL ?>/Product/view/<?= htmlspecialchars($product['id']); ?>" class="btn btn-secondary">Chi tiết</a>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -194,12 +194,12 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
     </section>
 
     <!-- Mid-page Promotional Banner -->
-    <section class="promo-banner my-5" style="background-image: url('/webbanhang/uploads/baner2.jpg');">
+    <section class="promo-banner my-5" style="background-image: url('<?= BASE_URL ?>/uploads/baner2.jpg');">
         <!-- Nếu có nội dung, hãy bỏ comment phần này -->
         <!-- <div class="promo-content">
             <h2>Ưu Đãi Đặc Biệt Tháng Này!</h2>
             <p>Giảm giá lên đến 30% cho tất cả sản phẩm chăm sóc sức khỏe.</p>
-            <a href="/webbanhang/promotion" class="btn btn-primary promo-btn">Xem Chi Tiết</a>
+            <a href="<?= BASE_URL ?>/promotion" class="btn btn-primary promo-btn">Xem Chi Tiết</a>
         </div> -->
     </section>
 
@@ -218,8 +218,8 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
                 <div class="product-grid">
                     <?php foreach ($topSellingProducts as $product): ?>
                         <div class="product-card">
-                            <a href="/webbanhang/Product/view/<?= htmlspecialchars($product['id']); ?>" class="product-image-link">
-                                <img src="/webbanhang/<?= htmlspecialchars($product['image']); ?>" alt="<?= htmlspecialchars($product['name']); ?>" class="product-image" onerror="this.src='/webbanhang/public/images/no-image.png';this.onerror=null;">
+                            <a href="<?= BASE_URL ?>/Product/view/<?= htmlspecialchars($product['id']); ?>" class="product-image-link">
+                                <img src="<?= BASE_URL ?>/<?= htmlspecialchars($product['image']); ?>" alt="<?= htmlspecialchars($product['name']); ?>" class="product-image" onerror="this.src='<?= BASE_URL ?>/public/images/no-image.png';this.onerror=null;">
                             </a>
                             <div class="product-info">
                                 <h3 class="product-name"><?= htmlspecialchars($product['name']); ?></h3>
@@ -229,8 +229,8 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
                                 </div>
                             </div>
                             <div class="product-actions">
-                                <a href="/webbanhang/cart/add/<?= $product['id']; ?>" class="btn btn-primary">Thêm vào giỏ</a>
-                                <a href="/webbanhang/Product/view/<?= $product['id']; ?>" class="btn btn-secondary">Chi tiết</a>
+                                <a href="<?= BASE_URL ?>/cart/add/<?= $product['id']; ?>" class="btn btn-primary">Thêm vào giỏ</a>
+                                <a href="<?= BASE_URL ?>/Product/view/<?= $product['id']; ?>" class="btn btn-secondary">Chi tiết</a>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -261,12 +261,12 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
                 <div class="product-grid">
                     <?php foreach ($newArrivals as $product): ?>
                         <div class="product-card">
-                            <a href="/webbanhang/Product/view/<?= htmlspecialchars($product['id']) ?>" class="product-image-link">
+                            <a href="<?= BASE_URL ?>/Product/view/<?= htmlspecialchars($product['id']) ?>" class="product-image-link">
                                 <img
-                                    src="/webbanhang/<?= htmlspecialchars($product['image']) ?>"
+                                    src="<?= BASE_URL ?>/<?= htmlspecialchars($product['image']) ?>"
                                     alt="<?= htmlspecialchars($product['name']) ?>"
                                     class="product-image"
-                                    onerror="this.src='/webbanhang/public/images/no-image.png';this.onerror=null;">
+                                    onerror="this.src='<?= BASE_URL ?>/public/images/no-image.png';this.onerror=null;">
                             </a>
 
                             <div class="product-info">
@@ -285,10 +285,10 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
                             </div>
 
                             <div class="product-actions">
-                                <a href="/webbanhang/cart/add/<?= $product['id'] ?>" class="btn btn-primary">
+                                <a href="<?= BASE_URL ?>/cart/add/<?= $product['id'] ?>" class="btn btn-primary">
                                     Thêm vào giỏ
                                 </a>
-                                <a href="/webbanhang/Product/view/<?= $product['id'] ?>" class="btn btn-secondary">
+                                <a href="<?= BASE_URL ?>/Product/view/<?= $product['id'] ?>" class="btn btn-secondary">
                                     Chi tiết
                                 </a>
                             </div>
@@ -319,7 +319,7 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
         const slideshowContainer = document.querySelector(".slideshow-container");
         if (slideshowContainer) {
             const images = [
-                "/webbanhang/public/images/banner.jpg"
+                "<?= BASE_URL ?>/public/images/banner.jpg"
             ];
             let currentIndex = 0;
             let slideInterval;
@@ -362,9 +362,9 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
         if (baseContainer) {
             const images2 = [
 
-                "/webbanhang/public/images/aq1.jpg",
-                "/webbanhang/public/images/aq2.jpg",
-                "/webbanhang/public/images/aq3.jpg"
+                "<?= BASE_URL ?>/public/images/aq1.jpg",
+                "<?= BASE_URL ?>/public/images/aq2.jpg",
+                "<?= BASE_URL ?>/public/images/aq3.jpg"
             ];
             let currentIndex2 = 0;
             let slideInterval2;
@@ -456,7 +456,7 @@ $cartCount = isset($_SESSION['cart']) && is_array($_SESSION['cart'])
                 if (keyword.length > 1) {
                     debounceTimeout = setTimeout(() => {
                         $.ajax({
-                            url: '/webbanhang/Product/autocomplete',
+                            url: '<?= BASE_URL ?>/Product/autocomplete',
                             method: 'GET',
                             data: {
                                 keyword

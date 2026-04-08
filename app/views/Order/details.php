@@ -39,7 +39,7 @@
             <p class="text-muted">Xem lại thông tin và các sản phẩm trong đơn hàng của bạn.</p>
         </div>
         <div class="back-btn-wrapper">
-            <a href="/webbanhang/order/index" class="btn-back">
+            <a href="<?= BASE_URL ?>/order/index" class="btn-back">
                 <i class="bi bi-arrow-left"></i>
                 Quay lại danh sách đơn hàng
             </a>
@@ -180,7 +180,7 @@
                         <?php foreach ($orderDetails as $detail): ?>
                             <div class="product-item-details">
                                 <!-- Hình ảnh sản phẩm -->
-                                <img src="/webbanhang/<?php echo htmlspecialchars($detail['product_image']); ?>" alt="<?php echo htmlspecialchars($detail['product_name']); ?>" class="product-image-details">
+                                <img src="<?= BASE_URL ?>/<?php echo htmlspecialchars($detail['product_image']); ?>" alt="<?php echo htmlspecialchars($detail['product_name']); ?>" class="product-image-details">
 
                                 <div class="product-info">
                                     <h6><?php echo htmlspecialchars($detail['product_name']); ?></h6>
@@ -194,9 +194,9 @@
                                     <!-- Nút đánh giá -->
                                     <?php if ($order->status === 'completed'): ?>
                                         <?php if ($detail['is_reviewed'] == 1): ?>
-                                            <a href="/webbanhang/Rating/edit/<?php echo $detail['product_id']; ?>/<?php echo $order->id; ?>" class="btn btn-sm btn-outline-success">Sửa Đánh Giá</a>
+                                            <a href="<?= BASE_URL ?>/Rating/edit/<?php echo $detail['product_id']; ?>/<?php echo $order->id; ?>" class="btn btn-sm btn-outline-success">Sửa Đánh Giá</a>
                                         <?php else: ?>
-                                            <a href="/webbanhang/Rating/create/<?php echo $detail['product_id']; ?>/<?php echo $order->id; ?>" class="btn btn-sm btn-primary">Viết Đánh Giá</a>
+                                            <a href="<?= BASE_URL ?>/Rating/create/<?php echo $detail['product_id']; ?>/<?php echo $order->id; ?>" class="btn btn-sm btn-primary">Viết Đánh Giá</a>
                                         <?php endif; ?>
                                     <?php else: ?>
                                         <button class="btn btn-sm btn-secondary" disabled>Chờ Hoàn Thành</button>

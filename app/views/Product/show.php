@@ -11,7 +11,7 @@
 
             <!-- CỘT BÊN TRÁI: HÌNH ẢNH SẢN PHẨM -->
             <div class="product-gallery">
-                <img src="/webbanhang/<?= htmlspecialchars($product->image) ?>" alt="<?= htmlspecialchars($product->name) ?>" class="main-product-image" onerror="this.src='/webbanhang/public/images/no-image.png';this.onerror=null;">
+                <img src="<?= BASE_URL ?>/<?= htmlspecialchars($product->image) ?>" alt="<?= htmlspecialchars($product->name) ?>" class="main-product-image" onerror="this.src='<?= BASE_URL ?>/public/images/no-image.png';this.onerror=null;">
                 <!-- (Tùy chọn) Thêm các ảnh thumbnail ở đây nếu có -->
             </div>
 
@@ -55,12 +55,12 @@
 
                     <!-- Các nút hành động -->
                     <div class="panel-buttons-section">
-                        <form id="add-to-cart-form" method="POST" action="/webbanhang/Cart/addFromDetail">
+                        <form id="add-to-cart-form" method="POST" action="<?= BASE_URL ?>/Cart/addFromDetail">
                             <input type="hidden" name="product_id" value="<?= htmlspecialchars($product->id) ?>">
                             <input type="hidden" name="quantity" id="cart-quantity">
                             <button type="submit" class="btn-re btn-add-to-cart">Thêm vào giỏ hàng</button>
                         </form>
-                        <form action="/webbanhang/Order/checkout" method="POST">
+                        <form action="<?= BASE_URL ?>/Order/checkout" method="POST">
                             <input type="hidden" name="product_id" value="<?= htmlspecialchars($product->id) ?>">
                             <input type="hidden" name="quantity" id="buy-now-quantity">
                             <button type="submit" class="btn-re btn-buy-now">Mua Ngay</button>
@@ -140,20 +140,20 @@
                     <div class="related-products-list">
                         <?php foreach ($similarProducts as $similar): ?>
                             <div class="related-product-card">
-                                <a href="/webbanhang/Product/view/<?= htmlspecialchars($similar->id) ?>?category_id=<?= htmlspecialchars($similar->category_id) ?>" class="product-link">
-                                    <img src="/webbanhang/<?= htmlspecialchars($similar->image) ?>" class="related-product-img" alt="<?= htmlspecialchars($similar->name) ?>" onerror="this.src='/webbanhang/public/images/no-image.png';this.onerror=null;">
+                                <a href="<?= BASE_URL ?>/Product/view/<?= htmlspecialchars($similar->id) ?>?category_id=<?= htmlspecialchars($similar->category_id) ?>" class="product-link">
+                                    <img src="<?= BASE_URL ?>/<?= htmlspecialchars($similar->image) ?>" class="related-product-img" alt="<?= htmlspecialchars($similar->name) ?>" onerror="this.src='<?= BASE_URL ?>/public/images/no-image.png';this.onerror=null;">
                                     <div class="related-product-body">
                                         <h5 class="related-product-title"><?= htmlspecialchars($similar->name, ENT_QUOTES, 'UTF-8'); ?></h5>
                                         <p class="related-product-price"><?= number_format($similar->price, 0, ',', '.'); ?> VND</p>
                                     </div>
                                 </a>
-                                <a href="/webbanhang/Cart/add/<?= htmlspecialchars($similar->id) ?>" class="btn-re btn-quick-add">Thêm vào giỏ</a>
+                                <a href="<?= BASE_URL ?>/Cart/add/<?= htmlspecialchars($similar->id) ?>" class="btn-re btn-quick-add">Thêm vào giỏ</a>
                             </div>
                         <?php endforeach; ?>
                     </div>
                     <?php if (!empty($similarProducts)): ?>
                         <div class="see-all-container">
-                            <a href="/webbanhang/Product/categoryList/<?= htmlspecialchars($similarProducts[0]->category_id) ?>" class="btn-re btn-see-all">
+                            <a href="<?= BASE_URL ?>/Product/categoryList/<?= htmlspecialchars($similarProducts[0]->category_id) ?>" class="btn-re btn-see-all">
                                 Xem tất cả sản phẩm cùng danh mục &rarr;
                             </a>
                         </div>
@@ -172,7 +172,7 @@
         const rating = this.value;
         const productId = <?= json_encode($product->id) ?>;
 
-        fetch(`/webbanhang/Product/reviewFilter?product_id=${productId}&rating=${rating}`)
+        fetch(`<?= BASE_URL ?>/Product/reviewFilter?product_id=${productId}&rating=${rating}`)
             .then(response => response.text())
             .then(html => {
                 document.getElementById('review-list-container').innerHTML = html;
@@ -224,7 +224,7 @@
                             }
 
                             // ✅ Chuyển sang trang giỏ hàng
-                            window.location.href = '/webbanhang/cart/index';
+                            window.location.href = '<?= BASE_URL ?>/cart/index';
                         } else {
                             alert(data.message);
                         }

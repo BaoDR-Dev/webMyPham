@@ -22,7 +22,7 @@ if ($promotion_id) {
 // Kiểm tra lại lần cuối trước khi ghi DB để tránh lỗi Column cannot be null
 if ($totalAmount <= 0) {
     error_log("Lỗi: Tổng tiền thanh toán bằng 0.");
-    header("Location: /webbanhang/cart/error");
+    header("Location: " . BASE_URL . "/cart/error");
     exit;
 }
 
@@ -41,7 +41,7 @@ $orderId = $this->orderModel->createOrder(
 
 if (!$orderId) {
     error_log("Tạo đơn hàng thất bại cho tài khoản ID: " . $account_id);
-    header("Location: /webbanhang/cart/error");
+    header("Location: " . BASE_URL . "/cart/error");
     exit;
 }
 
@@ -56,27 +56,9 @@ if ($promotion_id) {
     $this->accountPromotionModel->usePromotion($account_id, $promotion_id);
 }
 
-// 5. Lấy thông tin tài khoản để gửi mail
-$account = $this->accountModel->getAccountById($account_id);
-
-if ($account && !empty($account->email)) {
-    $helperPath = __DIR__ . '/../helpers/EmailHelper.php';
-    if (file_exists($helperPath)) {
-        require_once $helperPath;
-        EmailHelper::sendOrderConfirmationEmail(
-            $account->email,
-            $orderId,
-            $totalAmount,    // Số tiền cuối khách đã trả
-            $cartItems,
-            $address,
-            $phone_number,
-            $account->full_name,
-            $shippingFee,
-            $discount_amount, // Tham số mới 1
-            $promoName        // Tham số mới 2
-        );
-    }
-}
+// 5. Lấy thông tin tài khoản để gửi mail - tắt để tránh timeout trên cloud
+// $account = $this->accountModel->getAccountById($account_id);
+// if ($account && !empty($account->email)) { ... }
 
 // 6. Dọn dẹp giỏ hàng & Session
 $this->cartModel->clearSelectedCartItems($account_id);
@@ -96,5 +78,5 @@ unset(
 
 // 7. Hiển thị trang cảm ơn
 $order = $this->orderModel->getOrderById($orderId);
-include 'app/views/order/thankYou.php';
+include 'app/views/Order/thankYou.php';
 return;

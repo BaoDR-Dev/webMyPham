@@ -157,7 +157,7 @@
                             <td>#<?= htmlspecialchars($product->id ?? '0') ?></td>
                             <td>
                                 <div class="product-image-info">
-                                    <img src="/webbanhang/<?= htmlspecialchars($product->image ?? 'public/images/default.jpg') ?>"
+                                    <img src="<?= BASE_URL ?>/<?= htmlspecialchars($product->image ?? 'public/images/default.jpg') ?>"
                                         class="img-product-modern">
                                     <div>
                                         <div class="product-name"><?= htmlspecialchars($product->name ?? 'Không rõ') ?></div>
@@ -188,15 +188,15 @@
                             <td>
                                 <div class="action-buttons-group">
                                     <?php if (SessionHelper::isAdmin()): ?>
-                                        <a href="/webbanhang/Product/edit/<?= $product->id ?>" class="btn-action-icon text-primary" title="Chỉnh sửa">
+                                        <a href="<?= BASE_URL ?>/Product/edit/<?= $product->id ?>" class="btn-action-icon text-primary" title="Chỉnh sửa">
                                             <i class="bi bi-pencil"></i>
                                         </a>
                                         <button class="btn-action-icon text-danger btn-delete-product" data-id="<?= $product->id ?>" title="Xóa">
                                             <i class="bi bi-trash3"></i>
                                         </button>
                                     <?php else: ?>
-                                        <a href="/webbanhang/Product/view/<?= $product->id ?>" class="btn btn-white rounded-pill me-2">Chi tiết</a>
-                                        <a href="/webbanhang/cart/add/<?= $product->id ?>" class="btn btn-primary rounded-pill">Mua</a>
+                                        <a href="<?= BASE_URL ?>/Product/view/<?= $product->id ?>" class="btn btn-white rounded-pill me-2">Chi tiết</a>
+                                        <a href="<?= BASE_URL ?>/cart/add/<?= $product->id ?>" class="btn btn-primary rounded-pill">Mua</a>
                                     <?php endif; ?>
                                 </div>
                             </td>
@@ -227,7 +227,7 @@
     function handleDeleteProduct() {
         const productId = this.dataset.id;
         if (confirm('Bạn có chắc muốn xóa sản phẩm này?')) {
-            fetch(`/webbanhang/Product/deleteAjax/${productId}`, { // Sửa lỗi cú pháp URL
+            fetch(`<?= BASE_URL ?>/Product/deleteAjax/${productId}`, { // Sửa lỗi cú pháp URL
                     method: 'DELETE',
                 })
                 .then(response => response.json())

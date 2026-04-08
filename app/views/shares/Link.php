@@ -4,7 +4,7 @@ $currentUrl = $_SERVER['REQUEST_URI'];
 $breadcrumbs = [
     [
         'name' => 'Trang chủ',
-        'url' => '/webbanhang/product/home'
+        'url' => '<?= BASE_URL ?>/product/home'
     ]
 ];
 
@@ -39,7 +39,7 @@ if (preg_match('#/product/view/(\d+)#i', $currentUrl, $matches)) {
             if ($cat->id == $categoryId) {
                 $breadcrumbs[] = [
                     'name' => htmlspecialchars($cat->name),
-                    'url' => '/webbanhang/Product/categoryList/' . $cat->id
+                    'url' => '<?= BASE_URL ?>/Product/categoryList/' . $cat->id
                 ];
                 break;
             }

@@ -68,7 +68,9 @@ class EmailHelper
     {
         try {
             $mail = self::configureMailer();
-            $resetLink = "http://localhost:889/webbanhang/account/resetPassword?token=" . urlencode($token);
+            $scheme = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+            $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+            $resetLink = $scheme . '://' . $host . BASE_URL . '/account/resetPassword?token=' . urlencode($token);
 
             $mail->addAddress($recipientEmail);
             $mail->isHTML(true);

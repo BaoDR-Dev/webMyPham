@@ -46,13 +46,13 @@ class OrderController
 
         $account_id = $_SESSION['account_id'] ?? null;
         if (!$account_id) {
-            include 'app/views/account/login.php';
+            include 'app/views/Account/login.php';
             return;
         }
 
         $orders = $this->orderModel->getOrdersByAccountId($account_id);
 
-        include 'app/views/order/orders.php';
+        include 'app/views/Order/orders.php';
     }
 
     public function cancelOrder($orderId)
@@ -155,7 +155,7 @@ class OrderController
         $_SESSION['totalAmount'] = $totalAmount;
 
         // Redirect to details preview page
-        header('Location: /webbanhang/Order/detailsPreview');
+        header('Location: ' . BASE_URL . '/Order/detailsPreview');
         exit;
     }
 
@@ -204,7 +204,7 @@ class OrderController
         $_SESSION['applied_promotion_id'] = $selected_promo_id;
         $_SESSION['discount_amount'] = $discount_amount;
 
-        include 'app/views/order/detailsPreview.php';
+        include 'app/views/Order/detailsPreview.php';
     }
 
     function execPostRequest($url, $data)
@@ -365,13 +365,13 @@ class OrderController
             // --- KẾT THÚC THAY ĐỔI ---
 
             // Chuyển về trang cảm ơn
-            header("Location: /webbanhang/Order/thankYouSuccess");
+            header("Location: " . BASE_URL . "/Order/thankYouSuccess");
             exit;
         } else {
             // Xử lý lỗi nếu không tạo được đơn hàng
             error_log("Không thể tạo đơn hàng từ createOrderAndRedirectThankYou");
             // Chuyển hướng về trang giỏ hàng hoặc trang lỗi
-            header("Location: /webbanhang/cart/error");
+            header("Location: " . BASE_URL . "/cart/error");
             exit;
         }
     }
@@ -395,7 +395,7 @@ class OrderController
         var_dump($account);
         exit;
 
-        include 'app/views/order/thankYou.php';
+        include 'app/views/Order/thankYou.php';
     }
 
 
@@ -415,7 +415,7 @@ class OrderController
         }
 
         if ($resultCode != 0) {
-            include 'app/views/order/sorry.php';
+            include 'app/views/Order/Sorry.php';
             return;
         }
 
@@ -475,26 +475,19 @@ class OrderController
             $this->cartModel->clearSelectedCartItems($account_id);
             $this->updateCartSession($account_id);
 
-            // Gửi email xác nhận
-            $account = $this->accountModel->getAccountById($account_id);
-            if ($account && !empty($account->email)) {
-                $helperPath = __DIR__ . '/../helpers/EmailHelper.php';
-                if (file_exists($helperPath)) {
-                    require_once $helperPath;
-                    EmailHelper::sendOrderConfirmationEmail(
-                        $account->email,
-                        $orderId,
-                        $totalAmount,    // Số tiền cuối khách đã trả
-                        $cartItems,
-                        $address,
-                        $phone_number,
-                        $account->full_name,
-                        $shippingFee,
-                        $discount_amount, // Tham số mới 1
-                        $promoName        // Tham số mới 2
-                    );
-                }
-            }
+            // Gửi email xác nhận - tắt để tránh timeout trên cloud
+            // $account = $this->accountModel->getAccountById($account_id);
+            // if ($account && !empty($account->email)) {
+            //     $helperPath = __DIR__ . '/../helpers/EmailHelper.php';
+            //     if (file_exists($helperPath)) {
+            //         require_once $helperPath;
+            //         EmailHelper::sendOrderConfirmationEmail(
+            //             $account->email, $orderId, $totalAmount, $cartItems,
+            //             $address, $phone_number, $account->full_name,
+            //             $shippingFee, $discount_amount, $promoName
+            //         );
+            //     }
+            // }
 
             // --- CẬP NHẬT: Xóa các session liên quan khuyến mãi và thanh toán ---
             unset(
@@ -511,7 +504,7 @@ class OrderController
 
             // Hiển thị trang cảm ơn
             $order = $this->orderModel->getOrderById($orderId);
-            include 'app/views/order/thankYou.php';
+            include 'app/views/Order/thankYou.php';
         } else {
             echo "Lỗi khi lưu đơn hàng vào hệ thống.";
         }
@@ -535,7 +528,7 @@ class OrderController
 
         // VNPAY trả về '00' là thành công
         if ($vnp_ResponseCode != '00' || $vnp_TransactionStatus != '00') {
-            include 'app/views/order/sorry.php';
+            include 'app/views/Order/Sorry.php';
             return;
         }
 
@@ -593,24 +586,18 @@ class OrderController
             $this->cartModel->clearSelectedCartItems($account_id);
             $this->updateCartSession($account_id);
 
-            // Lấy thông tin tài khoản để gửi mail xác nhận
-            $account = $this->accountModel->getAccountById($account_id);
-            if ($account && !empty($account->email)) {
-                $helperPath = __DIR__ . '/../helpers/EmailHelper.php';
-                if (file_exists($helperPath)) {
-                    require_once $helperPath;
-                    EmailHelper::sendOrderConfirmationEmail(
-                        $account->email,
-                        $orderId,
-                        $totalAmount,
-                        $cartItems,
-                        $address,
-                        $phone_number,
-                        $account->full_name,
-                        $shippingFee
-                    );
-                }
-            }
+            // Lấy thông tin tài khoản để gửi mail xác nhận - tắt để tránh timeout trên cloud
+            // $account = $this->accountModel->getAccountById($account_id);
+            // if ($account && !empty($account->email)) {
+            //     $helperPath = __DIR__ . '/../helpers/EmailHelper.php';
+            //     if (file_exists($helperPath)) {
+            //         require_once $helperPath;
+            //         EmailHelper::sendOrderConfirmationEmail(
+            //             $account->email, $orderId, $totalAmount, $cartItems,
+            //             $address, $phone_number, $account->full_name, $shippingFee
+            //         );
+            //     }
+            // }
 
             // --- CẬP NHẬT: Dọn dẹp sạch sẽ Session sau khi hoàn tất ---
             unset(
@@ -629,7 +616,7 @@ class OrderController
             $order = $this->orderModel->getOrderById($orderId);
             $account = $this->accountModel->getAccountById($account_id);
 
-            include 'app/views/order/thankYou.php';
+            include 'app/views/Order/thankYou.php';
         } else {
             error_log("Lỗi tạo đơn hàng VNPAY cho Account ID: " . $account_id);
             echo "Có lỗi xảy ra trong quá trình tạo đơn hàng.";
@@ -667,7 +654,7 @@ class OrderController
         $orderDetails = $this->orderDetailsModel->getOrderDetailsByOrderId($orderId);
 
         // Kiểm tra và truyền dữ liệu tới view
-        include 'app/views/order/details.php';
+        include 'app/views/Order/details.php';
     }
 
 
@@ -697,14 +684,14 @@ class OrderController
         $customerInfo = $this->accountModel->getProfileByEmail($_SESSION['email']);
 
         // Hiển thị trang chi tiết đơn hàng
-        include 'app/views/order/details.php';
+        include 'app/views/Order/details.php';
     }
 
     public function filterForUser()
     {
         if (session_status() === PHP_SESSION_NONE) session_start();
         if (!isset($_SESSION['user_id'])) {
-            header('Location: /webbanhang/Auth/login');
+            header('Location: ' . BASE_URL . '/Auth/login');
             exit;
         }
 
@@ -813,6 +800,6 @@ class OrderController
         $orders = $this->orderModel->filterOrdersByUser($account_id, $filters);
 
         // Trả về partial html hoặc json tuỳ bạn muốn
-        include 'app/views/order/listorder2.php';
+        include 'app/views/Order/listorder2.php';
     }
 }

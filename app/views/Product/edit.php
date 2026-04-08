@@ -121,7 +121,7 @@
 <div class="khuon-add">
     <h1 class="textadd">Chỉnh sửa sản phẩm</h1>
 
-    <form method="POST" action="/webbanhang/Product/update" enctype="multipart/form-data" class="form-container-card">
+    <form method="POST" action="<?= BASE_URL ?>/Product/update" enctype="multipart/form-data" class="form-container-card">
         <input type="hidden" name="id" value="<?= htmlspecialchars($product->id); ?>">
         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?? ''; ?>">
 
@@ -188,7 +188,7 @@
                         <label>Hình ảnh sản phẩm</label>
                         <div class="mb-2 text-center" id="image-preview">
                             <?php if (!empty($product->image)): ?>
-                                <img src="/webbanhang/<?= $product->image; ?>" class="product-image-preview img-fluid">
+                                <img src="<?= BASE_URL ?>/<?= $product->image; ?>" class="product-image-preview img-fluid">
                             <?php else: ?>
                                 <div class="py-4 text-muted small border rounded">Chưa có ảnh</div>
                             <?php endif; ?>
@@ -202,7 +202,7 @@
                     <button type="submit" class="btn btn-save">
                         <i class="bi bi-check-circle me-2"></i>Cập nhật ngay
                     </button>
-                    <a href="/webbanhang/Admin/adminCategoryList/<?= $product->category_id; ?>" class="btn btn-back">
+                    <a href="<?= BASE_URL ?>/Admin/adminCategoryList/<?= $product->category_id; ?>" class="btn btn-back">
                         Quay lại
                     </a>
                 </div>

@@ -171,7 +171,7 @@
     </div>
 
     <div class="offcanvas-body">
-        <form method="get" action="/webbanhang/Admin/filter" id="filterForm">
+        <form method="get" action="<?= BASE_URL ?>/Admin/filter" id="filterForm">
             <input type="hidden" name="keyword" id="filterSearchInput">
 
             <!-- Tên khách hàng -->

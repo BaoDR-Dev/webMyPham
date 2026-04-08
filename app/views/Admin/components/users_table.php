@@ -253,7 +253,7 @@
                             </div>
                         </td>
                         <td class="text-center">
-                            <a href="/webbanhang/Admin/userDetails?user_id=<?= $user->id ?>"
+                            <a href="<?= BASE_URL ?>/Admin/userDetails?user_id=<?= $user->id ?>"
                                 class="btn btn-sm btn-outline-primary view-history"
                                 title="Xem lịch sử mua hàng">
                                 <i class="bi bi-clock-history"></i>

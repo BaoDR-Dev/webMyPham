@@ -186,10 +186,10 @@
                         <!-- CỘT TRÁI: BANNER -->
                         <div class="col-lg-5 d-none d-lg-block">
                             <div class="banner-register-new">
-                                <img src="/webbanhang/public/images/Logo.png" alt="Logo" style="width: 80px; margin-bottom: 20px; z-index: 1;">
-                                <h3>Tham gia cùng<br>Y Tế 24/7</h3>
+                                <img src="<?= BASE_URL ?>/public/images/Logo.png" alt="Logo" style="width: 80px; margin-bottom: 20px; z-index: 1;">
+                                <h3>Tham gia cùng<br>The Boys</h3>
                                 <p>Tạo tài khoản để nhận ưu đãi hấp dẫn và theo dõi đơn hàng dễ dàng.</p>
-                                <a href="/webbanhang/account/login" class="btn-outline-light-custom">Đã có tài khoản?</a>
+                                <a href="<?= BASE_URL ?>/account/login" class="btn-outline-light-custom">Đã có tài khoản?</a>
                             </div>
                         </div>
 
@@ -209,7 +209,7 @@
                                     </div>
                                 <?php endif; ?>
 
-                                <form action="/webbanhang/account/save" method="post">
+                                <form action="<?= BASE_URL ?>/account/save" method="post">
 
                                     <!-- Họ tên & Email -->
                                     <div class="form-floating mb-3">
@@ -267,7 +267,7 @@
 
                                     <!-- Link Mobile Only -->
                                     <div class="text-center mt-4 d-lg-none">
-                                        <p>Đã có tài khoản? <a href="/webbanhang/account/login" class="text-primary fw-bold text-decoration-none">Đăng nhập ngay</a></p>
+                                        <p>Đã có tài khoản? <a href="<?= BASE_URL ?>/account/login" class="text-primary fw-bold text-decoration-none">Đăng nhập ngay</a></p>
                                     </div>
 
                                 </form>

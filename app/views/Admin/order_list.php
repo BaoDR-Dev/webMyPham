@@ -189,7 +189,7 @@
 
             orderTableContainer.classList.add("table-loading");
 
-            fetch("/webbanhang/Admin/ajaxFilterOrder" + queryString, {
+            fetch("<?= BASE_URL ?>/Admin/ajaxFilterOrder" + queryString, {
                     signal: currentController.signal,
                     headers: {
                         "X-Requested-With": "XMLHttpRequest"
@@ -213,7 +213,7 @@
         //     // orderTableContainer.classList.add("d-none");
         //     // orderDataLoader.classList.remove("d-none");
 
-        //     fetch("/webbanhang/Admin/ajaxFilterOrder" + queryString, {
+        //     fetch("<?= BASE_URL ?>/Admin/ajaxFilterOrder" + queryString, {
         //             method: "GET",
         //             headers: {
         //                 "X-Requested-With": "XMLHttpRequest"

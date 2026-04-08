@@ -29,16 +29,16 @@
 
         <!-- Các nút hành động -->
         <div class="cta-buttons">
-            <a href="/webbanhang/Order/detailsPreview" class="btn btn-warning btn-lg">
+            <a href="<?= BASE_URL ?>/Order/detailsPreview" class="btn btn-warning btn-lg">
                 <i class="bi bi-arrow-clockwise me-2"></i>Thử Lại Thanh Toán
             </a>
-            <a href="/webbanhang/Cart/index" class="btn btn-outline-secondary btn-lg">
+            <a href="<?= BASE_URL ?>/Cart/index" class="btn btn-outline-secondary btn-lg">
                 <i class="bi bi-cart3 me-2"></i>Quay Lại Giỏ Hàng
             </a>
         </div>
 
         <div class="mt-4">
-            <small class="text-muted">Nếu vẫn gặp sự cố, vui lòng <a href="/webbanhang/contact">liên hệ hỗ trợ</a>.</small>
+            <small class="text-muted">Nếu vẫn gặp sự cố, vui lòng <a href="<?= BASE_URL ?>/contact">liên hệ hỗ trợ</a>.</small>
         </div>
     </div>
 </div>

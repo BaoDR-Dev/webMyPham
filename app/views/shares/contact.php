@@ -4,50 +4,46 @@
 <div class="about-page">
     <div class="page-wrapper">
 
-        <!-- GIỚI THIỆU -->
+        <!-- GIOI THIEU -->
         <section class="section-card">
             <div class="section-header">
-                <h1>Về Mỹ Phẩm The Boy</h1>
+                <h1>Ve My Pham The Boys</h1>
             </div>
 
             <div class="about-grid">
                 <div>
-                    <h3>🌿 Sứ mệnh của chúng tôi</h3>
+                    <h3>🌿 Su menh cua chung toi</h3>
                     <p>
-                        “Sức Khỏe Việt” mang đến các sản phẩm y tế chất lượng – hiện đại – an toàn,
-                        giúp nâng cao sức khỏe cho mọi gia đình Việt Nam.
+                        "The Boys" mang den cac san pham my pham chat luong - hien dai - an toan,
+                        giup nang cao ve dep va su tu tin cho moi nguoi.
                     </p>
 
-                    <h3>💡 Tầm nhìn & Giá trị</h3>
+                    <h3>💡 Tam nhin & Gia tri</h3>
                     <p>
-                        Trở thành đơn vị uy tín hàng đầu trong lĩnh vực thiết bị y tế, luôn lấy
-                        “chất lượng – uy tín – tận tâm” làm kim chỉ nam.
+                        Tro thanh thuong hieu my pham uy tin hang dau, luon lay
+                        "chat luong - uy tin - tan tam" lam kim chi nam.
                     </p>
                 </div>
-
-                <!-- <div class="about-image">
-                    <img src="/webbanhang/public/images/iiii.png" alt="">
-                </div> -->
             </div>
 
             <div class="commitments">
-                <h3>⭐ Cam kết vàng của chúng tôi</h3>
+                <h3>⭐ Cam ket vang cua chung toi</h3>
                 <ul>
-                    <li>100% sản phẩm chính hãng.</li>
-                    <li>Đổi trả trong 7 ngày nếu sản phẩm lỗi.</li>
-                    <li>Bảo hành minh bạch – hỗ trợ nhanh.</li>
-                    <li>Giao hàng toàn quốc – miễn phí nội thành.</li>
-                    <li>Tư vấn viên tận tâm – giàu chuyên môn.</li>
+                    <li>100% san pham chinh hang.</li>
+                    <li>Doi tra trong 7 ngay neu san pham loi.</li>
+                    <li>Bao hanh minh bach - ho tro nhanh.</li>
+                    <li>Giao hang toan quoc - mien phi noi thanh.</li>
+                    <li>Tu van vien tan tam - giau chuyen mon.</li>
                 </ul>
             </div>
 
-            <div class="slogan">❤️ “Sức khỏe hôm nay – Hạnh phúc ngày mai” ❤️</div>
+            <div class="slogan">❤️ "Dep moi ngay - Tu tin moi luc" ❤️</div>
         </section>
 
-        <!-- LIÊN HỆ -->
+        <!-- LIEN HE -->
         <section class="section-card">
             <div class="section-header">
-                <h1>Liên hệ với chúng tôi</h1>
+                <h1>Lien he voi chung toi</h1>
             </div>
 
             <div class="contact-grid">
@@ -57,36 +53,30 @@
                 </div>
 
                 <div class="contact-info">
-                    <h3>Thông tin liên lạc</h3>
+                    <h3>Thong tin lien lac</h3>
 
                     <div class="info-item">
-                        <div class="icon"><svg viewBox="0 0 24 24">
-                                <path d="M12 2C8.13..." />
-                            </svg></div>
-                        <div><strong>Địa chỉ:</strong><br> A124, QL50, Bình Chánh, TP.HCM</div>
+                        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13..." /></svg></div>
+                        <div><strong>Dia chi:</strong><br> A124, QL50, Binh Chanh, TP.HCM</div>
                     </div>
 
                     <div class="info-item">
-                        <div class="icon"><svg viewBox="0 0 24 24">
-                                <path d="M20 4H4..." />
-                            </svg></div>
-                        <div><strong>Email:</strong><br><a href="">cuahangthietbiyte247@gmail.com</a></div>
+                        <div class="icon"><svg viewBox="0 0 24 24"><path d="M20 4H4..." /></svg></div>
+                        <div><strong>Email:</strong><br><a href="">theboys.cosmetics@gmail.com</a></div>
                     </div>
 
                     <div class="info-item">
-                        <div class="icon"><svg viewBox="0 0 24 24">
-                                <path d="M6.62 10.79..." />
-                            </svg></div>
+                        <div class="icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79..." /></svg></div>
                         <div><strong>Hotline:</strong><br><a href="">0123 456 789</a></div>
                     </div>
 
                     <div class="social-links">
-                        <h3>Kết nối với chúng tôi</h3>
+                        <h3>Ket noi voi chung toi</h3>
                         <div class="social-icons">
-                            <a><img src="/webbanhang/public/images/fb.jpg"></a>
-                            <a><img src="/webbanhang/public/images/twitter.webp"></a>
-                            <a><img src="/webbanhang/public/images/instagram.webp"></a>
-                            <a><img src="/webbanhang/public/images/zalo.png"></a>
+                            <a><img src="<?= BASE_URL ?>/public/images/fb.jpg"></a>
+                            <a><img src="<?= BASE_URL ?>/public/images/twitter.webp"></a>
+                            <a><img src="<?= BASE_URL ?>/public/images/instagram.webp"></a>
+                            <a><img src="<?= BASE_URL ?>/public/images/zalo.png"></a>
                         </div>
                     </div>
 

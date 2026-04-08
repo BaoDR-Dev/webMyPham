@@ -36,7 +36,7 @@
     </div>
 
     <form method="POST"
-        action="/webbanhang/Admin/updatePromotion"
+        action="<?= BASE_URL ?>/Admin/updatePromotion"
         class="form-container-card"
         id="promotionForm">
 
@@ -164,7 +164,7 @@
                     <button type="submit" class="btn btn-submit btn-warning text-white fw-bold">
                         <i class="bi bi-save me-2"></i>Cập nhật khuyến mãi
                     </button>
-                    <a href="/webbanhang/Admin/promotionList"
+                    <a href="<?= BASE_URL ?>/Admin/promotionList"
                         class="btn btn-light border text-muted">
                         Hủy bỏ
                     </a>

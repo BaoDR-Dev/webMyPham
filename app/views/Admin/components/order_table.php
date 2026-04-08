@@ -138,7 +138,7 @@
                             };
                             ?>
 
-                            <form method="post" action="/webbanhang/Admin/updateOrderStatus2" class="d-inline-block">
+                            <form method="post" action="<?= BASE_URL ?>/Admin/updateOrderStatus2" class="d-inline-block">
                                 <input type="hidden" name="order_id" value="<?= htmlspecialchars($order['id'] ?? '') ?>">
                                 <select name="status"
                                     class="form-select form-select-sm text-center fw-semibold border-0 rounded-pill bg-<?= $statusClass ?> bg-opacity-25 text-<?= $statusClass ?>"
@@ -157,14 +157,14 @@
 
                         <td class="text-center py-3">
                             <div class="d-flex justify-content-center gap-2">
-                                <a href="/webbanhang/Admin/orderDetail/<?= htmlspecialchars($order['id'] ?? '') ?>"
+                                <a href="<?= BASE_URL ?>/Admin/orderDetail/<?= htmlspecialchars($order['id'] ?? '') ?>"
                                     class="btn btn-sm btn-outline-primary shadow-sm"
                                     title="Chi tiết đơn hàng">
                                     <i class="bi bi-list-ul"></i>
                                 </a>
                                 <!-- Nút "Thông tin khách hàng" đã bị xóa trong mã bạn cung cấp. Nếu bạn muốn thêm lại, hãy dùng code dưới đây: -->
                                 <!--
-                                <a href="/webbanhang/Admin/customerInfo/<?= htmlspecialchars($order['id'] ?? '') ?>"
+                                <a href="<?= BASE_URL ?>/Admin/customerInfo/<?= htmlspecialchars($order['id'] ?? '') ?>"
                                     class="btn btn-sm btn-outline-info shadow-sm"
                                     title="Thông tin khách hàng">
                                     <i class="bi bi-person-vcard-fill"></i>

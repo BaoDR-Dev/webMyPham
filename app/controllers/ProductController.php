@@ -58,7 +58,7 @@ class ProductController
         $categoryId = $_GET['category_id'] ?? null;
 
         if (!$product) {
-            header("Location: /webbanhang/error");
+            header("Location: " . BASE_URL . "/error");
             exit;
         }
 
@@ -80,7 +80,7 @@ class ProductController
         }
 
         // Hiển thị giao diện chi tiết
-        include 'app/views/product/show.php';
+        include 'app/views/Product/show.php';
     }
 
     public function reviewFilter()
@@ -97,7 +97,7 @@ class ProductController
         $ratingModel = new RatingModel();
         $reviews = $ratingModel->getReviewsByProductId($productId, $rating);
 
-        include 'app/views/product/reviews.php';
+        include 'app/views/Product/reviews.php';
     }
 
 
@@ -107,11 +107,11 @@ class ProductController
     public function add()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         $categories = (new CategoryModel($this->db))->getCategories();
-        include_once 'app/views/product/add.php';
+        include_once 'app/views/Product/add.php';
     }
 
     // Lưu sản phẩm mới
@@ -119,7 +119,7 @@ class ProductController
     public function save()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -151,9 +151,9 @@ class ProductController
             if (is_array($result)) {
                 $errors = $result;
                 $categories = (new CategoryModel($this->db))->getCategories();
-                include 'app/views/product/add.php';
+                include 'app/views/Product/add.php';
             } else {
-                header('Location: /webbanhang/Admin/adminCategoryList/' . urlencode($category_id));
+                header('Location: ' . BASE_URL . '/Admin/adminCategoryList/' . urlencode($category_id));
                 exit;
             }
         }
@@ -163,25 +163,25 @@ class ProductController
     public function edit($id)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         $product = $this->productModel->getProductById($id);
         $categories = (new CategoryModel($this->db))->getCategories();
 
         if (!$product) {
-            header('Location: /webbanhang/Product');
+            header('Location: ' . BASE_URL . '/Product');
             exit();
         }
 
-        include 'app/views/product/edit.php';
+        include 'app/views/Product/edit.php';
     }
 
     // Lưu sản phẩm sau khi chỉnh sửa
     public function update()
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -211,7 +211,7 @@ class ProductController
             );
 
             if ($edit) {
-                header('Location: /webbanhang/Admin/adminCategoryList/' . urlencode($category_id));
+                header('Location: ' . BASE_URL . '/Admin/adminCategoryList/' . urlencode($category_id));
                 exit;
             } else {
                 echo "Đã xảy ra lỗi khi lưu sản phẩm.";
@@ -225,11 +225,11 @@ class ProductController
     public function delete($id)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         if ($this->productModel->deleteProduct($id)) {
-            // header('Location: /webbanhang/Admin/adminCategoryList/');
+            // header('Location: ' . BASE_URL . '/Admin/adminCategoryList/');
         } else {
             echo "Đã xảy ra lỗi khi xóa sản phẩm.";
         }
@@ -255,7 +255,7 @@ class ProductController
     private function uploadImage($file)
     {
         if (empty($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header('Location: /webbanhang/Admin/NotAdmin');
+            header('Location: ' . BASE_URL . '/Admin/NotAdmin');
             exit;
         }
         $target_dir = "uploads/";
@@ -288,7 +288,7 @@ class ProductController
     public function categoryList($category_id = null)
     {
         if (is_null($category_id) || !is_numeric($category_id)) {
-            header('Location: /webbanhang/error');
+            header('Location: ' . BASE_URL . '/error');
             exit;
         }
 
@@ -313,9 +313,9 @@ class ProductController
             $categoryName = htmlspecialchars($category->name, ENT_QUOTES, 'UTF-8');
 
             // Truyền thêm biến phân trang qua view
-            include 'app/views/product/categorylist.php';
+            include 'app/views/Product/categorylist.php';
         } else {
-            include 'app/views/product/emptycategory.php';
+            include 'app/views/Product/emptycategory.php';
         }
     }
 
@@ -365,7 +365,7 @@ class ProductController
 
         $queryParams = $_GET;
 
-        include 'app/views/product/search_results.php';
+        include 'app/views/Product/search_results.php';
     }
 
     public function autocomplete()
@@ -413,6 +413,6 @@ class ProductController
         $category_id = null;
         $categoryName = 'Tất cả sản phẩm';
 
-        include 'app/views/product/categorylist.php';
+        include 'app/views/Product/categorylist.php';
     }
 }

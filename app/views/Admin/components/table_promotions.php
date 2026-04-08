@@ -70,8 +70,8 @@
                         </td>
                         <td class="text-end">
                             <div class="action-btns">
-                                <a href="/webbanhang/Admin/editPromotion?id=<?= $p['id'] ?>" class="btn-edit"><i class="bi bi-pencil-square"></i></a>
-                                <a href="/webbanhang/Admin/deletePromotion?id=<?= $p['id'] ?>" onclick="return confirm('Xoá?')" class="btn-delete"><i class="bi bi-trash3"></i></a>
+                                <a href="<?= BASE_URL ?>/Admin/editPromotion?id=<?= $p['id'] ?>" class="btn-edit"><i class="bi bi-pencil-square"></i></a>
+                                <a href="<?= BASE_URL ?>/Admin/deletePromotion?id=<?= $p['id'] ?>" onclick="return confirm('Xoá?')" class="btn-delete"><i class="bi bi-trash3"></i></a>
                             </div>
                         </td>
                     </tr>

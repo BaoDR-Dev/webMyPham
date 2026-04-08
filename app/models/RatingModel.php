@@ -6,7 +6,7 @@ class RatingModel
 
     public function __construct()
     {
-        require_once 'app/config/Database.php';
+        require_once 'app/config/database.php';
         $db = new Database();
         $this->conn = $db->getConnection();
     }

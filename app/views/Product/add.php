@@ -138,7 +138,7 @@
         </div>
     <?php endif; ?>
 
-    <form method="POST" action="/webbanhang/Product/save" enctype="multipart/form-data" class="form-container-card">
+    <form method="POST" action="<?= BASE_URL ?>/Product/save" enctype="multipart/form-data" class="form-container-card">
         <div class="row g-4">
             <div class="col-lg-8">
                 <div class="form-group">
@@ -217,7 +217,7 @@
                     <button type="submit" class="btn btn-submit">
                         <i class="bi bi-plus-lg me-2"></i>Tạo sản phẩm
                     </button>
-                    <a href="/webbanhang/Admin/adminCategoryList/1" class="btn btn-light border py-2 text-muted fw-bold rounded-3">
+                    <a href="<?= BASE_URL ?>/Admin/adminCategoryList/1" class="btn btn-light border py-2 text-muted fw-bold rounded-3">
                         Hủy bỏ
                     </a>
                 </div>

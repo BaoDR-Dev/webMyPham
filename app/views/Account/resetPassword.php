@@ -145,7 +145,7 @@
                                 <?php endif; ?>
 
                                 <!-- QUAN TRỌNG: Action phải truyền Token qua URL -->
-                                <form action="/webbanhang/account/resetPassword?token=<?= htmlspecialchars($token ?? ''); ?>" method="post">
+                                <form action="<?= BASE_URL ?>/account/resetPassword?token=<?= htmlspecialchars($token ?? ''); ?>" method="post">
 
                                     <div class="form-floating mb-3">
                                         <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu mới" required>

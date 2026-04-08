@@ -3,7 +3,7 @@ class DefaultController
 {
     public function index()
     {
-        header('Location: /webbanhang/Product/home');
+        header('Location: ' . BASE_URL . '/Product/home');
         exit;
     }
 

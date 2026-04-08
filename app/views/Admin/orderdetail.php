@@ -86,7 +86,7 @@
             <small class="text-muted">Thông tin đơn, khách hàng và sản phẩm</small>
         </div>
 
-        <a href="/webbanhang/Admin/OrderList"
+        <a href="<?= BASE_URL ?>/Admin/OrderList"
             class="btn btn-outline-primary btn-sm d-flex align-items-center gap-1">
             <i class="bi bi-arrow-left"></i>
             Quay lại
