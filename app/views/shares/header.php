@@ -195,7 +195,7 @@ function isActive0($path)
                 <!-- Logo -->
                 <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="<?= BASE_URL ?>/Admin/dashboard">
                     <img src="<?= BASE_URL ?>/public/images/Logo.png" alt="Logo" height="35" class="me-2">
-                    24/7 Store
+                    The Boys Cosmetics
                 </a>
 
                 <!-- User Dropdown (Góc phải) -->
