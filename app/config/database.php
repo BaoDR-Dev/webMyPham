@@ -29,6 +29,7 @@ class Database
             // Aiven yêu cầu SSL
             $options = [
                 PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+                PDO::ATTR_PERSISTENT => true,
             ];
             $this->conn = new PDO($dsn, $this->username, $this->password, $options);
             $this->conn->exec("set names utf8");
