@@ -1,6 +1,12 @@
 <?php
-// BASE_URL: rỗng cho Render/production, đổi thành '/webbanhang' nếu chạy local Laragon
-define('BASE_URL', getenv('BASE_URL') ?: '');
+// Tự động detect môi trường:
+// - Render/production: BASE_URL = ''
+// - Local Laragon:     BASE_URL = '/webbanhang'
+$_detected_base = '';
+if (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
+    $_detected_base = '/webbanhang';
+}
+define('BASE_URL', getenv('BASE_URL') !== false ? getenv('BASE_URL') : $_detected_base);
 
 class Database
 {
