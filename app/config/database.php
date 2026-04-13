@@ -6,7 +6,8 @@ $_detected_base = '';
 if (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
     $_detected_base = '/webbanhang';
 }
-define('BASE_URL', getenv('BASE_URL') !== false ? getenv('BASE_URL') : $_detected_base);
+$_env_base = getenv('BASE_URL');
+define('BASE_URL', ($_env_base !== false && $_env_base !== '') ? $_env_base : $_detected_base);
 
 class Database
 {
