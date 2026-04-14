@@ -446,4 +446,13 @@ class AccountModel
             return true;
         });
     }
+
+    // Kích hoạt tài khoản trực tiếp không cần OTP (dùng khi tắt email)
+    public function verifyAccountDirectly($email)
+    {
+        $query = "UPDATE " . $this->table_name . " SET is_verified = 1, is_active = 1 WHERE email = :email";
+        $stmt  = $this->conn->prepare($query);
+        $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+        return $stmt->execute();
+    }
 }

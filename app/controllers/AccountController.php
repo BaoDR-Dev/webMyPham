@@ -80,15 +80,13 @@ class AccountController
             );
 
             if ($result) {
-                // Gửi mail - tắt để tránh timeout trên cloud
-                // require_once(__DIR__ . '/../helpers/EmailHelper.php');
-                // EmailHelper::sendVerificationEmail($email, $otp);
+                // Tự động kích hoạt tài khoản, bỏ qua OTP và email
+                $this->accountModel->verifyAccountDirectly($email);
 
                 if (session_status() === PHP_SESSION_NONE) session_start();
-                $_SESSION['temp_email'] = $email;
-                $_SESSION['success_message'] = "Mã OTP đã gửi tới email. Nhập ngay!";
+                $_SESSION['success_message'] = "Đăng ký thành công! Đăng nhập ngay.";
 
-                header('Location: ' . BASE_URL . '/account/verifyOtp');
+                header('Location: ' . BASE_URL . '/account/login');
                 exit;
             } else {
                 $_SESSION['error'] = "Lỗi hệ thống, không thể tạo tài khoản.";
