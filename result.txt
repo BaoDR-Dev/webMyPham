@@ -1,0 +1,86 @@
+PHPUnit 10.5.63 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.3.16
+Configuration: C:\laragon\www\KiemThu\WEBBANHANG\phpunit.xml
+
+..........FFFFF..FFF                                              20 / 20 (100%)
+
+Time: 00:00.072, Memory: 8.00 MB
+
+There were 8 failures:
+
+1) CheckoutTest::test_checkout_from_excel with data set "BUG_CHK01" ('BUG_CHK01', '', '0', '', 'cash', '', '', '1', '1', '0', 'PASS')
+[BUG_CHK01] Gio hang trong hoac khong hop le
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'PASS'
++'FAIL'
+
+C:\laragon\www\KiemThu\WEBBANHANG\tests\CheckoutTest.php:81
+
+2) CheckoutTest::test_checkout_from_excel with data set "BUG_CHK02" ('BUG_CHK02', '', '0', '', 'cash', '', '', '1', '1', '0', 'PASS')
+[BUG_CHK02] Gio hang trong hoac khong hop le
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'PASS'
++'FAIL'
+
+C:\laragon\www\KiemThu\WEBBANHANG\tests\CheckoutTest.php:81
+
+3) CheckoutTest::test_checkout_from_excel with data set "BUG_CHK03" ('BUG_CHK03', '', '0', '', 'cash', '', '', '1', '1', '0', 'PASS')
+[BUG_CHK03] Gio hang trong hoac khong hop le
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'PASS'
++'FAIL'
+
+C:\laragon\www\KiemThu\WEBBANHANG\tests\CheckoutTest.php:81
+
+4) CheckoutTest::test_checkout_from_excel with data set "BUG_CHK04" ('BUG_CHK04', '', '0', '', 'cash', '', '', '1', '1', '0', 'PASS')
+[BUG_CHK04] Gio hang trong hoac khong hop le
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'PASS'
++'FAIL'
+
+C:\laragon\www\KiemThu\WEBBANHANG\tests\CheckoutTest.php:81
+
+5) CheckoutTest::test_checkout_from_excel with data set "BUG_CHK05" ('BUG_CHK05', '', '0', '', 'cash', '', '', '1', '1', '0', 'PASS')
+[BUG_CHK05] Gio hang trong hoac khong hop le
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-'PASS'
++'FAIL'
+
+C:\laragon\www\KiemThu\WEBBANHANG\tests\CheckoutTest.php:81
+
+6) CheckoutTest::BUG_CHK03_phoneNotValidated
+BUG_CHK03: Khong validate dinh dang SDT
+Failed asserting that false is true.
+
+C:\laragon\www\KiemThu\WEBBANHANG\tests\CheckoutTest.php:166
+
+7) CheckoutTest::BUG_CHK04_disabledAccountCanCheckout
+BUG_CHK04: Khong check is_active truoc checkout
+Failed asserting that false is true.
+
+C:\laragon\www\KiemThu\WEBBANHANG\tests\CheckoutTest.php:177
+
+8) CheckoutTest::BUG_CHK05_addressNotValidated
+BUG_CHK05: Khong validate do dai dia chi
+Failed asserting that false is true.
+
+C:\laragon\www\KiemThu\WEBBANHANG\tests\CheckoutTest.php:190
+
+FAILURES!
+Tests: 20, Assertions: 96, Failures: 8.

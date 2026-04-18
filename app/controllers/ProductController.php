@@ -352,7 +352,7 @@ class ProductController
         $offset = ($page - 1) * $limit;
 
         if (empty($keyword)) {
-            header("Location: /webbanhang");
+            header("Location: " . BASE_URL . "/Product/home");
             exit;
         }
 

@@ -46,7 +46,7 @@ class RatingController
     public function update()
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /webbanhang');
+            header('Location: ' . BASE_URL . '/Product/home');
             exit;
         }
 
